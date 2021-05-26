@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Song } from "../../interfaces/song";
 import { useQuery } from "react-query";
 
@@ -22,7 +22,7 @@ const usePlayer = () => {
   });*/
   const fetch_current_song2 = async () => {
     //setTimeout(async function () {
-    const info = await fetch("http://localhost:3000/api/song");
+    const info = await fetch("/api/song");
     //  const playing = await info.json();
     // setCurrent_song(playing);
     //  setloading(false);

@@ -2,15 +2,14 @@ import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faHeart, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, Transition } from "@headlessui/react";
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import usePlayer from "../PlayerHook";
 import { faHeart as faHeart2 } from "@fortawesome/free-regular-svg-icons";
 import Apple_music from "../../../public/images/links/Apple_music.svg";
 function PlayerLinks() {
   const { data, volume, isLoading, setVolume, refetch } = usePlayer();
-  const [voted, setvoted] = useState<boolean>(false);
   const vote = async (id: number | undefined, voted: boolean | undefined) => {
-    const info = await fetch("http://localhost:3000/api/song/vote", {
+    const info = await fetch("/api/song/vote", {
       method: "POST",
       body: JSON.stringify({ id: id, voted: voted }),
       headers: {
@@ -94,7 +93,9 @@ function PlayerLinks() {
           <span className="w-8"></span>
         ) : (
           <a
-            className={`flex items-center  ${voted ? "bloc" : "scale-0"} m-3`}
+            className={`flex items-center  ${
+              data?.voted ? "bloc" : "scale-0"
+            } m-3`}
             href={data?.apple_music}
             target="_blanc"
           >

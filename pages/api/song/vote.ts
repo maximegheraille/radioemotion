@@ -1,9 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Song } from "../../../interfaces/song";
 var mysql = require("mysql");
 const post = (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    console.log(req.body);
     var connection = mysql.createConnection({
       host: "localhost",
       port: process.env.DB_PORT,
@@ -14,7 +12,7 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
     if (req.body.voted) {
       connection.query(
         `call delete_vote(${req.body.id},'${req.connection.remoteAddress}')`,
-        function (error: any, results: any, _fields: any) {
+        function (error: any, _results: any, _fields: any) {
           if (error) {
             console.log(error);
             //throw error;
@@ -28,7 +26,7 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
         `call vote(${req.body.id},'${
           req.connection.remoteAddress
         }',${new Date().getDate()})`,
-        function (error: any, results: any, _fields: any) {
+        function (error: any, _results: any, _fields: any) {
           if (error) {
             console.log(error);
             //throw error;
@@ -36,7 +34,7 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
           }
           connection.query(
             `call add_vote(${req.body.id})`,
-            function (error: any, results: any, _fields: any) {
+            function (error: any, _results: any, _fields: any) {
               if (error) {
                 console.log(error);
                 res.status(500).json({ response: false, error: true });
