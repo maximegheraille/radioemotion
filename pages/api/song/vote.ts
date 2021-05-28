@@ -15,39 +15,29 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
         function (error: any, _results: any, _fields: any) {
           if (error) {
             console.log(error);
-            //throw error;
             res.status(500).json({ response: false, error: true });
+            return;
           }
           res.status(200).json({ success: true });
         }
       );
     } else {
       connection.query(
-        `call vote(${req.body.id},'${
+        `call add_vote(${req.body.id},'${
           req.connection.remoteAddress
         }',${new Date().getDate()})`,
         function (error: any, _results: any, _fields: any) {
           if (error) {
             console.log(error);
-            //throw error;
             res.status(500).json({ response: false, error: true });
+            return;
           }
-          connection.query(
-            `call add_vote(${req.body.id})`,
-            function (error: any, _results: any, _fields: any) {
-              if (error) {
-                console.log(error);
-                res.status(500).json({ response: false, error: true });
-              }
-              res.status(200).json({ success: true });
-            }
-          );
-          //res.status(200).json({ success: true });
+          res.status(200).json({ success: true });
         }
       );
     }
   } catch (err) {
-    //res.status(500).json({ response: false, error: true });
+    res.status(500).json({ response: false, error: true });
   }
 };
 
