@@ -8,6 +8,7 @@ import { faHeart as faHeart2 } from "@fortawesome/free-regular-svg-icons";
 import Apple_music from "../../../public/images/links/Apple_music.svg";
 function PlayerLinks() {
   const { data, volume, isLoading, setVolume, refetch } = usePlayer();
+
   const vote = async (id: number | undefined, voted: boolean | undefined) => {
     const info = await fetch("/api/song/vote", {
       method: "POST",
@@ -17,8 +18,14 @@ function PlayerLinks() {
       },
     });
     const playing = await info.json();
+    console.log(playing);
     if (playing.success) {
       refetch();
+      const fetch_current_song2 = async () => {
+        const info = await fetch("/api/song");
+        console.log(info.json());
+      };
+      fetch_current_song2();
     }
   };
   return (

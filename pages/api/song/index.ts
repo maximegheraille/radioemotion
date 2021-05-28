@@ -24,19 +24,28 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
         if (results[0].youtube === "0") {
           results[0].youtube = "";
         }
+        console.log(
+          `call radioemotion_get_voted(${results[0].id}, '${req.connection.remoteAddress}')`
+        );
         connection.query(
-          `call radioemotion_getVoted(${results[0].id},'${req.connection.remoteAddress}')`,
+          `call radioemotion_get_voted(${results[0].id}, '${req.connection.remoteAddress}')`,
           function (error: any, results2: any, _fields: any) {
+            console.log(results2[0]);
+            console.log(results2[0].length);
             if (error) {
               //throw error;
               results[0].voted = false;
               res.status(200).json(results[0]);
+              console.log("error");
               connection.destroy();
-            } else if (results2 && results2.length > 0) {
+            } else if (results2[0].length > 0) {
+              console.log(" voted");
               results[0].voted = true;
               res.status(200).json(results[0]);
               connection.destroy();
+              return;
             } else {
+              console.log("not voted");
               results[0].voted = false;
               res.status(200).json(results[0]);
               connection.destroy();
