@@ -1,51 +1,77 @@
 import Image from "next/image";
 import React from "react";
+import LoadingState from "../../shared/LoadingState";
 import usePlayer from "../PlayerHook";
 
 const PlayerInfos = () => {
-  const { data, isLoading } = usePlayer();
+  const { data: song, isLoading, isError } = usePlayer();
   return (
     <>
       <div className="flex">
-        <div className="flex items-center">
-          <div className="w-full flex align-middle ">
-            {!isLoading && data ? (
-              <Image
-                // layout="responsive"
-                width={40}
-                height={40}
-                className={`rounded-md items-center`}
-                src={data.photo}
-              />
-            ) : (
-              <span className="w-10 h-10 rounded bg-white animate-pulse"></span>
+        <div className="flex items-center flex-shrink-0">
+          <div className="w-full flex align-middle">
+            {song !== undefined && (
+              <LoadingState
+                width="w-[40px]"
+                heigth="h-[40px]"
+                classNames=""
+                isLoading={isLoading}
+                isError={isError}
+                data={song?.photo}
+              >
+                <Image
+                  // layout="responsive"
+                  width={40}
+                  height={40}
+                  className={`rounded-md items-center`}
+                  src={song?.photo}
+                />
+              </LoadingState>
             )}
           </div>
         </div>
         <div
-          className={`${
-            isLoading ? "space-y-1" : null
-          } flex flex-none justify-center content-center flex-col pl-4 text-sm lg:text-base text-white`}
+          className={`space-y-1 flex justify-center content-center flex-col pl-2 lg:pl-4 text-sm lg:text-base text-white`}
         >
-          <p
+          {/* <p
             className={`${
-              isLoading === true
-                ? "animate-pulse w-36 h-4 bg-white rounded"
-                : null
+              isLoading || isError
+                ? "animate-pulse w-32 max-w- h-4 bg-white rounded"
+                : "line-clamp-1 w-32 lg:w-auto"
             } font-bold leading-5`}
           >
-            {isLoading ? "" : data?.artiste}
-          </p>
+            {isLoading || isError ? "" : song?.artiste}
+          </p> */}
 
-          <p
+          <LoadingState
+            width="w-32"
+            heigth="h-4"
+            classNames=""
+            isLoading={isLoading}
+            isError={isError}
+            data={song?.artiste}
+          >
+            <p className="line-clamp-1 max-w-[9rem]">{song?.artiste}</p>
+          </LoadingState>
+          {/* <p
             className={`${
-              isLoading === true
-                ? "animate-pulse w-32 h-4 bg-white rounded"
-                : null
+              isLoading || isError
+                ? "animate-pulse w-36 h-4 bg-white rounded"
+                : "w-32 lg:w-auto line-clamp-1"
             } `}
           >
-            {isLoading ? "" : data?.titre}
-          </p>
+            {isLoading || isError ? "" : song?.titre}
+          </p> */}
+          <LoadingState
+            width="w-28"
+            heigth="h-4"
+            classNames=""
+            isLoading={isLoading}
+            isError={isError}
+            data={song?.titre}
+          >
+            <p className="line-clamp-1 max-w-[9rem]">{song?.titre}</p>
+          </LoadingState>
         </div>
       </div>
     </>

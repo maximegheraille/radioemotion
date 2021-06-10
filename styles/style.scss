@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer utilities {
-  .cut-one-line {
+  .line-clamp-1 {
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;

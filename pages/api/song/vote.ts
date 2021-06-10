@@ -3,7 +3,7 @@ var mysql = require("mysql");
 const post = (req: NextApiRequest, res: NextApiResponse) => {
   try {
     var connection = mysql.createConnection({
-      host: "localhost",
+      host: process.env.DB_HOST,
       port: process.env.DB_PORT,
       database: process.env.DB_NAME,
       user: process.env.DB_USER,

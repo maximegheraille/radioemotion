@@ -48,7 +48,7 @@ const NavigationBar = ({
 
   return (
     <>
-      <nav className="bg-[#2d2180] /*bg-gray-800*/ h-12 xl:h-16 px-2 w-full">
+      <nav className="bg-[#2d2180] /*bg-gray-800*/ h-full px-2 w-full">
         <div className="h-full flex-1 flex items-center justify-between sm:items-stretch sm:justify-between">
           <div className="lg:hidden flex items-center">
             <button
@@ -66,13 +66,22 @@ const NavigationBar = ({
           <div className="hidden lg:flex flex-none">
             <div className="flex-shrink-0 py-2 flex items-center">
               <div className="w-full px-2 items-center flex place-content-center">
-                <Image
+                {/* <Image
                   width={95}
                   height={43}
                   layout="intrinsic"
                   src={logo}
                   className="bg-white"
-                />
+                /> */}
+                <div className="w-20">
+                  <Image
+                    width={95}
+                    height={43}
+                    layout="responsive"
+                    src={logo}
+                    className="bg-white"
+                  />
+                </div>
               </div>
             </div>
             <div className="sm:ml-6">

@@ -6,9 +6,11 @@ import React, { Fragment } from "react";
 import usePlayer from "../PlayerHook";
 import { faHeart as faHeart2 } from "@fortawesome/free-regular-svg-icons";
 import Apple_music from "../../../public/images/links/Apple_music.svg";
-function PlayerLinks() {
-  const { data, volume, isLoading, setVolume, refetch } = usePlayer();
+import { playerProps } from "../../../interfaces/playerProps";
+import LoadingState from "../../shared/LoadingState";
 
+const PlayerLinks = ({ volume, setVolume }: playerProps) => {
+  const { data: song, isLoading, isError, refetch } = usePlayer();
   const vote = async (id: number | undefined, voted: boolean | undefined) => {
     const info = await fetch("/api/song/vote", {
       method: "POST",
@@ -18,20 +20,14 @@ function PlayerLinks() {
       },
     });
     const playing = await info.json();
-    console.log(playing);
     if (playing.success) {
       refetch();
-      const fetch_current_song2 = async () => {
-        const info = await fetch("/api/song");
-        console.log(info.json());
-      };
-      fetch_current_song2();
     }
   };
   return (
     <>
-      <div className="flex items-center">
-        <Popover className="relative h-full">
+      <div className="hidden lg:flex items-center">
+        <Popover className="hidden lg:block relative h-full">
           {({ open }) => (
             <>
               <Popover.Button
@@ -56,7 +52,7 @@ function PlayerLinks() {
                 leaveTo="opacity-0 translate-y-1"
               >
                 <Popover.Panel className="absolute transform z-10 w-36 px-4 mt-4 -translate-y-14 -translate-x-1/4">
-                  <div className="flex transform -rotate-90 -translate-y-14 -translate-x-2">
+                  <div className="flex transform -translate-y-16 -rotate-90 -translate-x-2">
                     <input
                       type="range"
                       className="w-full"
@@ -71,52 +67,74 @@ function PlayerLinks() {
             </>
           )}
         </Popover>
-        <div className={`relative inline-flex align-middle flex-shrink-0 mr-4`}>
-          <button
-            className={` ${
-              data?.voted ? "scale-100" : "scale-0"
-            } flex items-center`}
-            onClick={() => {
-              // setvoted(!voted);
-              vote(data?.id, data?.voted);
-              //  refetch;
-              // data?.votes === 50 ? setVotes(votes + 1) : setVotes(votes - 1);
-            }}
+
+        <LoadingState
+          width="w-9"
+          heigth="h-9"
+          classNames="m-3"
+          isLoading={isLoading}
+          isError={isError}
+          data={song?.voted}
+          // bgColor={false}
+        >
+          <div
+            className={`relative inline-flex align-middle flex-shrink-0 mr-4`}
           >
-            <FontAwesomeIcon
-              icon={data?.voted ? faHeart : faHeart2}
-              size="2x"
-              className={`p-1.5 text-white z-10 ${
-                data?.voted ? "text-[#f44336]" : "text-white"
-              } `}
-              aria-hidden="true"
-            />
-          </button>
-          <span className="text-xs flex items-center text-white absolute top-0 right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-[100px] px-1 h-5">
-            {data?.votes}
-          </span>
-        </div>
-        {data?.apple_music === "" ? (
-          <span className="w-8"></span>
-        ) : (
+            <button
+              className={` ${
+                song?.voted ? "scale-100" : "scale-0"
+              } flex items-center focus:outline-none`}
+              onClick={() => {
+                vote(song?.id, song?.voted);
+              }}
+            >
+              <FontAwesomeIcon
+                icon={song?.voted ? faHeart : faHeart2}
+                size="2x"
+                className={`p-1.5 text-white z-10 ${
+                  song?.voted ? "text-[#f44336]" : "text-white"
+                } `}
+                aria-hidden="true"
+              />
+            </button>
+            <span className="text-xs flex items-center text-white absolute top-0 right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-[100px] px-1 h-5">
+              {song?.votes}
+            </span>
+          </div>
+        </LoadingState>
+        <LoadingState
+          width="w-9"
+          heigth="h-9"
+          classNames="m-3"
+          isLoading={isLoading}
+          isError={isError}
+          data={song?.apple_music}
+          //   bgColor={false}
+        >
           <a
-            className={`flex items-center  ${
-              data?.voted ? "bloc" : "scale-0"
-            } m-3`}
-            href={data?.apple_music}
-            target="_blanc"
+            className={`flex items-center ${
+              song?.voted ? "block" : "scale-0"
+            } lg:m-3`}
+            href={`${song?.apple_music}`}
+            target="_blank"
           >
-            <img src={Apple_music} className={`h-5 w-5 text-white`} />
+            <img src={Apple_music} className={`w-5 lg:h-5 lg:w-5 text-white`} />
           </a>
-        )}
-        {isLoading || data?.youtube === "" ? (
-          <span className="w-8"></span>
-        ) : (
+        </LoadingState>
+        <LoadingState
+          width="w-9"
+          heigth="h-9"
+          classNames="m-3"
+          isLoading={isLoading}
+          isError={isError}
+          data={song?.youtube}
+          // bgColor={false}
+        >
           <a
-            href={data?.youtube}
+            href={song?.youtube}
             target="_blanc"
             className={`${
-              data?.youtube === "0" ? "hidden" : "block"
+              song?.youtube === "0" ? "hidden" : "block"
             } flex items-center m-3 text-[#f44336]`}
           >
             <FontAwesomeIcon
@@ -127,10 +145,10 @@ function PlayerLinks() {
               aria-hidden="true"
             />
           </a>
-        )}
+        </LoadingState>
       </div>
     </>
   );
-}
+};
 
 export default PlayerLinks;
