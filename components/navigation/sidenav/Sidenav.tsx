@@ -1,46 +1,24 @@
-import {
-  faCaretDown,
-  faClock,
-  faHeart,
-  faHome,
-  faList,
-  faMap,
-  faMoon,
-  faMusic,
-  faNewspaper,
-  faSun,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import { Dispatch, SetStateAction } from "react";
-import { useDispatch } from "react-redux";
-import { changeTheme } from "../../../config/context/darkThemeSlice";
-import { useAppSelector } from "../../../config/context/hook";
+import React from "react";
+import { navigationItem } from "../Navigation";
 import logo from "../../../public/images/RadioEmotion.png";
-import SidenavIcon from "./Icons";
+import { changeTheme } from "../../../config/context/darkThemeSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { useAppDispatch, useAppSelector } from "../../../config/context/hook";
+import { useRouter } from "next/dist/client/router";
+import { Disclosure, Transition } from "@headlessui/react";
 
 interface side_nav_props {
-  firstElement: boolean;
-  secondElement: boolean;
+  nav: navigationItem[];
   openSideNav: boolean;
-  setOpenSideNav: Dispatch<SetStateAction<boolean>>;
-  setFirstElement: (value: boolean | ((prevVar: boolean) => boolean)) => void;
-  setSecond: (firstElement: boolean | ((prevVar: boolean) => boolean)) => void;
+  setOpenSideNav: (value: boolean | ((prevVar: boolean) => boolean)) => void;
 }
 
-const Sidenav: React.FC<side_nav_props> = ({
-  openSideNav,
-  firstElement,
-  secondElement,
-  setFirstElement,
-  setOpenSideNav,
-  setSecond,
-}: side_nav_props) => {
-  const dispatch = useDispatch();
-  const isDark = useAppSelector((state: any) => state.darkTheme);
+const SideNav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
+  const { darkTheme } = useAppSelector((state) => state);
   const { asPath } = useRouter();
-
+  const dispatch = useAppDispatch();
   return (
     <>
       <div
@@ -51,6 +29,7 @@ const Sidenav: React.FC<side_nav_props> = ({
           openSideNav ? "block w-screen" : "hidden"
         } fixed inset-0 z-10 bg-transparent`}
       ></div>
+
       <section
         className={`w-60 bg-[#2d2180] ${
           openSideNav ? "-translate-x-0" : "-translate-x-full "
@@ -72,161 +51,112 @@ const Sidenav: React.FC<side_nav_props> = ({
                 </a>
               </Link>
             </div>
-            <div className={`w-full mt-7 pb-2`}>
-              <SidenavIcon
-                label={"ACCUEIL"}
-                icon={faHome}
-                path="/"
-                openSideNav={openSideNav}
-                setOpenSideNav={setOpenSideNav}
-              />
-              <div>
-                <div
-                  className="mt-2 flex items-center w-full pr-4 pb-2 transition-transform transform hover:translate-x-1"
-                  onClick={() => {
-                    setFirstElement(!firstElement);
-                  }}
-                  style={{ overflow: "hidden" }}
-                >
-                  <span aria-hidden="true" className="ml-4 mr-2">
-                    <FontAwesomeIcon
-                      icon={faMusic}
-                      className=" text-white"
-                      size="1x"
-                    />
-                  </span>
-                  <span className="ml-1 text-white text-sm"> MA RADIO </span>
-                  <span className="ml-auto" aria-hidden="true">
-                    <FontAwesomeIcon
-                      className={`text-white transform transition-all ease-in-out ${
-                        firstElement ? "rotate-180" : "rotate-0"
-                      }`}
-                      icon={faCaretDown}
-                    />
-                  </span>
-                </div>
-                <div
-                  style={{ backgroundColor: "rgb(38 28 109)" }}
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    !firstElement ? "h-0" : "h-32"
-                  } space-y-2 px-7`}
-                >
-                  <Link href="/">
-                    <a
-                      className="block p-2 text-sm text-white"
-                      onClick={() => setOpenSideNav(!openSideNav)}
-                    >
-                      PRESENTATION
-                    </a>
-                  </Link>
-                  <Link href="/">
-                    <a
-                      className="block p-2 text-sm text-white"
-                      onClick={() => setOpenSideNav(!openSideNav)}
-                    >
-                      EMISSIONS
-                    </a>
-                  </Link>
-                  <Link href="/">
-                    <a
-                      className="block p-2 text-sm text-white"
-                      onClick={() => setOpenSideNav(!openSideNav)}
-                    >
-                      EQUIPE
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div>
-                <div
-                  className={`mt-2 flex items-center w-full pr-4 pb-2 transition-transform transform hover:translate-x-1 ${
-                    asPath.toLowerCase() === "item.href.toLowerCase()"
-                      ? "bg-[#10045f] /*bg-gray-900*/ text-white"
-                      : "text-gray-300"
-                  }`}
-                  onClick={() => {
-                    setSecond(!secondElement);
-                  }}
-                >
-                  <span aria-hidden="true" className="ml-4 mr-2">
-                    <FontAwesomeIcon
-                      icon={faMap}
-                      className="text-white"
-                      size="1x"
-                    />
-                  </span>
-                  <span className="ml-1 text-white text-sm"> MA REGION </span>
-                  <span className="ml-auto" aria-hidden="true">
-                    <FontAwesomeIcon
-                      className={`text-white transform transition-all ease-in-out ${
-                        secondElement ? "rotate-180" : "rotate-0"
-                      }`}
-                      icon={faCaretDown}
-                    />
-                  </span>
-                </div>
-              </div>
-              <div
-                style={{ backgroundColor: "rgb(38 28 109)" }}
-                className={`overflow-hidden transition-all duration-300 ease-in-out transform ${
-                  !secondElement ? "h-0" : "h-20"
-                } space-y-2 px-7`}
-              >
-                <Link href="/">
-                  <a
-                    className="block p-2 text-sm text-white transition-colors duration-200 dark:text-light dark:hover:text-light"
-                    onClick={() => setOpenSideNav(!openSideNav)}
-                  >
-                    INFO REGIONALE
-                  </a>
-                </Link>
-                <Link href="/">
-                  <a
-                    className="block p-2 text-sm text-white transition-colors duration-200 dark:hover:text-light"
-                    onClick={() => setOpenSideNav(!openSideNav)}
-                  >
-                    AGENDA
-                  </a>
-                </Link>
-              </div>
-              <SidenavIcon
-                label={"PLAYLIST"}
-                icon={faClock}
-                path="/"
-                openSideNav={openSideNav}
-                setOpenSideNav={setOpenSideNav}
-              />
-              <SidenavIcon
-                label={"NOUVEAUTES"}
-                icon={faNewspaper}
-                path="/"
-                openSideNav={openSideNav}
-                setOpenSideNav={setOpenSideNav}
-              />
-              <SidenavIcon
-                label={"TOP 30"}
-                icon={faList}
-                path="/"
-                openSideNav={openSideNav}
-                setOpenSideNav={setOpenSideNav}
-              />
-              <SidenavIcon
-                label={" VOTES 2021"}
-                icon={faHeart}
-                path="/"
-                openSideNav={openSideNav}
-                setOpenSideNav={setOpenSideNav}
-              />
+            <div className={`w-full pt-7 pb-2`}>
+              {nav.map((item, index: number) => (
+                <React.Fragment key={index}>
+                  {!item.childs && item.icon ? (
+                    <Link href={item.href.toLowerCase()}>
+                      <a onClick={() => setOpenSideNav(!openSideNav)}>
+                        <div
+                          className={`pt-2 flex items-center pb-2 flex items-center content-center h-full ${
+                            asPath.toLowerCase() === item.href.toLowerCase()
+                              ? "bg-[#10045f] /*bg-gray-900*/ text-white"
+                              : "text-gray-300"
+                          }`}
+                        >
+                          <span aria-hidden="true" className="ml-4 mr-2">
+                            <FontAwesomeIcon
+                              icon={item.icon}
+                              className="text-white"
+                              size="1x"
+                            />
+                          </span>
+                          <span className="ml-1 text-white text-sm group">
+                            {item.name}
+                          </span>
+                        </div>
+                      </a>
+                    </Link>
+                  ) : (
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className="mt-2 flex items-center w-full pr-4 pb-2 transition-transform transform hover:translate-x-1">
+                            <span aria-hidden="true" className="ml-4 mr-2">
+                              <FontAwesomeIcon
+                                icon={item.icon}
+                                className=" text-white"
+                                size="1x"
+                              />
+                            </span>
+                            <span className="ml-1 text-white text-sm">
+                              {item.name}
+                            </span>
+                            <span className="ml-auto" aria-hidden="true">
+                              <FontAwesomeIcon
+                                className={`text-white transform transition-all ease-in-out ${
+                                  open ? "rotate-180" : "rotate-0"
+                                }`}
+                                icon={faCaretDown}
+                              />
+                            </span>
+                          </Disclosure.Button>
+                          <Transition
+                            enter="transition-all duration-300 ease-in-out"
+                            enterFrom="transform scale-95 opacity-0"
+                            enterTo="transform scale-100 opacity-100"
+                            leave="transition-all duration-300 ease-in-out"
+                            leaveFrom="transform scale-100 opacity-100"
+                            leaveTo="transform scale-95 opacity-0"
+                          >
+                            <Disclosure.Panel
+                              as="div"
+                              className={`overflow-hidden transition-all duration-300 ease-in-out w-full space-y-1`}
+                              style={{ backgroundColor: "rgb(38 28 109)" }}
+                              static={true}
+                            >
+                              {item.childs?.map((item, index: number) => (
+                                <Link
+                                  href={item.href.toLowerCase()}
+                                  key={index}
+                                >
+                                  <div
+                                    className={`${
+                                      asPath.toLowerCase() ===
+                                      item.href.toLowerCase()
+                                        ? "bg-[#10045f] /*bg-gray-900*/text-white"
+                                        : "text-gray-300"
+                                    } w-full`}
+                                  >
+                                    <a
+                                      className="block p-2 text-sm text-white  px-7"
+                                      onClick={() =>
+                                        setOpenSideNav(!openSideNav)
+                                      }
+                                    >
+                                      {item.name}
+                                    </a>
+                                  </div>
+                                </Link>
+                              ))}
+                            </Disclosure.Panel>
+                          </Transition>
+                        </>
+                      )}
+                    </Disclosure>
+                  )}
+                </React.Fragment>
+              ))}
             </div>
-            <div
-              className="w-full h-0.5 mb-4"
-              style={{ backgroundColor: "rgba(64,84,165)" }}
-            ></div>
-            <div className="mt-2 flex items-center place-content-center">
+            <div className="mt-2 flex flex-col items-center place-content-center">
+              <div
+                className="w-full h-0.5 mb-4"
+                style={{ backgroundColor: "rgba(64,84,165)" }}
+              ></div>
               <button
                 className="pr-1 relative focus:outline-none"
                 onClick={() => {
-                  dispatch(changeTheme(!isDark));
+                  dispatch(changeTheme(!darkTheme));
                 }}
               >
                 <div
@@ -235,7 +165,7 @@ const Sidenav: React.FC<side_nav_props> = ({
                 <div
                   className={`absolute top-0 p-1 left-0 inline-flex items-center justify-center w-6 h-6 transition-all duration-300 transform scale-110 rounded-full shadow-sm translate-x-6 text-primary-100 bg-white text-black dark:translate-x-0 dark:-translate-y-px dark:bg-white dark:text-dark'`}
                 >
-                  {!isDark ? (
+                  {!darkTheme ? (
                     <FontAwesomeIcon icon={faMoon} />
                   ) : (
                     <FontAwesomeIcon icon={faSun} />
@@ -250,4 +180,4 @@ const Sidenav: React.FC<side_nav_props> = ({
   );
 };
 
-export default Sidenav;
+export default SideNav;

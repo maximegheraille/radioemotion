@@ -44,7 +44,6 @@ const NavigationBar = ({
   const dispatch = useAppDispatch();
   const { darkTheme } = useAppSelector((state) => state);
   const { asPath } = useRouter();
-  // const [playing, setPlaying] = useState<boolean>(false);
 
   return (
     <>
@@ -66,13 +65,6 @@ const NavigationBar = ({
           <div className="hidden lg:flex flex-none">
             <div className="flex-shrink-0 py-2 flex items-center">
               <div className="w-full px-2 items-center flex place-content-center">
-                {/* <Image
-                  width={95}
-                  height={43}
-                  layout="intrinsic"
-                  src={logo}
-                  className="bg-white"
-                /> */}
                 <div className="w-20">
                   <Image
                     width={95}
@@ -87,15 +79,15 @@ const NavigationBar = ({
             <div className="sm:ml-6">
               <div className="flex xl:space-x-4 items-center h-full">
                 {nav.map((item: navigationType, index: number) => (
-                  <>
+                  <div key={index}>
                     {!item.childs && item.icon ? (
                       <Link href={item.href.toLowerCase()} key={index}>
                         <a
                           className={`${
                             asPath.toLowerCase() === item.href.toLowerCase()
-                              ? "bg-[#10045f] /*bg-gray-900*/ text-white"
+                              ? "bg-[#10045f] text-white"
                               : "text-gray-300"
-                          } hover:bg-[#181144] hover:bg-[#181144] hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                          } hover:bg-[#181144] text-sm lg:text-base hover:text-white px-3 py-2 rounded-md font-medium`}
                           aria-current={
                             asPath.toLowerCase() === item.name
                               ? "page"
@@ -116,7 +108,7 @@ const NavigationBar = ({
                                   item.href.toLowerCase()
                                     ? "bg-[#10045f] bg-gray-900 text-white"
                                     : "text-gray-300 hover:bg-[#181144]"
-                                } hidden md:flex px-3 py-2 rounded-md text-sm font-medium`}
+                                } text-sm lg:text-base hidden md:flex px-3 py-2 rounded-md font-medium`}
                               >
                                 <span>{item.name}</span>
                                 <FontAwesomeIcon
@@ -124,7 +116,7 @@ const NavigationBar = ({
                                   className={`${
                                     open ? "text-gray-600" : "text-gray-400"
                                   }
-                                        ml-2 h-5 w-5 group-hover:text-gray-500`}
+                                         ml-2 h-5 w-5 group-hover:text-gray-500`}
                                   aria-hidden="true"
                                 />
                               </Popover.Button>
@@ -176,7 +168,7 @@ const NavigationBar = ({
                         </Popover>
                       </Popover.Group>
                     )}
-                  </>
+                  </div>
                 ))}
               </div>
             </div>

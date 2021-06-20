@@ -1,6 +1,6 @@
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { playerProps } from "../../../interfaces/playerProps";
 import usePlayer from "../PlayerHook";
 
@@ -34,7 +34,10 @@ const PlayerButton = ({ volume }: playerProps) => {
           onClick={() => {
             setplayer();
           }}
-          className="hover:outline-none"
+          title={`${playing ? "Arreter la musique" : "Lancer la musique"}`}
+          aria-label={`${playing ? "Arreter la musique" : "Lancer la musique"}`}
+          className="pr-2 lg:pr-0 my-2 group"
+          //   style={{ outline: "0px auto transparent" }}
         >
           <div
             className={`text-white transition-all duration-300 transform  ${
@@ -42,11 +45,12 @@ const PlayerButton = ({ volume }: playerProps) => {
             }`}
           >
             <FontAwesomeIcon
-              className={`text-white p-1 flex place-content-center ${
+              className={`text-white p-1 flex place-content-center  ${
                 playing ? "block" : "hidden"
               }`}
               size="2x"
               icon={faPause}
+              aria-hidden="true"
             />
           </div>
           <div
@@ -55,11 +59,12 @@ const PlayerButton = ({ volume }: playerProps) => {
             }`}
           >
             <FontAwesomeIcon
-              className={`text-white p-1 flex place-content-center ${
+              className={`text-white p-1 flex place-content-center  group-focus:rounded-sm  ${
                 playing ? "hidden" : "block"
               }`}
               size="2x"
               icon={faPlay}
+              aria-hidden="true"
             />
           </div>
           <audio ref={playerRef} preload="none" title={song?.titre}>

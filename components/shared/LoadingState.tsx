@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from "react";
+import React from "react";
 
 interface loadingStateProps {
   width: string;
@@ -21,17 +21,26 @@ const LoadingState = ({
   data,
   bgColor = true,
 }: loadingStateProps) => {
+  console.log(
+    "here " + isLoading,
+    isError,
+    data,
+    data === "",
+    data === undefined
+  );
   return (
     <>
-      {isLoading || isError ? (
-        <span
-          className={`${classNames} ${width} ${heigth} ${
-            bgColor ? "bg-white" : ""
-          } animate-pulse rounded `}
-        ></span>
+      {isLoading || isError || data === undefined ? (
+        <>
+          <span
+            className={`${classNames} ${width} ${heigth} ${
+              bgColor ? "bg-white" : ""
+            } animate-pulse rounded `}
+          ></span>
+        </>
       ) : (
         <>
-          {data === undefined ? (
+          {data === "" ? (
             <span className={`${classNames} ${width} ${heigth}`}></span>
           ) : (
             children

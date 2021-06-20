@@ -14,7 +14,7 @@ import {
   faUsers,
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
-import Test from "./sidenav/Test";
+import SideNav from "./sidenav/SideNav";
 interface dropdown {
   name: string;
   href: string;
@@ -74,7 +74,7 @@ const Navigation = () => {
           setOpenSideNav={setOpenSideNav}
         />
       </div>
-      <Test
+      <SideNav
         nav={navItems}
         openSideNav={openSideNav}
         setOpenSideNav={setOpenSideNav}

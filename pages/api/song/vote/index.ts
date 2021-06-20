@@ -1,14 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { db } from "../../connection/connection";
 var mysql = require("mysql");
 const post = (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    var connection = mysql.createConnection({
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-    });
+    var connection = db;
     console.log("body ", req.body.voted);
     console.log(
       `call radioemotion_delete_vote(${req.body.id},'${req.connection.remoteAddress}')`

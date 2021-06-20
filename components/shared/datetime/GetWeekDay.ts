@@ -1,5 +1,6 @@
 export const getWeekDay = (): string => {
   const date = new Date();
+  console.log("weekday" + date.getDay());
   switch (date.getDay()) {
     case 1:
       return "LUNDI";
