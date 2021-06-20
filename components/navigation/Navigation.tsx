@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NavigationBar from "./navigationBar/NavigationBar";
+import SideNav from "./sidenav/SideNav";
 import {
   faCalendarAlt,
   faClock,
@@ -14,7 +15,6 @@ import {
   faUsers,
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
-import SideNav from "./sidenav/SideNav";
 interface dropdown {
   name: string;
   href: string;
