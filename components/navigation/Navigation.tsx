@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavigationBar from "./navigationBar/NavigationBar";
-import Sidenav from "./sidenav/SideNav";
+import Sidenav from "./sideNav/SideNav";
 import {
   faCalendarAlt,
   faClock,
