@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavigationBar from "./navigationBar/NavigationBar";
-import SideNav from "./sidenav/SideNav";
+import Sidenav from "./side_nav/SideNav";
 import {
   faCalendarAlt,
   faClock,
@@ -74,7 +74,7 @@ const Navigation = () => {
           setOpenSideNav={setOpenSideNav}
         />
       </div>
-      <SideNav
+      <Sidenav
         nav={navItems}
         openSideNav={openSideNav}
         setOpenSideNav={setOpenSideNav}

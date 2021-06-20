@@ -15,7 +15,7 @@ interface side_nav_props {
   setOpenSideNav: (value: boolean | ((prevVar: boolean) => boolean)) => void;
 }
 
-const SideNav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
+const Sidenav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
   const { darkTheme } = useAppSelector((state) => state);
   const { asPath } = useRouter();
   const dispatch = useAppDispatch();
@@ -180,4 +180,4 @@ const SideNav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
   );
 };
 
-export default SideNav;
+export default Sidenav;
