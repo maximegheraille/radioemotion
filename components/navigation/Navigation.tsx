@@ -51,7 +51,7 @@ const Navigation = () => {
       href: "/region",
       icon: faMap,
       childs: [
-        { name: "Info regionale", href: "/Presentation", icon: faNewspaper },
+        { name: "Info regionale", href: "/inforegionales", icon: faNewspaper },
         { name: "Agenda", href: "/Emissions", icon: faCalendarAlt },
       ],
     },
@@ -74,11 +74,13 @@ const Navigation = () => {
           setOpenSideNav={setOpenSideNav}
         />
       </div>
-      <Sidenav
-        nav={navItems}
-        openSideNav={openSideNav}
-        setOpenSideNav={setOpenSideNav}
-      />
+      <div className="lg:hidden">
+        <Sidenav
+          nav={navItems}
+          openSideNav={openSideNav}
+          setOpenSideNav={setOpenSideNav}
+        />
+      </div>
     </nav>
   );
 };

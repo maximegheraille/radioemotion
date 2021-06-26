@@ -5,10 +5,11 @@ import { Popover, Transition } from "@headlessui/react";
 import React, { Fragment, useEffect } from "react";
 import usePlayer from "../PlayerHook";
 import { faHeart as faHeart2 } from "@fortawesome/free-regular-svg-icons";
-import Apple_music from "../../../public/images/links/Apple_music.svg";
+import Apple_music from "../../../public/images/links/Apple_music2.svg";
 import { playerProps } from "../../../interfaces/playerProps";
 import LoadingState from "../../shared/LoadingState";
 import { useMutation } from "react-query";
+import Image from "next/image";
 import { votesFormatter } from "../../shared/votes/Votesformatter";
 
 interface VoteProps {
@@ -152,16 +153,16 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
           isError={isError}
           data={song?.apple_music}
         >
-          <a
-            className={`group flex items-center lg:m-3`}
-            href={`${song?.apple_music}`}
-            target="_blank"
-            style={{ outline: "0px auto transparent" }}
-          >
-            <img
-              src={Apple_music}
-              className={`transform motion-safe:group-focus:scale-110 w-5 lg:w-5 text-white`}
-            />
+          <a className={`lg:m-3`} href={`${song?.apple_music}`} target="_blank">
+            <div className="w-6 align-middle flex">
+              <Image
+                // width={95}
+                // height={43}
+                // layout="responsive"
+                src={Apple_music}
+                className={`p-1 transform motion-safe:group-focus:scale-110 w-5 lg:w-5 text-white`}
+              />
+            </div>
           </a>
         </LoadingState>
         <LoadingState

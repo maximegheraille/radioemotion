@@ -39,7 +39,7 @@ const usePlayer = () => {
   //   voted: false,
   // };
   useEffect(() => {
-    console.log(status, isLoading, isError, data, error);
+    //console.log(status, isLoading, isError, data, error);
   }, [isLoading, isError, data, status, error]);
   return {
     playing,

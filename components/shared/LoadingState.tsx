@@ -21,13 +21,6 @@ const LoadingState = ({
   data,
   bgColor = true,
 }: loadingStateProps) => {
-  console.log(
-    "here " + isLoading,
-    isError,
-    data,
-    data === "",
-    data === undefined
-  );
   return (
     <>
       {isLoading || isError || data === undefined ? (
