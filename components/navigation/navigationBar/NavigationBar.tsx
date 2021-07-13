@@ -15,7 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import { useAppDispatch, useAppSelector } from "../../../config/context/hook";
 import { changeTheme } from "../../../config/context/darkThemeSlice";
-import { faAccessibleIcon } from "@fortawesome/free-brands-svg-icons";
+
 
 interface dropdown {
   name: string;
@@ -44,7 +44,6 @@ const NavigationBar = ({
   const dispatch = useAppDispatch();
   const { darkTheme } = useAppSelector((state) => state);
   const { asPath } = useRouter();
-  const buttonRef = useRef<any>(null);
   return (
     <>
       <nav className="bg-[#2d2180] /*bg-gray-800*/ h-full px-2 w-full">
@@ -79,37 +78,37 @@ const NavigationBar = ({
             <div className="sm:ml-6">
               <div className="flex xl:space-x-4 items-center h-full">
                 {nav.map((item: navigationType, index: number) => (
-                  <Menu as="div" className="test">
+                  <React.Fragment key={index}>
                     {!item.childs && item.icon ? (
-                      <Link href={item.href.toLowerCase()} key={index}>
-                        <a
-                          className={`${
-                            asPath.toLowerCase() === item.href.toLowerCase()
+                      <Menu >
+                        <Link href={item.href.toLowerCase()}>
+                          <a
+                            className={`${asPath.toLowerCase() === item.href.toLowerCase()
                               ? "bg-[#10045f] text-white"
                               : "text-gray-300"
-                          } hover:bg-[#181144] text-sm lg:text-base hover:text-white px-3 py-2 rounded-md font-medium`}
-                          aria-current={
-                            asPath.toLowerCase() === item.name
-                              ? "page"
-                              : undefined
-                          }
-                        >
-                          {item.name}
-                        </a>
-                      </Link>
+                              } mx-0.5 hover:bg-[#181144] text-sm lg:text-base hover:text-white px-3 py-2 rounded-md font-medium`}
+                            aria-current={
+                              asPath.toLowerCase() === item.name
+                                ? "page"
+                                : undefined
+                            }
+                          >
+                            {item.name}
+                          </a>
+                        </Link>
+                      </Menu>
                     ) : (
-                      <>
+                      <Menu as="div">
                         <Menu.Button
-                          className={`${
-                            asPath.toLowerCase() === item.href.toLowerCase()
-                              ? "bg-[#10045f] text-white"
-                              : "text-gray-300 hover:bg-[#181144]"
-                          } text-sm lg:text-base hidden md:flex px-3 py-2 rounded-md font-medium`}
+                          className={`${asPath.toLowerCase() === item.href.toLowerCase()
+                            ? "bg-[#10045f] text-white"
+                            : "text-gray-300 hover:bg-[#181144]"
+                            } items-center mx-0.5 text-sm lg:text-base hidden md:flex px-3 py-2 rounded-md font-medium`}
                         >
                           {item.name}
                           <FontAwesomeIcon
-                            icon={faCaretUp}
-                            className={` ml-2 h-5 w-5 group-hover:text-gray-500`}
+                            icon={faCaretDown}
+                            className={`ml-2 h-5 w-5 group-hover:text-gray-500`}
                             aria-hidden="true"
                           />
                         </Menu.Button>
@@ -127,23 +126,21 @@ const NavigationBar = ({
                               <div className="relative grid gap-6 bg-white px-5 py-6 xl:gap-4 xl:p-5">
                                 {item.childs?.map(
                                   (item: dropdown, index: number) => (
-                                    <Menu.Item>
+                                    <Menu.Item key={index}>
                                       {({ active }) => (
                                         <NextLink
                                           href={item.href.toLocaleLowerCase()}
-                                          className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                                          className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-100"
                                         >
                                           <FontAwesomeIcon
                                             icon={item.icon}
-                                            className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                                            className={`${active ? 'text-indigo-800' : 'text-indigo-600'} flex-shrink-0 h-6 `}
                                           />
                                           <div className="ml-4">
                                             <p
-                                              className={`${
-                                                active
-                                                  ? "bg-violet-500 text-white"
-                                                  : "text-gray-900"
-                                              } text-base font-medium `}
+                                              className={`${active
+                                                ? 'text-gray-900' : 'text-gray-700'
+                                                } text-base font-medium `}
                                             >
                                               {item.name}
                                             </p>
@@ -160,125 +157,9 @@ const NavigationBar = ({
                             </div>
                           </Menu.Items>
                         </Transition>
-                      </>
-                      // <button className="group">
-                      //   <Popover.Group as="div" key={index}>
-                      //     <Popover className="relative">
-                      //       {({ open }) => (
-                      //         <>
-                      //           <Popover.Button
-                      //             ref={buttonRef}
-                      //             className={`${
-                      //               asPath.toLowerCase() ===
-                      //               item.href.toLowerCase()
-                      //                 ? "bg-[#10045f] text-white"
-                      //                 : "text-gray-300 hover:bg-[#181144]"
-                      //             } text-sm lg:text-base hidden md:flex px-3 py-2 rounded-md font-medium`}
-                      //           >
-                      //             <span>{item.name}</span>
-                      //             <FontAwesomeIcon
-                      //               icon={open ? faCaretUp : faCaretDown}
-                      //               className={`${
-                      //                 open ? "text-gray-600" : "text-gray-400"
-                      //               } ml-2 h-5 w-5 group-hover:text-gray-500`}
-                      //               aria-hidden="true"
-                      //             />
-                      //           </Popover.Button>
-                      //           <Transition
-                      //             show={open}
-                      //             as={Fragment}
-                      //             enter="transition ease-out duration-200"
-                      //             enterFrom="opacity-0 translate-y-1"
-                      //             enterTo="opacity-100 translate-y-0"
-                      //             leave="transition ease-in duration-150"
-                      //             leaveFrom="opacity-100 translate-y-0"
-                      //             leaveTo="opacity-0 translate-y-1"
-                      //           >
-                      //             <Popover.Panel className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-[15rem] sm:px-0">
-                      //               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                      //                 <div className="relative grid gap-6 bg-white px-5 py-6 xl:gap-4 xl:p-5">
-                      //                   {item.childs?.map(
-                      //                     (item: dropdown, index: number) => (
-                      //                        <Popover.Button as="div">
-                      //                          <Link
-                      //                            key={index}
-                      //                            href={item.href.toLocaleLowerCase()}
-                      //                          >
-                      //                            <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                      //                              <FontAwesomeIcon
-                      //                                icon={item.icon}
-                      //                                className="flex-shrink-0 h-6 w-6 text-indigo-600"
-                      //                                aria-hidden="true"
-                      //                              />
-                      //                              <div className="ml-4">
-                      //                                <p className="text-base font-medium text-gray-900">
-                      //                                  {item.name}
-                      //                                </p>
-                      //                                <p className="mt-1 text-sm text-gray-500">
-                      //                                  {item.name}
-                      //                                </p>
-                      //                              </div>
-                      //                            </a>
-                      //                          </Link>
-                      //                        </Popover.Button>
-
-                      //                     )
-                      //                   )}
-                      //                 </div>
-                      //               </div>
-                      //             </Popover.Panel>
-                      //           </Transition>
-                      //         </>
-                      //       )}
-                      //     </Popover>
-                      //   </Popover.Group>
-
-                      //   <a
-                      //     className={` ${
-                      //       asPath.toLowerCase() === item.href.toLowerCase()
-                      //         ? "bg-[#10045f] text-white"
-                      //         : "text-gray-300"
-                      //     } hover:bg-[#181144] text-sm lg:text-base hover:text-white px-3 py-2 rounded-md font-medium`}
-                      //     aria-current={
-                      //       asPath.toLowerCase() === item.name
-                      //         ? "page"
-                      //         : undefined
-                      //     }
-                      //   >
-                      //     {item.name}
-                      //   </a>
-
-                      //   <div className="hidden group-focus:block absolute z-10 transform mt-3 px-2 w-screen max-w-[15rem] sm:px-0">
-                      //     <div className="relative rounded-lg grid gap-6 bg-white px-5 py-6 xl:gap-4 xl:p-5">
-                      //       {item.childs?.map(
-                      //         (item: dropdown, index: number) => (
-                      //           <Link
-                      //             key={index}
-                      //             href={item.href.toLocaleLowerCase()}
-                      //           >
-                      //             <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                      //               <FontAwesomeIcon
-                      //                 icon={item.icon}
-                      //                 className="flex-shrink-0 h-6 w-6 text-indigo-600"
-                      //                 aria-hidden="true"
-                      //               />
-                      //               <div className="ml-4">
-                      //                 <p className="text-base font-medium text-gray-900">
-                      //                   {item.name}
-                      //                 </p>
-                      //                 <p className="mt-1 text-sm text-gray-500">
-                      //                   {item.name}
-                      //                 </p>
-                      //               </div>
-                      //             </a>
-                      //           </Link>
-                      //         )
-                      //       )}
-                      //     </div>
-                      //   </div>
-                      // </button>
+                      </Menu>
                     )}
-                  </Menu>
+                  </React.Fragment>
                 ))}
               </div>
             </div>

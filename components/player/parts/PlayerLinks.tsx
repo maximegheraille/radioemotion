@@ -71,18 +71,12 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
               <Popover.Button
                 className={`${open ? "" : "text-opacity-90"}
                 group text-white h-full group bg-orange-700 px-3 py-2 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
-                style={{
-                  outline: "0px auto transparent",
-                }}
               >
                 <FontAwesomeIcon
                   icon={faVolumeUp}
                   className={`${open ? "" : "text-opacity-70"}
                   transform motion-safe:group-focus:scale-110 ml-2 h-5 w-5 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
                   aria-hidden="true"
-                  style={{
-                    outline: "0px auto transparent",
-                  }}
                 />
               </Popover.Button>
               <Transition
