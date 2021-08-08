@@ -10,41 +10,53 @@ import { rootStore } from "../config/context/store";
 import "../styles/style.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
+import "swiper/components/pagination/pagination.scss";
+import "swiper/components/scrollbar/scrollbar.scss";
 const Child: React.FC = ({ children }) => {
-  //get the current theme from the store
-  const { darkTheme } = useAppSelector((state) => state);
-
   // create a discpatch for allowing to change the theme value
   const dispatch = useDispatch();
-
   useEffect(() => {
     //on initial component mount, set the theme via a function the verifies it
     dispatch(changeTheme(getInitialTheme()));
   }, []);
-
   return (
     <>
       <div
-        className={`${darkTheme ? "dark bg-[#0F0F10]" : "white bg-[#a4a7b5]"}`}
+        className={`bg-[#a4a7b5] dark:bg-[#0F0F10]`}
         style={{ minHeight: "220vh" }}
       >
-        {children}
+        <div className="max-w-[90%] sm:max-w-lg md:max-w-xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto pt-16">
+          {children}
+        </div>
       </div>
     </>
   );
 };
+
+//parent div to make sure the parent div has the 'dark' class inside all children,
+// even the non children of <Child>
+const TailwindCssDarkMode: React.FC = ({ children }) => {
+  //get the current theme from the store
+  const { darkTheme } = useAppSelector((state) => state);
+  return <div className={`${darkTheme ? "dark" : null}`}>{children}</div>;
+};
+
 const App = ({ Component, pageProps }: AppProps) => {
+  console.log(pageProps);
   const queryClient = new QueryClient();
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <Provider store={rootStore}>
-          <Child>
+          <TailwindCssDarkMode>
             <Navigation />
-            <Component {...pageProps} />
+            <Child>
+              <Component {...pageProps} />
+            </Child>
             <Player />
-          </Child>
+          </TailwindCssDarkMode>
         </Provider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
