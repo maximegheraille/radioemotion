@@ -1,11 +1,10 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment } from "react";
 import Image from "next/image";
-import { Popover, Transition, Menu } from "@headlessui/react";
+import { Transition, Menu } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faCaretDown,
-  faCaretUp,
   faMoon,
   faSun,
   IconDefinition,
@@ -15,7 +14,6 @@ import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import { useAppDispatch, useAppSelector } from "../../../config/context/hook";
 import { changeTheme } from "../../../config/context/darkThemeSlice";
-
 
 interface dropdown {
   name: string;
@@ -46,7 +44,7 @@ const NavigationBar = ({
   const { asPath } = useRouter();
   return (
     <>
-      <nav className="bg-[#2d2180] /*bg-gray-800*/ h-full px-2 w-full">
+      <nav className="h-full px-2 w-full">
         <div className="h-full flex-1 flex items-center justify-between sm:items-stretch sm:justify-between">
           <div className="lg:hidden flex items-center">
             <button
@@ -64,14 +62,8 @@ const NavigationBar = ({
           <div className="hidden lg:flex flex-none">
             <div className="flex-shrink-0 py-2 flex items-center">
               <div className="w-full px-2 items-center flex place-content-center">
-                <div className="w-20">
-                  <Image
-                    // width={95}
-                    // height={43}
-                    // layout="responsive"
-                    src={logo}
-                    className="bg-white"
-                  />
+                <div className="w-20 flex">
+                  <Image src={logo} className="bg-white" />
                 </div>
               </div>
             </div>
@@ -80,13 +72,14 @@ const NavigationBar = ({
                 {nav.map((item: navigationType, index: number) => (
                   <React.Fragment key={index}>
                     {!item.childs && item.icon ? (
-                      <Menu >
+                      <Menu>
                         <Link href={item.href.toLowerCase()}>
                           <a
-                            className={`${asPath.toLowerCase() === item.href.toLowerCase()
-                              ? "bg-[#10045f] text-white"
-                              : "text-gray-300"
-                              } mx-0.5 hover:bg-[#181144] text-sm lg:text-base hover:text-white px-3 py-2 rounded-md font-medium`}
+                            className={`${
+                              asPath.toLowerCase() === item.href.toLowerCase()
+                                ? "bg-[#10045f] text-white"
+                                : "text-gray-300"
+                            } mx-0.5 hover:bg-[#181144] text-sm lg:text-base hover:text-white px-3 py-2 rounded-md font-medium`}
                             aria-current={
                               asPath.toLowerCase() === item.name
                                 ? "page"
@@ -100,10 +93,11 @@ const NavigationBar = ({
                     ) : (
                       <Menu as="div">
                         <Menu.Button
-                          className={`${asPath.toLowerCase() === item.href.toLowerCase()
-                            ? "bg-[#10045f] text-white"
-                            : "text-gray-300 hover:bg-[#181144]"
-                            } items-center mx-0.5 text-sm lg:text-base hidden md:flex px-3 py-2 rounded-md font-medium`}
+                          className={`${
+                            asPath.toLowerCase() === item.href.toLowerCase()
+                              ? "bg-[#10045f] text-white"
+                              : "text-gray-300 hover:bg-[#181144]"
+                          } items-center mx-0.5 text-sm lg:text-base hidden md:flex px-3 py-2 rounded-md font-medium`}
                         >
                           {item.name}
                           <FontAwesomeIcon
@@ -123,24 +117,37 @@ const NavigationBar = ({
                         >
                           <Menu.Items className="absolute z-10 mt-3 px-2 w-screen max-w-[15rem] sm:px-0">
                             <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                              <div className="relative grid gap-6 bg-white px-5 py-6 xl:gap-4 xl:p-5">
+                              <div className="relative grid gap-3 bg-white px-3 py-4 xl:gap-1 xl:p-2">
                                 {item.childs?.map(
                                   (item: dropdown, index: number) => (
                                     <Menu.Item key={index}>
                                       {({ active }) => (
                                         <NextLink
                                           href={item.href.toLocaleLowerCase()}
-                                          className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-100"
+                                          className={`${
+                                            active ? "bg-gray-100 " : ""
+                                          }  ${
+                                            asPath.toLowerCase() ===
+                                            item.href.toLowerCase()
+                                              ? "bg-gray-100 text-white"
+                                              : "text-gray-400"
+                                          } p-3 flex items-start rounded-lg hover:bg-gray-100`}
                                         >
                                           <FontAwesomeIcon
                                             icon={item.icon}
-                                            className={`${active ? 'text-indigo-800' : 'text-indigo-600'} flex-shrink-0 h-6 `}
+                                            className={`${
+                                              active
+                                                ? "text-indigo-900"
+                                                : "text-indigo-600"
+                                            } flex-shrink-0 h-6`}
                                           />
                                           <div className="ml-4">
                                             <p
-                                              className={`${active
-                                                ? 'text-gray-900' : 'text-gray-700'
-                                                } text-base font-medium `}
+                                              className={`${
+                                                active
+                                                  ? "text-gray-900"
+                                                  : "text-gray-700"
+                                              } text-base font-medium `}
                                             >
                                               {item.name}
                                             </p>

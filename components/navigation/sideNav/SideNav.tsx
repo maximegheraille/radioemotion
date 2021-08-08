@@ -8,6 +8,7 @@ import { faCaretDown, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../../config/context/hook";
 import { useRouter } from "next/dist/client/router";
 import { Disclosure, Transition } from "@headlessui/react";
+import Image from "next/image";
 
 interface side_nav_props {
   nav: navigationItem[];
@@ -40,14 +41,15 @@ const Sidenav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
             <div className={`flex h-full bg-white`}>
               <Link href="/">
                 <a
-                  className={`h-20 w-full my-4 flex place-content-center items-center`}
+                  className={`p-8 h-20 w-full my-4 flex place-content-center items-center`}
                   onClick={() => setOpenSideNav(!openSideNav)}
                 >
-                  <img
+                  {/* <img
                     src={logo}
-                    alt="Picture of the author"
+                    
                     className="h-full"
-                  />
+                  /> */}
+                  <Image src={logo} className="" alt="Radio Emotion logo" />
                 </a>
               </Link>
             </div>
@@ -59,8 +61,9 @@ const Sidenav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
                       <a onClick={() => setOpenSideNav(!openSideNav)}>
                         <div
                           className={`pt-2 flex items-center pb-2 flex items-center content-center h-full ${
-                            asPath.toLowerCase() === item.href.toLowerCase()
-                              ? "bg-[#10045f] /*bg-gray-900*/ text-white"
+                            asPath.toLowerCase().toLocaleLowerCase() ===
+                            item.href.toLowerCase()
+                              ? "bg-[#10045f] text-white"
                               : "text-gray-300"
                           }`}
                         >
@@ -120,23 +123,21 @@ const Sidenav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
                                   href={item.href.toLowerCase()}
                                   key={index}
                                 >
-                                  <div
-                                    className={`${
-                                      asPath.toLowerCase() ===
-                                      item.href.toLowerCase()
-                                        ? "bg-[#10045f] /*bg-gray-900*/text-white"
-                                        : "text-gray-300"
-                                    } w-full`}
-                                  >
-                                    <a
-                                      className="block p-2 text-sm text-white  px-7"
+                                  <a className={` w-full`}>
+                                    <div
+                                      className={`${
+                                        asPath.toLowerCase() ===
+                                        item.href.toLowerCase()
+                                          ? "bg-[#10045f] text-white"
+                                          : "text-gray-300"
+                                      } block p-2 text-sm text-white px-7`}
                                       onClick={() =>
                                         setOpenSideNav(!openSideNav)
                                       }
                                     >
                                       {item.name}
-                                    </a>
-                                  </div>
+                                    </div>
+                                  </a>
                                 </Link>
                               ))}
                             </Disclosure.Panel>

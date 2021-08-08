@@ -66,7 +66,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="bg-[#2d2180] h-12 px-2 w-full fixed">
+    <nav className="bg-[#2d2180] h-12 px-2 w-full fixed z-50">
       <div className="h-full">
         <NavigationBar
           nav={navItems}
