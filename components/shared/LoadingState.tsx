@@ -27,8 +27,8 @@ const LoadingState = ({
         <>
           <span
             className={`${classNames} ${width} ${heigth} ${
-              bgColor ? "bg-white" : ""
-            } animate-pulse rounded `}
+              bgColor ? "bg-gray-400" : ""
+            } flex  place-content-center animate-pulse rounded`}
           ></span>
         </>
       ) : (
