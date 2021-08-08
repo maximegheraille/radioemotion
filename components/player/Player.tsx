@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import PlayerInfos from "./parts/PlayerInfos";
 import PlayerButton from "./parts/PlayerButton";
 import PlayerLinks from "./parts/PlayerLinks";
-import { InferGetServerSidePropsType } from "next";
-
 const Player = () => {
   const [volume, setVolume] = useState<number>(100);
 

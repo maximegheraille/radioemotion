@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // import Swiper core and required modules
@@ -10,8 +10,7 @@ import SwiperCore, {
 } from "swiper/core";
 SwiperCore.use([Autoplay, Pagination, Navigation, Lazy]);
 import { useQuery } from "react-query";
-import { Song } from "../interfaces/song";
-import Card, { outderdivCard } from "../components/shared/card/Card";
+
 import Lastplayed from "../components/homepage/lastplayed/Lastplayed";
 
 const IndexPage = ({ data }: any) => {
