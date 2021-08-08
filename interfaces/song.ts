@@ -7,4 +7,6 @@ export interface Song {
   apple_music?: string;
   voted?: boolean;
   votes?: number;
+  heure?: number | string;
+  min?: string;
 }
