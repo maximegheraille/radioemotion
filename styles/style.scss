@@ -9,4 +9,36 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
   }
+  .line-clamp-2 {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+}
+
+/*custom font for all text*/
+html {
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+}
+
+/* change default swiperjs bullets to lower them*/
+.swiper-pagination-bullets {
+  bottom: 0px !important;
+}
+.derniers_titres > * .swiper-pagination-bullets {
+  bottom: 0px !important;
+}
+/* change cointainer to maintain aspect ratio of image inside the caroussel*/
+.de .swiper-container {
+  width: 100%;
+  height: auto;
+}
+.swiper-slide {
+  width: auto;
+  height: auto;
+}
+.swiper-container img {
+  width: 100%;
+  height: auto;
 }
