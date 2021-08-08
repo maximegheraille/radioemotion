@@ -19,7 +19,6 @@ const PlayerInfos = () => {
               data={song?.photo}
             >
               <Image
-                // layout="responsive"
                 width={40}
                 height={40}
                 className={`rounded-md items-center`}

@@ -20,6 +20,7 @@ const usePlayer = () => {
     //{ refetchOnWindowFocus: false, retryOnMount: false }
     { refetchInterval: 30000, refetchIntervalInBackground: true }
   );
+
   // const data: Song = {
   //   id: 1,
   //   artiste: "C'est presque samedi",

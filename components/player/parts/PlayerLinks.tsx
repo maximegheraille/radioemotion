@@ -2,7 +2,7 @@ import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faHeart, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, Transition } from "@headlessui/react";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import usePlayer from "../PlayerHook";
 import { faHeart as faHeart2 } from "@fortawesome/free-regular-svg-icons";
 import Apple_music from "../../../public/images/links/Apple_music2.svg";
@@ -57,10 +57,6 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
       refetch();
     },
   });
-  useEffect(() => {
-    console.log(mutation.isIdle);
-    console.log(mutation.isLoading);
-  }, [mutation.isIdle, mutation.isLoading]);
 
   return (
     <>
@@ -116,7 +112,6 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
           <div
             className={`relative inline-flex align-middle flex-shrink-0 mr-4`}
           >
-            {console.log("song" + song?.voted)}
             <button
               className={`group flex items-center focus:outline-none group disabled:cursor-not-allowed`}
               onClick={() => {
@@ -150,9 +145,6 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
           <a className={`lg:m-3`} href={`${song?.apple_music}`} target="_blank">
             <div className="w-6 align-middle flex">
               <Image
-                // width={95}
-                // height={43}
-                // layout="responsive"
                 src={Apple_music}
                 className={`p-1 transform motion-safe:group-focus:scale-110 w-5 lg:w-5 text-white`}
               />
