@@ -18,7 +18,7 @@ export const darkTheme_slice = createSlice({
   reducers: {
     changeTheme: (state, action: PayloadAction<boolean>) => {
       state.darkTheme = action.payload;
-      localStorage.theme = action.payload ? "black" : "white";
+      localStorage.theme = action.payload ? "dark" : "white";
     },
   },
 });
