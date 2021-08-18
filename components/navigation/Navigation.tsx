@@ -35,7 +35,7 @@ const Navigation = () => {
   const [openSideNav, setOpenSideNav] = useState<boolean>(false);
 
   const navItems: navigationItem[] = [
-    { name: "ACCUEIL", href: "/", icon: faHome },
+    { name: "Accueil", href: "/", icon: faHome },
     {
       name: "Ma radio",
       href: "/radio",
