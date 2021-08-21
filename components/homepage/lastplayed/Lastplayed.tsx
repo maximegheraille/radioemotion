@@ -5,10 +5,14 @@ import { Song } from "../../../interfaces/song";
 import Card, { outderdivCard } from "../../shared/card/Card";
 
 const Lastplayed = () => {
-  const { data, isLoading, isError } = useQuery("lastPlayed", async () => {
-    const info = await fetch("/api/index/derniers_titres");
-    return info.json();
-  });
+  const { data, isLoading, isError } = useQuery(
+    "lastPlayed",
+    async () => {
+      const info = await fetch("/api/index/derniers_titres");
+      return info.json();
+    },
+    { refetchOnWindowFocus: false }
+  );
 
   return (
     <>
