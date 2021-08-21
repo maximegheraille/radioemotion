@@ -16,13 +16,12 @@ interface cardProps {
   isError: boolean;
   song: Song | undefined;
 }
-
+//#e4e6eb E4E7EA
 export const outderdivCard =
-  "text-white text-center bg-[#6f7988] dark:bg-[#1F1F1E] rounded-lg min-w-[8.5rem] w-32 max-w-[8.5rem]";
+  "text-black dark:text-white text-center bg-[#E5E6EA] dark:bg-[#1F1F1E] rounded-lg max-w-[8.5rem] min-w-[8.5rem] lg:max-w-[10rem] lg:min-w-[10rem]";
 
 const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
   const queryClient = useQueryClient();
-
   const CardVote = useMutation(vote, {
     onSuccess: (data: Response) => {
       console.log(`onSuccess`);
@@ -54,7 +53,7 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
   return (
     <>
       {showTime ? (
-        <div className="flex items-center place-content-center content-center">
+        <div className="flex items-center place-content-center content-center bg-[#2d2180] rounded-t-md">
           <LoadingState
             width="w-32"
             heigth="h-4"
@@ -63,34 +62,27 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
             isError={isError}
             data={song?.min}
           >
-            <div className="text-white text-lg">
+            <div className="text-xl font-semibold text-white">
               {song?.heure}:{song?.min}
             </div>
           </LoadingState>
         </div>
       ) : null}
-      {/* <Image
-        layout="responsive"
-        width="130px"
-        height="130px"
-        className="w-full"
-        src={`https://www.radioemotion.be/covers/${song?.id}.jpg`}
-      /> */}
 
       <div className="flex place-content-center">
         <LoadingState
           width="w-[140px]"
           heigth="h-[140px]"
-          classNames=""
           isLoading={isLoading}
           isError={isError}
           data={song?.photo}
         >
           <Image
-            width={136}
-            height={136}
-            className={`items-center`}
+            width={160}
+            height={160}
+            className={`items-center ${!showTime && "rounded-t-md"}`}
             src={song?.photo!}
+            alt="pochette de l'album"
           />
         </LoadingState>
       </div>
@@ -118,7 +110,7 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
           <p className="line-clamp-2">{song?.artiste}</p>
         </LoadingState>
       </div>
-      <div className="flex place-content-center space-x-2 h-[2rem] max-h-[2rem]">
+      <div className="flex place-content-evenly space-x-2 h-[2rem] max-h-[2rem]">
         <LoadingState
           width="w-7"
           heigth="h-7"
@@ -140,8 +132,8 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
               <FontAwesomeIcon
                 icon={song?.voted ? faHeart : faHeart2}
                 size="2x"
-                className={`transform motion-safe:group-focus:scale-110 p-1.5 text-white z-10  ${
-                  song?.voted ? "text-[#f44336]" : "text-white"
+                className={`transform motion-safe:group-focus:scale-110 p-1.5  z-10  ${
+                  song?.voted ? "text-[#f44336]" : "text-black dark:text-white"
                 } `}
                 aria-hidden="true"
               />
