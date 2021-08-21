@@ -18,7 +18,11 @@ const usePlayer = () => {
     "current_song",
     fetch_current_song,
     //{ refetchOnWindowFocus: false, retryOnMount: false }
-    { refetchInterval: 30000, refetchIntervalInBackground: true }
+    {
+      refetchInterval: 30000,
+      refetchIntervalInBackground: true,
+      refetchOnWindowFocus: false,
+    }
   );
 
   // const data: Song = {
