@@ -24,10 +24,10 @@ const Child: React.FC = ({ children }) => {
   return (
     <>
       <div
-        className={`bg-[#a4a7b5] dark:bg-[#0F0F10]`}
+        className={`bg-[#FFFEFE] dark:bg-[#0F0F10]`}
         style={{ minHeight: "220vh" }}
       >
-        <div className="max-w-[90%] sm:max-w-lg md:max-w-xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto pt-16">
+        <div className="max-w-[90%] sm:max-w-lg md:max-w-xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-[1400px] mx-auto pt-16">
           {children}
         </div>
       </div>
