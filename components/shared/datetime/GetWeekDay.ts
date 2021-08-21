@@ -1,4 +1,4 @@
-export const getWeekDay = (): string => {
+export const getWeekDayString = (): string => {
   const date = new Date();
   console.log("weekday" + date.getDay());
   switch (date.getDay()) {
@@ -19,4 +19,9 @@ export const getWeekDay = (): string => {
     default:
       return "LUNDI";
   }
+};
+
+export const getWeekDayNumber = (): number => {
+  const date = new Date();
+  return date.getDay();
 };
