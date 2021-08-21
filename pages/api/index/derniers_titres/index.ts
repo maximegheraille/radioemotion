@@ -32,14 +32,12 @@ export default async function handler(
     );
     const getIp = async (id: number): Promise<boolean> => {
       return new Promise((resolve, reject) => {
-        console.log(req.socket.remoteAddress);
         connection.query(
           `call radioemotion_get_voted(${id}, '${req.socket.remoteAddress}')`,
           (err: any, rows: any, _fields: any) => {
             if (err) {
               return reject(err);
             }
-            console.log(rows[0].length);
             if (rows[0].length > 0) {
               return resolve(true);
             } else {
