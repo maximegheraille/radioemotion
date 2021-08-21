@@ -8,7 +8,7 @@ import { faHeart as faHeart2 } from "@fortawesome/free-regular-svg-icons";
 import Apple_music from "../../../public/images/links/Apple_music2.svg";
 import { playerProps } from "../../../interfaces/playerProps";
 import LoadingState from "../../shared/LoadingState";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import Image from "next/image";
 import { votesFormatter } from "../../shared/votes/Votesformatter";
 
@@ -18,21 +18,8 @@ interface VoteProps {
 }
 
 const PlayerLinks = ({ volume, setVolume }: playerProps) => {
-  const { data: song, isLoading, isError, refetch } = usePlayer();
-
-  // const vote = async (id: number | undefined, voted: boolean | undefined) => {
-  //   const info = await fetch("/api/current_song/votes/vote", {
-  //     method: "POST",
-  //     body: JSON.stringify({ id: id, voted: voted }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   const playing = await info.json();
-  //   if (playing.success) {
-  //     refetch();
-  //   }
-  // };
+  const { data: song, isLoading, isError } = usePlayer();
+  const queryClient = useQueryClient();
   const vote = async (values: VoteProps): Promise<Response> => {
     return await fetch("/api/song/vote", {
       method: "PATCH",
@@ -44,17 +31,17 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
   };
 
   const mutation = useMutation(vote, {
-    onMutate: () => {
-      console.log(`rolling back optimistic update with id`);
-      refetch();
-    },
-    onError: () => {
-      console.log(`qsd`);
-      refetch();
-    },
+    // onMutate: () => {
+    //   console.log(`rolling back optimistic update with id`);
+    //   queryClient.invalidateQueries("current_song");
+    // },
+    // onError: () => {
+    //   console.log(`qsd`);
+    //   queryClient.invalidateQueries("current_song");
+    // },
     onSettled: () => {
       console.log(`dfhfdh`);
-      refetch();
+      queryClient.invalidateQueries("current_song");
     },
   });
 
@@ -115,7 +102,6 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
             <button
               className={`group flex items-center focus:outline-none group disabled:cursor-not-allowed`}
               onClick={() => {
-                // vote(song?.id, song?.voted);
                 mutation.mutate({ id: song?.id, voted: song?.voted });
               }}
               disabled={mutation.isLoading}
