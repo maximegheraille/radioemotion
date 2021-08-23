@@ -7,13 +7,14 @@ import { changeTheme } from "../config/context/darkThemeSlice";
 import { useAppSelector } from "../config/context/hook";
 import { getInitialTheme } from "../config/context/initialTheme";
 import { rootStore } from "../config/context/store";
-import "../styles/style.scss";
+import Footer from "../components/navigation/footer/Footer";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
+import "../styles/style.scss";
+
 const Child: React.FC = ({ children }) => {
   // create a discpatch for allowing to change the theme value
   const dispatch = useDispatch();
@@ -23,11 +24,8 @@ const Child: React.FC = ({ children }) => {
   }, []);
   return (
     <>
-      <div
-        className={`bg-[#FFFEFE] dark:bg-[#0F0F10]`}
-        style={{ minHeight: "220vh" }}
-      >
-        <div className="max-w-[90%] sm:max-w-lg md:max-w-xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-[1400px] mx-auto pt-16">
+      <div className={`bg-[#FFFEFE] dark:bg-[#0F0F10]`}>
+        <div className="max-w-[90%] sm:max-w-lg md:max-w-xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-[1400px] mx-auto pt-16 pb-1">
           {children}
         </div>
       </div>
@@ -44,7 +42,6 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
 };
 
 const App = ({ Component, pageProps }: AppProps) => {
-  console.log(pageProps);
   const queryClient = new QueryClient();
   return (
     <>
@@ -55,10 +52,10 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Child>
               <Component {...pageProps} />
             </Child>
+            <Footer />
             <Player />
           </TailwindCssDarkMode>
         </Provider>
-        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   );
