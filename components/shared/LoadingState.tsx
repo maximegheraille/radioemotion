@@ -14,13 +14,14 @@ interface loadingStateProps {
 const LoadingState = ({
   width,
   heigth,
-  classNames,
+  classNames = "",
   children,
   isLoading,
   isError,
   data,
   bgColor = true,
 }: loadingStateProps) => {
+  console.log(data);
   return (
     <>
       {isLoading || isError || data === undefined ? (
@@ -28,7 +29,7 @@ const LoadingState = ({
           <span
             className={`${classNames} ${width} ${heigth} ${
               bgColor ? "bg-gray-400" : ""
-            } flex  place-content-center animate-pulse rounded`}
+            } flex place-content-center animate-pulse rounded`}
           ></span>
         </>
       ) : (
