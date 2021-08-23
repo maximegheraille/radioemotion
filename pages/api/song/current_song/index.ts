@@ -1,3 +1,5 @@
+import { emission } from "./../../../../interfaces/emission";
+import { getWeekDayNumber } from "./../../../../components/shared/datetime/GetWeekDay";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getFullDate } from "../../../../components/shared/datetime/GetFullDate";
 import { getFullTime } from "../../../../components/shared/datetime/GetFullTime";
@@ -16,9 +18,16 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           res.status(500).json({ response: false, error: true });
           return;
         }
+        console.log(results);
+        console.log(results.length);
+        console.log(results[0]);
+        console.log(results[0].length);
+        console.log(
+          `call radioemotion_get_live_emission('${getFullTime()}', '${getWeekDayNumber()}')`
+        );
         if (results[0].length === 0) {
           connection2.query(
-            `call radioemotion_get_live_emission('${getFullTime()}', '${new Date().getDay()}')`,
+            `call radioemotion_get_live_emission('${getFullTime()}', '${getWeekDayNumber()}')`,
             function (error: any, emission: any, _fields: any) {
               if (error) {
                 res.status(500).json(error);
@@ -26,8 +35,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
                 return;
               }
               res.status(200).json({
+                id: emission[0][0].id,
                 artiste: emission[0][0].EMISSION,
                 titre: emission[0][0].Nom,
+                photo: "/images/RadioEmotion-logo.png",
+                youtube: "",
+                voted: "",
+                apple_music: "",
               });
               connection2.destroy();
             }
