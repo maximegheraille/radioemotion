@@ -5,5 +5,6 @@ export interface emission {
   end: string;
   animateur_nom: string;
   photo: string;
-  is_live?: boolean;
+  livecam: boolean;
+  is_live: boolean;
 }
