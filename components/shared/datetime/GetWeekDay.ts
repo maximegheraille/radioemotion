@@ -23,5 +23,10 @@ export const getWeekDayString = (): string => {
 
 export const getWeekDayNumber = (): number => {
   const date = new Date();
-  return date.getDay();
+  switch (date.getDay()) {
+    case 0:
+      return 7;
+    default:
+      return date.getDay();
+  }
 };
