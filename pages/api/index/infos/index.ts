@@ -1,5 +1,4 @@
 import { Info } from "./../../../../interfaces/info";
-import { emission } from "../../../../interfaces/emission";
 import { getConnection2 } from "../../connection/connection";
 import { NextApiRequest, NextApiResponse } from "next";
 

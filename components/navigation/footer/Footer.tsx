@@ -1,6 +1,5 @@
 import {
   faAndroid,
-  faApper,
   faApple,
   faFacebook,
   faInstagram,

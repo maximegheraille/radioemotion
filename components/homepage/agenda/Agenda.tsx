@@ -1,8 +1,5 @@
 import {
-  faCalendar,
   faCalendarAlt,
-  faMapMarked,
-  faMapMarkedAlt,
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,4 +1,3 @@
-import { emission } from "./../../../../interfaces/emission";
 import { getWeekDayNumber } from "./../../../../components/shared/datetime/GetWeekDay";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getFullDate } from "../../../../components/shared/datetime/GetFullDate";
