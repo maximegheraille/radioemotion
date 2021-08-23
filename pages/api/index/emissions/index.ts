@@ -17,11 +17,13 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
             connection.destroy();
             return;
           }
-
           rows[0].forEach((row: emission) => {
             row.photo = `https://www.radioemotion.be${row.photo}.jpg`;
-
-            if (row.start < getFullTime() && row.end > getFullTime()) {
+            console.log("livecam" + row.livecam);
+            if (
+              (row.start < getFullTime() && row.end > getFullTime()) ||
+              row.livecam === true
+            ) {
               row.is_live = true;
             } else {
               row.is_live = false;
