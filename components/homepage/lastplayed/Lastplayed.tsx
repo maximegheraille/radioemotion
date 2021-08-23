@@ -11,7 +11,11 @@ const Lastplayed = () => {
       const info = await fetch("/api/index/derniers_titres");
       return info.json();
     },
-    { refetchOnWindowFocus: false }
+    {
+      refetchInterval: 30000,
+      refetchIntervalInBackground: true,
+      refetchOnWindowFocus: false,
+    }
   );
 
   return (
@@ -26,7 +30,7 @@ const Lastplayed = () => {
         resizeObserver={true}
         lazy={true}
       >
-        {isLoading ? (
+        {isLoading || isError ? (
           <>
             {[...Array(15)].map((song: Song, index: number) => (
               <SwiperSlide
