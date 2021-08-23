@@ -11,7 +11,11 @@ import SwiperCore, {
 SwiperCore.use([Autoplay, Pagination, Navigation, Lazy]);
 
 const Carousel = () => {
-  const { data: caroussel, isLoading } = useQuery(
+  const {
+    data: caroussel,
+    isLoading,
+    isError,
+  } = useQuery(
     "caroussel",
     async () => {
       const info = await fetch("/api/index/caroussel");
@@ -21,7 +25,7 @@ const Carousel = () => {
   );
   return (
     <>
-      {isLoading || caroussel === undefined ? (
+      {isLoading || isError || caroussel === undefined ? (
         <div
           className={`bg-white animate-pulse rounded w-full lg:w-[640px] lg:h-[240px]`}
         ></div>
@@ -46,6 +50,7 @@ const Carousel = () => {
           lazy={true}
         >
           {caroussel &&
+            !isLoading &&
             caroussel.map((caroussel: { ID: number; URL: string }) => (
               <SwiperSlide virtualIndex={caroussel.ID} key={caroussel.ID}>
                 <img
