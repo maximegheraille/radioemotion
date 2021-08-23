@@ -51,8 +51,8 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
   });
 
   return (
-    <>
-      {showTime ? (
+    <div className="shadow-lg">
+      {showTime && (
         <div className="flex items-center place-content-center content-center bg-[#2d2180] rounded-t-md">
           <LoadingState
             width="w-32"
@@ -67,7 +67,7 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
             </div>
           </LoadingState>
         </div>
-      ) : null}
+      )}
 
       <div className="flex place-content-center">
         <LoadingState
@@ -91,7 +91,6 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
         <LoadingState
           width="w-full"
           heigth="h-4"
-          classNames=""
           isLoading={isLoading}
           isError={isError}
           data={song?.artiste}
@@ -189,7 +188,7 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
           </a>
         </LoadingState>
       </div>
-    </>
+    </div>
   );
 };
 
