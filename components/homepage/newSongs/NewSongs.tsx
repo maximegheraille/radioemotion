@@ -8,11 +8,7 @@ const NewSongs = () => {
   const { data, isLoading, isError } = useQuery(
     "newSongs",
     async () => {
-      const info = await fetch(
-        //https://www.radioemotion.be/API/DerniersTitresDiffuses.php
-        //https://www.radioemotion.be/API/10Nouveautes.php
-        "/api/index/new_songs"
-      );
+      const info = await fetch("/api/index/new_songs");
       return info.json();
     },
     { refetchOnWindowFocus: false }
@@ -30,7 +26,7 @@ const NewSongs = () => {
         lazy={true}
         className="lg:hidden"
       >
-        {isLoading ? (
+        {isLoading || isError ? (
           <>
             {[...Array(10)].map((song: Song, index: number) => (
               <SwiperSlide
@@ -50,7 +46,7 @@ const NewSongs = () => {
           </>
         ) : (
           <>
-            {data?.map((song: Song, index: number) => (
+            {data.map((song: Song, index: number) => (
               <SwiperSlide
                 virtualIndex={song.id}
                 className={`${outderdivCard}`}
