@@ -11,12 +11,12 @@ html {
 }
 
 /* change default swiperjs bullets to lower them*/
-.swiper-pagination-bullets {
-  bottom: 0px !important;
-}
-.derniers_titres > * .swiper-pagination-bullets {
-  bottom: 0px !important;
-}
+// .swiper-pagination-bullets {
+//   bottom: 0px !important;
+// }
+// .derniers_titres > * .swiper-pagination-bullets {
+//   bottom: 0px !important;
+// }
 /* change cointainer to maintain aspect ratio of image inside the caroussel*/
 .de .swiper-container {
   width: 100%;
