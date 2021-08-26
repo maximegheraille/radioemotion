@@ -17,13 +17,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           res.status(500).json({ response: false, error: true });
           return;
         }
-        console.log(results);
-        console.log(results.length);
-        console.log(results[0]);
-        console.log(results[0].length);
-        console.log(
-          `call radioemotion_get_live_emission('${getFullTime()}', '${getWeekDayNumber()}')`
-        );
         if (results[0].length === 0) {
           connection2.query(
             `call radioemotion_get_live_emission('${getFullTime()}', '${getWeekDayNumber()}')`,

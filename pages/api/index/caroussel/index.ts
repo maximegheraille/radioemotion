@@ -13,13 +13,11 @@ export default async function handler(
       `call radioemotion_get_caroussel()`,
       function (error: any, results: any, _fields: any) {
         if (error) {
-          console.log(error);
           res.status(500).json({ response: false, error: true });
           connection2.destroy();
           return;
         }
         res.status(200).json(results[0]);
-        console.log(connection2.threadId);
 
         connection2.destroy();
         //connection2.end();

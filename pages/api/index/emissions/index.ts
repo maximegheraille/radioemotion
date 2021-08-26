@@ -7,7 +7,6 @@ import { getWeekDayNumber } from "../../../../components/shared/datetime/GetWeek
 const post = (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     try {
-      console.log(getWeekDayNumber());
       const connection = getConnection2();
       connection.query(
         `call radioemotion_get_emissions(${getWeekDayNumber()})`,
@@ -19,10 +18,12 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
           }
           rows[0].forEach((row: emission) => {
             row.photo = `https://www.radioemotion.be${row.photo}.jpg`;
-            console.log("livecam" + row.livecam);
+            row.start = row.start.slice(0, -3);
+            row.end = row.end.slice(0, -3);
             if (
-              (row.start < getFullTime() && row.end > getFullTime()) ||
-              row.livecam === true
+              row.start < getFullTime() &&
+              row.end > getFullTime() &&
+              row.livecam === 1
             ) {
               row.is_live = true;
             } else {
