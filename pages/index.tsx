@@ -4,11 +4,6 @@ import LazyLoad from "react-lazyload";
 import Infos from "../components/homepage/infos/Infos";
 import Agenda from "../components/homepage/agenda/Agenda";
 
-// import Lastplayed from "../components/homepage/lastPlayed/Lastplayed";
-// import Title from "../components/shared/title/Title";
-// import Carousel from "../components/homepage/carousel/Carousel";
-// import NewSongs from "../components/homepage/newSongs/NewSongs";
-// import Emissions from "../components/homepage/emissions/Emissions";
 const Lastplayed = dynamic(
   () => import("../components/homepage/lastPlayed/Lastplayed")
 );
@@ -26,7 +21,7 @@ const IndexPage = () => {
   return (
     <div className="">
       <div className="">
-        <div className="mx-auto pt-7 rounded-md z-0 md:w-10/12 lg:w-6/12 2xl:w-6/12">
+        <div className="mx-auto pt-7 rounded-lg z-0 md:w-10/12 lg:w-6/12 2xl:w-6/12">
           <Carousel />
         </div>
         <Title title={"DERNIERS TITRES DIFFUSES"} className="" />
