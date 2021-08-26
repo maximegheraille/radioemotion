@@ -26,7 +26,7 @@ const Emissions = () => {
         <>
           {[...Array(4)].map((emission: emission, index: number) => (
             <div
-              className="flex mb-5 text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
+              className="flex shadow-lg mb-5 text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
               key={index}
             >
               <LoadingState
@@ -102,7 +102,7 @@ const Emissions = () => {
         <>
           {emissions.map((emission: emission, index: number) => (
             <div
-              className="flex mb-5 text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
+              className="flex shadow-lg mb-5 text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
               key={index}
             >
               <Image
