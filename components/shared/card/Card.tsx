@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Song } from "../../../interfaces/song";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +10,7 @@ import Apple_music from "../../../public/images/links/Apple_music2.svg";
 import { votesFormatter } from "../votes/Votesformatter";
 import { useMutation, useQueryClient } from "react-query";
 import vote from "./CardVote";
+import YoutubePlayer from "./YoutubePlayer";
 interface cardProps {
   showTime?: Boolean;
   isLoading: boolean;
@@ -24,12 +25,9 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
   const queryClient = useQueryClient();
   const CardVote = useMutation(vote, {
     onSuccess: (data: Response) => {
-      console.log(`onSuccess`);
       if (data.status === 200) {
-        console.log("200");
         queryClient.invalidateQueries("lastPlayed");
       } else {
-        console.log("not 200");
       }
     },
     // onMutate: () => {
@@ -49,9 +47,10 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
     //   // queryClient.invalidateQueries("lastPlayed");
     // },
   });
-
+  const [showYou, setShowYou] = useState<boolean>(false);
   return (
     <div className="shadow-lg">
+      {showYou && <YoutubePlayer url={song?.youtube} />}
       {showTime && (
         <div className="flex items-center place-content-center content-center bg-[#2d2180] rounded-t-md">
           <LoadingState
@@ -171,12 +170,13 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
           isError={isLoading}
           data={song?.youtube}
         >
-          <a
-            href={song?.youtube}
-            target="_blanc"
+          <button
+            // href={song?.youtube}
+            //   target="_blanc"
             className={`${
               song?.youtube === "" ? "hidden" : "block"
             } group flex items-center text-[#f44336]`}
+            onClick={() => setShowYou(!showYou)}
           >
             <FontAwesomeIcon
               icon={faYoutube}
@@ -185,7 +185,7 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
               h-10 w-10 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
               aria-hidden="true"
             />
-          </a>
+          </button>
         </LoadingState>
       </div>
     </div>
