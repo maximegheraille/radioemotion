@@ -50,7 +50,7 @@ const YoutubePlayer = ({ url = "" }: YoutubeProps) => {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <div
-                className={`w-full sm:w-10/12 md:w-9/12 lg:w-8/12 inline-block align-bottom text-black dark:text-white bg-[#E4E7EA] ${
+                className={`w-full sm:w-10/12 md:w-9/12 lg:w-7/12 xl:w-5/12 2xl:w-4/12 inline-block align-bottom text-black dark:text-white bg-[#E4E7EA] ${
                   darkTheme && "bg-[#1F1F1E]"
                 } rounded-lg text-left overflow-hidden shadow-lg transform transition-all my-8 align-middle w-full`}
               >
