@@ -10,7 +10,6 @@ import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
-  console.log("footer");
   return (
     <footer className="bg-[#2D2081] pb-[3rem] text-white ">
       <div className="text-center space-y-6 lg:space-y-0 lg:flex w-full justify-evenly p-6 ">
