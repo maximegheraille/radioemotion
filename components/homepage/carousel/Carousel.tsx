@@ -8,6 +8,7 @@ import SwiperCore, {
   Navigation,
   Lazy,
 } from "swiper/core";
+import Image from "next/image";
 SwiperCore.use([Autoplay, Pagination, Navigation, Lazy]);
 
 const Carousel = () => {
@@ -27,7 +28,7 @@ const Carousel = () => {
     <>
       {isLoading || isError || caroussel === undefined ? (
         <div
-          className={`bg-white animate-pulse rounded w-full lg:w-[640px] lg:h-[240px]`}
+          className={`bg-white shadow-lg animate-pulse rounded w-full lg:w-[640px] lg:h-[240px]`}
         ></div>
       ) : (
         <Swiper
@@ -46,15 +47,17 @@ const Carousel = () => {
           pagination={{
             clickable: true,
           }}
-          className="rounded-md"
+          className="rounded-lg "
           lazy={true}
         >
           {caroussel &&
             !isLoading &&
             caroussel.map((caroussel: { ID: number; URL: string }) => (
               <SwiperSlide virtualIndex={caroussel.ID} key={caroussel.ID}>
-                <img
-                  className="rounded-md w-full bac"
+                <Image
+                  className="rounded-lg w-full shadow-lg"
+                  width="700"
+                  height="260"
                   src={`https://www.radioemotion.be${caroussel.URL}.jpg`}
                 />
               </SwiperSlide>
