@@ -79,7 +79,7 @@ const NavigationBar = ({
                               asPath.toLowerCase() === item.href.toLowerCase()
                                 ? "bg-[#10045f] text-white"
                                 : "text-gray-300"
-                            } mx-0.5 hover:bg-[#181144] text-sm lg:text-base hover:text-white px-3 py-2 rounded-md font-medium`}
+                            } mx-0.5 hover:bg-[#181144] text-sm lg:text-base hover:text-white px-3 py-2 rounded-lg font-medium`}
                             aria-current={
                               asPath.toLowerCase() === item.name
                                 ? "page"
@@ -97,7 +97,7 @@ const NavigationBar = ({
                             asPath.toLowerCase() === item.href.toLowerCase()
                               ? "bg-[#10045f] text-white"
                               : "text-gray-300 hover:bg-[#181144]"
-                          } items-center mx-0.5 text-sm lg:text-base hidden md:flex px-3 py-2 rounded-md font-medium`}
+                          } items-center mx-0.5 text-sm lg:text-base hidden md:flex px-3 py-2 rounded-lg font-medium`}
                         >
                           {item.name}
                           <FontAwesomeIcon
