@@ -19,7 +19,7 @@ interface cardProps {
 }
 //#e4e6eb E4E7EA
 export const outderdivCard =
-  "text-black dark:text-white text-center bg-[#E5E6EA] dark:bg-[#1F1F1E] rounded-lg max-w-[8.5rem] min-w-[8.5rem] lg:max-w-[10rem] lg:min-w-[10rem]";
+  "text-black dark:text-white shadow-lg text-center bg-[#E5E6EA] dark:bg-[#1F1F1E] rounded-lg max-w-[8.5rem] min-w-[8.5rem] lg:max-w-[10rem] lg:min-w-[10rem]";
 
 const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
   const queryClient = useQueryClient();
@@ -49,7 +49,7 @@ const Card = ({ showTime = false, song, isError, isLoading }: cardProps) => {
   });
   const [showYou, setShowYou] = useState<boolean>(false);
   return (
-    <div className="shadow-lg">
+    <div className="">
       {showYou && <YoutubePlayer url={song?.youtube} />}
       {showTime && (
         <div className="flex items-center place-content-center content-center bg-[#2d2180] rounded-t-md">
