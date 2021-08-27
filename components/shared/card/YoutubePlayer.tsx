@@ -69,7 +69,7 @@ const YoutubePlayer = ({ url = "" }: YoutubeProps) => {
                     type="button"
                     className={`${
                       darkTheme && "bg-[#1F1F1E] text-white"
-                    }  text-black mt-2 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm`}
+                    }  text-black mt-2 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm`}
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                   >
