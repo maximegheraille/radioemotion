@@ -21,7 +21,7 @@ const IndexPage = () => {
   return (
     <div className="">
       <div className="">
-        <div className="mx-auto pt-7 rounded-lg z-0 md:w-10/12 lg:w-6/12 2xl:w-6/12">
+        <div className="mx-auto rounded-lg z-0 md:w-10/12 lg:w-6/12 2xl:w-6/12">
           <Carousel />
         </div>
         <Title title={"DERNIERS TITRES DIFFUSES"} className="" />
