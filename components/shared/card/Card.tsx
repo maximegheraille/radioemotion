@@ -13,27 +13,31 @@ import vote from "./CardVote";
 import YoutubePlayer from "./YoutubePlayer";
 interface cardProps {
   showTime?: Boolean;
+  number?: boolean;
   isLoading: boolean;
   isError: boolean;
   song: Song | undefined;
+  component: "lastplayed" | "nouveautes" | "newSongs" | "nothing";
   className?: string;
 }
-//#e4e6eb E4E7EA
+//E5E6EA E4E7EA
 export const outderdivCard =
-  "text-black dark:text-white shadow-lg text-center bg-[#E5E6EA] dark:bg-[#1F1F1E] rounded-lg max-w-[8.5rem] min-w-[8.5rem] lg:max-w-[10rem] lg:min-w-[10rem]";
+  "card text-center max-w-[8.5rem] min-w-[8.5rem] lg:max-w-[10rem] lg:min-w-[10rem]";
 
 const Card = ({
   showTime = false,
+  number = false,
   song,
   isError,
   isLoading,
   className = "",
+  component,
 }: cardProps) => {
   const queryClient = useQueryClient();
   const CardVote = useMutation(vote, {
     onSuccess: (data: Response) => {
-      if (data.status === 200) {
-        queryClient.invalidateQueries("lastPlayed");
+      if (data.status === 200 && component !== "nothing") {
+        queryClient.invalidateQueries(`${component}`);
       } else {
       }
     },
@@ -74,7 +78,22 @@ const Card = ({
           </LoadingState>
         </div>
       )}
-
+      {number && (
+        <div className="flex items-center place-content-center content-center bg-[#2d2180] rounded-t-md">
+          <LoadingState
+            width="w-32"
+            heigth="h-4"
+            classNames="m-1"
+            isLoading={isLoading}
+            isError={isError}
+            data={song?.position}
+          >
+            <div className="text-xl font-semibold text-white">
+              {song?.position}
+            </div>
+          </LoadingState>
+        </div>
+      )}
       <div className="flex place-content-center">
         <LoadingState
           width="w-[140px]"
@@ -86,7 +105,7 @@ const Card = ({
           <Image
             width={160}
             height={160}
-            className={`items-center ${!showTime && "rounded-t-md"}`}
+            className={`items-center`}
             src={song?.photo!}
             alt="pochette de l'album"
           />

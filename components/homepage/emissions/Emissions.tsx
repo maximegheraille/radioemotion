@@ -25,10 +25,7 @@ const Emissions = () => {
       {isError || isLoading ? (
         <>
           {[...Array(4)].map((emission: emission, index: number) => (
-            <div
-              className="flex shadow-lg mb-5 text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
-              key={index}
-            >
+            <div className="flex  mb-5 shadow-lg card" key={index}>
               <LoadingState
                 width="w-[100px]"
                 heigth="h-[100px]"
@@ -101,10 +98,7 @@ const Emissions = () => {
       ) : (
         <>
           {emissions.map((emission: emission, index: number) => (
-            <div
-              className="flex shadow-lg mb-5 text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
-              key={index}
-            >
+            <div className="flex shadow-lg mb-5 card" key={index}>
               <Image
                 width="100"
                 height="100"
@@ -114,7 +108,9 @@ const Emissions = () => {
 
               <div className="pl-2 my-2 space-y-2">
                 <div className="flex items-center space-x-2">
-                  <p className="text-lg font-semibold">{emission.nom}</p>
+                  <p className="text-lg font-semibold line-clamp-1">
+                    {emission.nom}
+                  </p>
 
                   {emission.is_live && (
                     <button
@@ -134,11 +130,11 @@ const Emissions = () => {
                   )}
                 </div>
 
-                <p className="text-md">
+                <p className="text-md line-clamp-1">
                   De {emission.start} à {emission.end}
                 </p>
 
-                <p className={`text-sm`}>
+                <p className={`text-sm line-clamp-1`}>
                   Presenté par: {emission.animateur_nom}
                 </p>
               </div>

@@ -114,7 +114,7 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
                 aria-hidden="true"
               />
             </button>
-            <span className="text-xs p-[0.125rem] min-h-[1.25rem] min-w-[1.25rem] w-auto h-auto flex place-content-center text-white absolute top-0 right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-full">
+            <span className="text-xs p-[0.125rem] min-h-[1.25rem] min-w-[1.25rem] w-auto h-auto flex place-content-center text-white absolute top-[3px] right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-full">
               {song?.votes && votesFormatter(song.votes)}
             </span>
           </div>
