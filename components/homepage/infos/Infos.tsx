@@ -13,8 +13,8 @@ const Infos = () => {
     async () => {
       const info = await fetch("/api/index/infos");
       return info.json();
-    }
-    // { refetchOnWindowFocus: false }
+    },
+    { refetchOnWindowFocus: false }
   );
   return (
     <div className="lg:flex lg:flex-wrap pb-16">
@@ -23,54 +23,90 @@ const Infos = () => {
           {[...Array(7)].map((info: Info, index: number) => (
             <React.Fragment key={index}>
               {index === 0 ? (
-                <div
-                  key={index}
-                  className="shadow-lg mb-6 mr-14 w-full lg:flex text-center text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
-                >
-                  <LoadingState
-                    width="w-[430px]"
-                    heigth="h-[200px]"
-                    data={infos}
-                    isLoading={isLoading}
-                    isError={isError}
+                <>
+                  <div
+                    key={index}
+                    className="hidden shadow-lg mb-6 mr-14 w-full lg:flex text-center card"
                   >
-                    <Image
-                      width="430"
-                      height="200"
-                      src={info?.photo}
-                      className="rounded-lg"
-                    />
-                  </LoadingState>
-                  <div className="lg:w-6/12 h-full p-3 place-content-center align-middle justify-center items-center">
+                    <LoadingState
+                      width="w-[430px]"
+                      heigth="h-[200px]"
+                      data={infos}
+                      isLoading={isLoading}
+                      isError={isError}
+                    >
+                      <Image
+                        width="430"
+                        height="200"
+                        src={info?.photo}
+                        className="rounded-lg"
+                      />
+                    </LoadingState>
+                    <div className="lg:w-6/12 h-full p-3 place-content-center align-middle justify-center items-center">
+                      <LoadingState
+                        width="w-full"
+                        heigth="h-4"
+                        data={infos}
+                        isLoading={isLoading}
+                        isError={isError}
+                      >
+                        <p className="text-xl place-content-center items-center flex  font-semibold line-clamp-2">
+                          {info?.titre}
+                        </p>
+                      </LoadingState>
+                      <LoadingState
+                        width="w-10/12"
+                        heigth="h-4"
+                        data={infos}
+                        isLoading={isLoading}
+                        isError={isError}
+                        classNames="mt-9"
+                      >
+                        <p className="hidden lg:flex text-base pt-4 place-content-center items-center line-clamp-2">
+                          {info?.preview}
+                        </p>
+                      </LoadingState>
+                    </div>
+                  </div>
+                  <div
+                    key={index}
+                    className="shadow-lg mb-6 lg:w-72 lg:hidden text-center card"
+                  >
                     <LoadingState
                       width="w-full"
-                      heigth="h-4"
+                      heigth="h-36"
                       data={infos}
                       isLoading={isLoading}
                       isError={isError}
+                      classNames="mb-2"
                     >
-                      <p className="text-xl place-content-center items-center flex  font-semibold line-clamp-2">
-                        {info?.titre}
-                      </p>
+                      <Image
+                        width="435"
+                        height="190"
+                        src={info?.photo}
+                        className="rounded-lg"
+                      />
                     </LoadingState>
-                    <LoadingState
-                      width="w-10/12"
-                      heigth="h-4"
-                      data={infos}
-                      isLoading={isLoading}
-                      isError={isError}
-                      classNames="mt-9"
-                    >
-                      <p className="hidden lg:flex text-base pt-4 place-content-center items-center line-clamp-2">
-                        {info?.preview}
-                      </p>
-                    </LoadingState>
+
+                    <div className="p-2">
+                      <LoadingState
+                        width="w-full"
+                        heigth="h-4"
+                        data={infos}
+                        isLoading={isLoading}
+                        isError={isError}
+                      >
+                        <p className="text-lg font-semibold line-clamp-2 text-center w-full">
+                          {info?.titre}
+                        </p>
+                      </LoadingState>
+                    </div>
                   </div>
-                </div>
+                </>
               ) : (
                 <div
                   key={index}
-                  className="shadow-lg mb-6 lg:w-72 lg:mr-7 text-center text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
+                  className="shadow-lg mb-6 lg:w-72 lg:mr-7 text-center card"
                 >
                   <LoadingState
                     width="w-full"
@@ -113,19 +149,19 @@ const Infos = () => {
               {index === 0 ? (
                 <div
                   key={index}
-                  className="shadow-lg mb-6 mr-14 w-full lg:flex text-center text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
+                  className="shadow-lg mb-6 mr-14 w-full lg:flex text-center card"
                 >
                   <Image
-                    width="430"
-                    height="200"
+                    width="576"
+                    height="320"
                     src={info?.photo}
                     className="rounded-lg"
                   />
-                  <div className="lg:w-6/12 h-full p-3 place-content-center align-middle justify-center items-center">
-                    <p className="text-xl place-content-center items-center flex  font-semibold line-clamp-2">
+                  <div className="lg:w-4/6 h-full p-3 place-content-center align-middle justify-center items-center">
+                    <p className="text-xl place-content-center items-center font-semibold line-clamp-2">
                       {info?.titre}
                     </p>
-                    <p className="hidden lg:flex text-base pt-4 place-content-center items-center line-clamp-2">
+                    <p className="hidden text-base pt-4 place-content-center items-center line-clamp-3">
                       {info?.preview}
                     </p>
                   </div>
@@ -133,12 +169,13 @@ const Infos = () => {
               ) : (
                 <div
                   key={index}
-                  className="shadow-lg mb-6 lg:w-72 lg:mr-7 text-center text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
+                  className="shadow-lg mb-6 lg:w-72 lg:mr-7 text-center card"
                 >
                   <Image
-                    width="435"
-                    height="190"
+                    width="576"
+                    height="320"
                     src={info?.photo}
+                    layout="responsive"
                     className="rounded-lg"
                   />
                   <div className="p-2">
