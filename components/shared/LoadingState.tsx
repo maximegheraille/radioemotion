@@ -7,7 +7,7 @@ interface loadingStateProps {
   isError: boolean;
   children: React.ReactChild;
   classNames?: string;
-  data: string | boolean | undefined;
+  data: string | boolean | number | undefined;
   bgColor?: boolean;
 }
 
