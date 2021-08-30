@@ -9,4 +9,8 @@ export interface Song {
   votes?: number;
   heure?: number | string;
   min?: string;
+  position?: string;
+  best_position?: string;
+  evolution_position?: number;
+  weeks?: string;
 }
