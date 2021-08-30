@@ -24,10 +24,7 @@ const Agendas = () => {
       {isLoading || isError ? (
         <>
           {[...Array(5)].map((agenda: Agenda, index: number) => (
-            <div
-              key={index}
-              className="shadow-lg mb-4 lg:flex text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
-            >
+            <div key={index} className="shadow-lg mb-4 lg:flex card">
               <LoadingState
                 width="w-6/12"
                 heigth="h-28"
@@ -94,10 +91,7 @@ const Agendas = () => {
       )}
       {data &&
         data.map((agenda: Agenda, index: number) => (
-          <div
-            key={index}
-            className="shadow-lg mb-4 lg:flex text-black dark:text-white bg-[#E4E7EA] dark:bg-[#1F1F1E] rounded-lg"
-          >
+          <div key={index} className="shadow-lg mb-4 lg:flex card">
             <Image
               width="435"
               height="235"
