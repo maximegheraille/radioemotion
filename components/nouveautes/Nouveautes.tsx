@@ -15,27 +15,36 @@ const Nouveautes = () => {
       refetchOnWindowFocus: false,
     }
   );
+
   return (
     <div>
       {isLoading || isError ? (
         <div className="flex flex-wrap justify-center">
           {[...Array(42)].map((song: Song, index: number) => (
-            <div className={`${outderdivCard} mr-[30px] mb-5`} key={index}>
+            <div className={`${outderdivCard} mb-5`} key={index}>
               <Card
                 song={song}
                 isLoading={isLoading}
                 isError={isError}
                 key={index}
-                className=""
-              />{" "}
+                component="nothing"
+              />
             </div>
           ))}
         </div>
       ) : (
-        <div className="flex-wrap flex justify-center">
+        <div className="flex-wrap flex justify-center space-x-4">
           {data?.map((song: Song, index: number) => (
-            <div className={`${outderdivCard} mr-[30px] mb-5`} key={index}>
-              <Card song={song} isLoading={isLoading} isError={isError} />
+            <div
+              className={`${outderdivCard} mb-5 ${index === 0 ? "ml-4" : ""}`}
+              key={index}
+            >
+              <Card
+                song={song}
+                isLoading={isLoading}
+                isError={isError}
+                component="nouveautes"
+              />
             </div>
           ))}
         </div>

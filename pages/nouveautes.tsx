@@ -1,10 +1,13 @@
 import React from "react";
 import Nouveautes from "../components/nouveautes/Nouveautes";
+import LazyLoad from "react-lazyload";
 
 const nouveautes = () => {
   return (
     <div>
-      <Nouveautes />
+      <LazyLoad>
+        <Nouveautes />
+      </LazyLoad>
     </div>
   );
 };
