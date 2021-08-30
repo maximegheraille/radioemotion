@@ -1,7 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { Song } from "../../interfaces/song";
-import Card, { outderdivCard } from "../shared/card/Card";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
