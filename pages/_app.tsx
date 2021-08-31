@@ -14,7 +14,6 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 import "../styles/style.scss";
-
 const Child: React.FC = ({ children }) => {
   // create a discpatch for allowing to change the theme value
   const dispatch = useDispatch();
@@ -41,9 +40,8 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
   const { darkTheme } = useAppSelector((state) => state);
   return <div className={`${darkTheme ? "dark" : null}`}>{children}</div>;
 };
-
+const queryClient = new QueryClient();
 const App = ({ Component, pageProps }: AppProps) => {
-  const queryClient = new QueryClient();
   return (
     <>
       <QueryClientProvider client={queryClient}>
