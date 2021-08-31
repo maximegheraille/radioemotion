@@ -17,10 +17,10 @@ interface cardProps {
   isLoading: boolean;
   isError: boolean;
   song: Song | undefined;
-  component: "lastplayed" | "nouveautes" | "newSongs" | "nothing";
+  component: "lastPlayed" | "nouveautes" | "newSongs" | "nothing";
   className?: string;
 }
-//E5E6EA E4E7EA
+
 export const outderdivCard =
   "card text-center max-w-[8.5rem] min-w-[8.5rem] lg:max-w-[10rem] lg:min-w-[10rem]";
 
@@ -35,28 +35,11 @@ const Card = ({
 }: cardProps) => {
   const queryClient = useQueryClient();
   const CardVote = useMutation(vote, {
-    onSuccess: (data: Response) => {
-      if (data.status === 200 && component !== "nothing") {
+    onSettled: (_data: any, _error: any, _variables: any, _context?: any) => {
+      if (component !== "nothing") {
         queryClient.invalidateQueries(`${component}`);
-      } else {
       }
     },
-    // onMutate: () => {
-    //   console.log(`rolling back optimistic update with id`);
-    //   queryClient.invalidateQueries("lastPlayed");
-    //   //  refetch();
-    //   // queryClient.invalidateQueries("lastPlayed");
-    // },
-    onError: () => {
-      console.log(`onError`);
-      // refetch();
-      //  queryClient.invalidateQueries("lastPlayed");
-    },
-    // onSettled: () => {
-    //   console.log(`onSettled`);
-    //   //     refetch();
-    //   // queryClient.invalidateQueries("lastPlayed");
-    // },
   });
   const [showYou, setShowYou] = useState<boolean>(false);
   return (
