@@ -1,5 +1,4 @@
 import React from "react";
-import { useQuery } from "react-query";
 import { Song } from "../../interfaces/song";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,8 +8,13 @@ import {
   faMinus,
 } from "@fortawesome/free-solid-svg-icons";
 import LoadingState from "../shared/LoadingState";
+import { useQuery } from "react-query";
+//{ top30 }: InferGetStaticPropsType<typeof getStaticProps>
 
-const Top30 = () => {
+// interface top30Props {
+//   top30: Song[];
+// }
+const Top30 = (/*{ top30 }: top30Props*/) => {
   const {
     data: top30,
     isLoading,
@@ -72,9 +76,6 @@ const Top30 = () => {
                 <div className="w-full">
                   <div className="h-1/6">
                     <div className="flex pl-[35%] place-content-around rounded-r-lg text-white">
-                      {/* <div className="flex justify-center items-center /*bg-[#2D2180] bg-red-500  w-full rounded-l-lg">
-                    <p>EVOLUTION</p>
-                  </div> */}
                       <div className="flex justify-center items-center bg-[#D43E3B] rounded-bl-lg w-full">
                         <p>NOMBRE DE SEMAINES</p>
                       </div>
@@ -129,7 +130,7 @@ const Top30 = () => {
         <div className="flex-wrap flex justify-center">
           {top30?.map((song: Song, index: number) => (
             <div className={`card mb-5 flex w-full`} key={index}>
-              <div className="flex justify-center items-center p-16">
+              <div className="flex justify-center items-center p-4 lg:p-16">
                 <p className="">N°{song.position}</p>
               </div>
               <div className="max-w-[8.5rem] min-w-[8.5rem] lg:max-w-[10rem] lg:min-w-[10rem] flex place-content-center">
@@ -142,16 +143,13 @@ const Top30 = () => {
                 />
               </div>
               <div className="w-full flex">
-                <div className="flex justify-center flex-col w-1/4 space-y-7 items-center">
+                <div className="flex text-center justify-center space-y-7 items-center flex-col p-2 w-4/6 lg:w-1/4">
                   <p className="line-clamp-2">{song?.titre}</p>
                   <p className="line-clamp-2">{song?.artiste}</p>
                 </div>
-                <div className="w-full">
-                  <div className="h-1/6">
-                    <div className="flex pl-[35%] place-content-around rounded-r-lg text-white">
-                      {/* <div className="flex justify-center items-center /*bg-[#2D2180] bg-red-500  w-full rounded-l-lg">
-                      <p>EVOLUTION</p>
-                    </div> */}
+                <div className="lg:w-full">
+                  <div className="h-1/6 hidden lg:flex">
+                    <div className="flex lg:pl-[35%] lg:w-full place-content-around rounded-r-lg text-white">
                       <div className="flex justify-center items-center bg-[#D43E3B] rounded-bl-lg w-full">
                         <p>NOMBRE DE SEMAINES</p>
                       </div>
@@ -160,7 +158,7 @@ const Top30 = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="h-5/6 flex flex-wrap w-full place-content-around">
+                  <div className="h-full lg:h-5/6 flex flex-wrap w-auto lg:w-full place-content-around">
                     <div className="flex justify-center items-center">
                       {song.evolution_position !== undefined && (
                         <p>
@@ -188,33 +186,14 @@ const Top30 = () => {
                         </p>
                       )}
                     </div>
-                    <div className="flex justify-center items-center">
+                    <div className="hidden lg:flex justify-center items-center">
                       <p>{song.weeks}</p>
                     </div>
-                    <div className="flex justify-center items-center">
+                    <div className="hidden lg:flex justify-center items-center">
                       <p>{song.best_position}</p>
                     </div>
                   </div>
                 </div>
-                {/* <div className="flex justify-center flex-col w-1/4">
-                  <p className="line-clamp-2">{song?.titre}</p>
-                  <p className="line-clamp-2">{song?.artiste}</p>
-                </div>
-                <div className="flex justify-center items-center">
-                  <p>
-                    {song.evolution_position !== undefined &&
-                    Math.abs(song.evolution_position) === 0
-                      ? "-"
-                      : song.evolution_position !== undefined &&
-                        Math.abs(song.evolution_position)}
-                  </p>
-                </div>
-                <div className="flex justify-center flex-col">
-                  <p>{song.weeks}</p>
-                </div>
-                <div className="flex justify-center flex-col">
-                  <p>{song.best_position}</p>
-                </div> */}
               </div>
             </div>
           ))}
