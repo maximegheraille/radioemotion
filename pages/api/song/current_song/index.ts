@@ -4,7 +4,7 @@ import { getFullDate } from "../../../../components/shared/datetime/GetFullDate"
 import { getFullTime } from "../../../../components/shared/datetime/GetFullTime";
 import { getConnection, getConnection2 } from "../../connection/connection";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+const handler = (req: NextApiRequest, res: NextApiResponse) => {
   const connection = getConnection();
   const connection2 = getConnection2();
 
@@ -76,4 +76,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     res.status(500).json({ response: false, error: true });
     connection.destroy();
   }
-}
+};
+export default handler;
