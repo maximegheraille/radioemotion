@@ -59,7 +59,7 @@ const Lastplayed = () => {
                 <Card
                   song={song}
                   showTime
-                  component="lastplayed"
+                  component="lastPlayed"
                   isLoading={isLoading}
                   isError={isError}
                 />
