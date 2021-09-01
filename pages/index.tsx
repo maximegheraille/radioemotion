@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import LazyLoad from "react-lazyload";
 
 const Lastplayed = dynamic(
-  () => import("../components/homepage/lastPlayed/Lastplayed")
+  () => import("../components/homepage/lastplayed/Lastplayed")
 );
 const Title = dynamic(() => import("../components/shared/title/Title"));
 const Carousel = dynamic(
