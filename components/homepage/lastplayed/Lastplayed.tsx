@@ -22,7 +22,7 @@ const Lastplayed = () => {
     <>
       <Swiper
         slidesPerView={"auto"}
-        spaceBetween={30}
+        //spaceBetween={30}
         freeMode={true}
         freeModeSticky
         watchSlidesVisibility={true}
@@ -35,7 +35,7 @@ const Lastplayed = () => {
             {[...Array(15)].map((song: Song, index: number) => (
               <SwiperSlide
                 virtualIndex={index}
-                className={`${outderdivCard}`}
+                className={`${outderdivCard} mr-[30px]`}
                 key={index}
               >
                 <Card
@@ -44,6 +44,7 @@ const Lastplayed = () => {
                   component="nothing"
                   isLoading={isLoading}
                   isError={isError}
+                  className=""
                 />
               </SwiperSlide>
             ))}
@@ -53,7 +54,7 @@ const Lastplayed = () => {
             {data?.map((song: Song) => (
               <SwiperSlide
                 virtualIndex={song.id}
-                className={`${outderdivCard}`}
+                className={`${outderdivCard} mr-[30px]`}
                 key={song.id}
               >
                 <Card
