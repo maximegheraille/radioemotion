@@ -1,8 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import LazyLoad from "react-lazyload";
-import Infos from "../components/homepage/infos/Infos";
-import Agenda from "../components/homepage/agenda/Agenda";
 
 const Lastplayed = dynamic(
   () => import("../components/homepage/lastPlayed/Lastplayed")
@@ -17,6 +15,8 @@ const NewSongs = dynamic(
 const Emissions = dynamic(
   () => import("../components/homepage/emissions/Emissions")
 );
+const Infos = dynamic(() => import("../components/homepage/infos/Infos"));
+const Agenda = dynamic(() => import("../components/homepage/agenda/Agenda"));
 const IndexPage = () => {
   return (
     <div className="">
