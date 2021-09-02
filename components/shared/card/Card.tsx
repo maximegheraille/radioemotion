@@ -17,7 +17,7 @@ interface cardProps {
   isLoading: boolean;
   isError: boolean;
   song: Song | undefined;
-  component: "lastPlayed" | "nouveautes" | "newSongs" | "nothing";
+  component: "lastPlayed" | "nouveautes" | "newSongs" | "votes" | "nothing";
   className?: string;
 }
 
@@ -46,7 +46,7 @@ const Card = ({
     <div className={`${className}`}>
       {showYou && <YoutubePlayer url={song?.youtube} />}
       {showTime && (
-        <div className="flex items-center place-content-center content-center bg-[#2d2180] rounded-t-md">
+        <div className="flex items-center place-content-center content-center bg-[#2d2180] rounded-t-lg">
           <LoadingState
             width="w-32"
             heigth="h-4"
@@ -72,15 +72,15 @@ const Card = ({
             data={song?.position}
           >
             <div className="text-xl font-semibold text-white">
-              {song?.position}
+              N°{song?.position}
             </div>
           </LoadingState>
         </div>
       )}
       <div className="flex place-content-center">
         <LoadingState
-          width="w-[140px]"
-          heigth="h-[140px]"
+          width="w-[160px]"
+          heigth="h-[160px]"
           isLoading={isLoading}
           isError={isError}
           data={song?.photo}
@@ -88,7 +88,9 @@ const Card = ({
           <Image
             width={160}
             height={160}
-            className={`items-center`}
+            className={`items-center ${
+              !number && !showTime ? "rounded-t-lg" : null
+            }`}
             src={song?.photo!}
             alt="pochette de l'album"
           />
