@@ -97,7 +97,7 @@ const NavigationBar = ({
                             asPath.toLowerCase() === item.href.toLowerCase()
                               ? "bg-[#10045f] text-white"
                               : "text-gray-300 hover:bg-[#181144]"
-                          } items-center mx-0.5 text-sm lg:text-base hidden md:flex px-3 py-2 rounded-lg font-medium`}
+                          }  items-center mx-0.5 text-sm lg:text-base hidden md:flex px-3 py-2 rounded-lg font-medium`}
                         >
                           {item.name}
                           <FontAwesomeIcon

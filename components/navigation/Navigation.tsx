@@ -52,7 +52,7 @@ const Navigation = () => {
       icon: faMap,
       childs: [
         { name: "Info regionale", href: "/inforegionales", icon: faNewspaper },
-        { name: "Agenda", href: "/Emissions", icon: faCalendarAlt },
+        { name: "Agenda", href: "/agenda", icon: faCalendarAlt },
       ],
     },
     { name: "Playlist", href: "/Playlist", icon: faClock },
@@ -60,7 +60,7 @@ const Navigation = () => {
     { name: "Top 30", href: "/Top30", icon: faList },
     {
       name: `Votes ${new Date().getFullYear()}`,
-      href: `Votes`,
+      href: `/votes`,
       icon: faHeart,
     },
   ];
