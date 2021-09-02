@@ -5,7 +5,7 @@ import Card, { outderdivCard } from "../shared/card/Card";
 
 const Votes = () => {
   const { data, isLoading, isError } = useQuery(
-    `votes${new Date().getFullYear()}`,
+    `votes`,
     async () => {
       const info = await fetch("/api/votes");
       return info.json();
