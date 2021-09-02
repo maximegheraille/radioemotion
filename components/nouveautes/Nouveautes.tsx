@@ -21,7 +21,7 @@ const Nouveautes = () => {
       {isLoading || isError ? (
         <div className="flex flex-wrap justify-center">
           {[...Array(42)].map((song: Song, index: number) => (
-            <div className={`${outderdivCard} mb-5`} key={index}>
+            <div className={`${outderdivCard} mb-5 ml-4`} key={index}>
               <Card
                 song={song}
                 isLoading={isLoading}
@@ -35,10 +35,7 @@ const Nouveautes = () => {
       ) : (
         <div className="flex-wrap flex justify-center space-x-4">
           {data?.map((song: Song, index: number) => (
-            <div
-              className={`${outderdivCard} mb-5 ${index === 0 ? "ml-4" : ""}`}
-              key={index}
-            >
+            <div className={`${outderdivCard} mb-5 ml-4`} key={index}>
               <Card
                 song={song}
                 isLoading={isLoading}
