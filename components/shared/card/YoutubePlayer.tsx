@@ -50,11 +50,11 @@ const YoutubePlayer = ({ url = "" }: YoutubeProps) => {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <div
-                className={`w-full sm:w-10/12 md:w-9/12 lg:w-7/12 xl:w-5/12 2xl:w-4/12 inline-block align-bottom text-black dark:text-white bg-[#E4E7EA] ${
+                className={`w-full sm:w-10/12 md:w-9/12 lg:w-7/12 xl:w-5/12 2xl:w-6/12 inline-block align-bottom text-black dark:text-white bg-[#E4E7EA] ${
                   darkTheme && "bg-[#1F1F1E]"
                 } rounded-lg text-left overflow-hidden shadow-lg transform transition-all my-8 align-middle w-full`}
               >
-                <div className="p-4">
+                <div className="pb-4">
                   <div className="aspect-w-16 aspect-h-9 flex items-start">
                     <iframe
                       className="w-full h-full"
@@ -68,8 +68,8 @@ const YoutubePlayer = ({ url = "" }: YoutubeProps) => {
                   <button
                     type="button"
                     className={`${
-                      darkTheme && "bg-[#1F1F1E] text-white"
-                    }  text-black mt-2 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm`}
+                      darkTheme ? "bg-[#1F1F1E] text-white" : "text-black"
+                    }  mt-2 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm`}
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                   >
