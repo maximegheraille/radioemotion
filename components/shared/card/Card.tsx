@@ -17,7 +17,13 @@ interface cardProps {
   isLoading: boolean;
   isError: boolean;
   song: Song | undefined;
-  component: "lastPlayed" | "nouveautes" | "newSongs" | "votes" | "nothing";
+  component:
+    | "lastPlayed"
+    | "nouveautes"
+    | "newSongs"
+    | "votes"
+    | "playlist"
+    | "nothing";
   className?: string;
 }
 
