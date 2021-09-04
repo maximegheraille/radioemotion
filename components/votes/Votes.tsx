@@ -19,9 +19,12 @@ const Votes = () => {
   return (
     <div>
       {isLoading || isError ? (
-        <div className="flex flex-wrap justify-center space-x-4">
+        <div className="flex flex-wrap justify-center">
           {[...Array(42)].map((song: Song, index: number) => (
-            <div className={`${outderdivCard} mb-5 ml-4`} key={index}>
+            <div
+              className={`${outderdivCard} mb-5 mx-1 sm:mx-2 md:mx-6 lg:mx-2 xl:mx-4 2xl:mx-5`}
+              key={index}
+            >
               <Card
                 song={song}
                 isLoading={isLoading}
@@ -34,9 +37,12 @@ const Votes = () => {
           ))}
         </div>
       ) : (
-        <div className="flex-wrap flex justify-center space-x-4">
+        <div className="flex-wrap flex justify-center items-center">
           {data?.map((song: Song, index: number) => (
-            <div className={`${outderdivCard} mb-5 ml-4`} key={index}>
+            <div
+              className={`${outderdivCard} mb-5 mx-1 sm:mx-2 md:mx-6 lg:mx-2 xl:mx-4 2xl:mx-5`}
+              key={index}
+            >
               <Card
                 song={song}
                 isLoading={isLoading}
