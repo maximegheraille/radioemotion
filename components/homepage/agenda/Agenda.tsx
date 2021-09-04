@@ -98,8 +98,10 @@ const Agendas = () => {
               src={agenda?.photo}
               className="rounded-l-lg"
             />
-            <div className="p-2 text-center lg:text-left lg:w-6/12 lg:flex-shrink-0">
-              <p className="text-lg font-medium line-clamp-2">{agenda.titre}</p>
+            <div className="p-2 text-center lg:w-6/12 xl:w-7/12 lg:text-left lg:flex-shrink-0">
+              <p className="text-base xl:text-lg font-medium line-clamp-1 xl:line-clamp-2">
+                {agenda.titre}
+              </p>
               <p className="py-1">
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
