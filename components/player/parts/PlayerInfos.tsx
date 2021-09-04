@@ -31,18 +31,6 @@ const PlayerInfos = () => {
           className={`flex justify-center content-center flex-col pl-2 lg:pl-4 text-sm lg:text-base text-white`}
         >
           <LoadingState
-            width="w-32"
-            heigth="h-4"
-            classNames=""
-            isLoading={isLoading}
-            isError={isError}
-            data={song?.artiste}
-          >
-            <p className="line-clamp-1 text-sm font-bold lg:text-base lg:leading-5">
-              {song?.artiste}
-            </p>
-          </LoadingState>
-          <LoadingState
             width="w-28"
             heigth="h-4"
             classNames=""
@@ -50,8 +38,20 @@ const PlayerInfos = () => {
             isError={isError}
             data={song?.titre}
           >
-            <p className="line-clamp-1 text-sm lg:text-base lg:leading-5 ">
+            <p className="line-clamp-1 text-sm font-bold lg:text-base lg:leading-5">
               {song?.titre}
+            </p>
+          </LoadingState>
+          <LoadingState
+            width="w-32"
+            heigth="h-4"
+            classNames=""
+            isLoading={isLoading}
+            isError={isError}
+            data={song?.artiste}
+          >
+            <p className="line-clamp-1 text-sm lg:text-base lg:leading-5">
+              {song?.artiste}
             </p>
           </LoadingState>
         </div>
