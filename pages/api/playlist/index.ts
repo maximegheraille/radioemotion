@@ -62,8 +62,3 @@ export default async function handler(
     connection.destroy();
   }
 }
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
