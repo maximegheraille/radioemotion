@@ -1,11 +1,21 @@
 import React from "react";
-
-const Playlist = () => {
+import LazyLoad from "react-lazyload";
+import Banniere from "../components/shared/banniere/Banniere";
+import playlistban from "../public/images/bannieres/playlist.jpg";
+import Playlist from "../components/playlist/Playlist";
+const playlist = () => {
   return (
     <>
-      <p>playlist</p>
+      <div>
+        <LazyLoad>
+          <Banniere image={playlistban} />
+        </LazyLoad>
+        <LazyLoad>
+          <Playlist />
+        </LazyLoad>
+      </div>
     </>
   );
 };
 
-export default Playlist;
+export default playlist;
