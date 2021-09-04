@@ -111,7 +111,7 @@ const Card = ({
           isError={isError}
           data={song?.artiste}
         >
-          <p className="line-clamp-2">{song?.titre}</p>
+          <p className="line-clamp-2 font-bold">{song?.titre}</p>
         </LoadingState>
 
         <LoadingState
@@ -188,8 +188,6 @@ const Card = ({
           data={song?.youtube}
         >
           <button
-            // href={song?.youtube}
-            //   target="_blanc"
             className={`${
               song?.youtube === "" ? "hidden" : "block"
             } group flex items-center text-[#f44336]`}
