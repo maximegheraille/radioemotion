@@ -89,39 +89,36 @@ const Playlist = () => {
         />
       </div>
       {isLoading || isError ? (
-        <div className="flex flex-wrap justify-center">
+        <div className="w-full">
           {[...Array(21)].map((song: Song, index: number) => (
-            <div
-              className={`${outderdivCard} mb-5 mx-1 sm:mx-2 md:mx-6 lg:mx-2 xl:mx-4 2xl:mx-5`}
-              key={index}
-            >
-              <Card
-                song={song}
-                isLoading={isLoading}
-                isError={isError}
-                key={index}
-                component="nothing"
-              />
+            <div className={`w-full mx-auto p-2`} key={index}>
+              <div
+                className={`flex transition-all rounded-lg
+                       text-white items-center justify-between w-full px-4 py-2 text-sm font-medium text-left bg-gradient-to-r from-[#303f9f] to-[#45cafc] hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <LoadingState
+                  width="w-32"
+                  heigth="h-4"
+                  classNames="m-1"
+                  isLoading={isLoading}
+                  isError={isError}
+                  data={song?.min}
+                >
+                  <>
+                    <div className="text-xl font-semibold">
+                      {song?.heure}:{song?.min}
+                    </div>
+                    <FontAwesomeIcon
+                      icon={faArrowDown}
+                      className={`text-white h-full transition-all`}
+                    />
+                  </>
+                </LoadingState>
+              </div>
             </div>
           ))}
         </div>
       ) : (
-        // <div className="flex-wrap flex justify-center">
-        //   {data?.map((song: Song, index: number) => (
-        //     <div
-        //       className={`${outderdivCard} mb-5 mx-1 sm:mx-2 md:mx-6 lg:mx-2 xl:mx-4 2xl:mx-5`}
-        //       key={index}
-        //     >
-        //       <Card
-        //         song={song}
-        //         showTime
-        //         isLoading={isLoading}
-        //         isError={isError}
-        //         component="playlist"
-        //       />
-        //     </div>
-        //   ))}
-        // </div>
         <>
           {song?.map((song: Song, index: number) => (
             <div className="w-full p-2 mx-auto" key={index}>
@@ -174,16 +171,54 @@ const Playlist = () => {
                           />
                         </div>
                         <div className="w-full flex">
-                          <div className="flex pl-10 text-left text-base lg:text-lg justify-center p-1 space-y-4 lg:space-y-5 flex-col w-4/6 lg:w-3/4">
+                          <div className="flex pl-4 lg:pl-10 text-left text-base lg:text-lg justify-center p-1 space-y-3 lg:space-y-5 flex-col w-4/6 lg:w-3/4">
                             <p className="line-clamp-2 font-bold">
                               {song?.titre}
                             </p>
                             <p className="line-clamp-2 text-base">
                               {song?.artiste}
                             </p>
+                            <p className="text-sm">({song?.annee})</p>
                           </div>
                           <div className="w-2/6 lg:w-full">
                             <div className="h-full flex flex-wrap w-full lg:w-full place-content-around">
+                              <LoadingState
+                                width="w-7"
+                                heigth="h-7"
+                                classNames=""
+                                isLoading={isLoading}
+                                isError={false}
+                                data={song?.voted}
+                              >
+                                <div
+                                  className={`relative inline-flex align-middle flex-shrink-0 mr-2`}
+                                >
+                                  <button
+                                    className={`group flex items-center focus:outline-none group disabled:cursor-not-allowed`}
+                                    onClick={() => {
+                                      CardVote.mutate({
+                                        id: song?.id,
+                                        voted: song?.voted,
+                                      });
+                                    }}
+                                    disabled={CardVote.isLoading}
+                                  >
+                                    <FontAwesomeIcon
+                                      icon={song?.voted ? faHeart : faHeart2}
+                                      size="2x"
+                                      className={`transform motion-safe:group-focus:scale-110 p-1.5  z-10  ${
+                                        song?.voted
+                                          ? "text-[#f44336]"
+                                          : "text-black dark:text-white"
+                                      } `}
+                                      aria-hidden="true"
+                                    />
+                                  </button>
+                                  <span className="text-xs p-[0.125rem] min-h-[1.25rem] min-w-[1.25rem] w-auto h-auto flex place-content-center text-white absolute top-0 right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-full">
+                                    {song?.votes && votesFormatter(song.votes)}
+                                  </span>
+                                </div>
+                              </LoadingState>
                               <LoadingState
                                 width="w-7"
                                 heigth="h-7"
@@ -227,43 +262,6 @@ const Playlist = () => {
                                     aria-hidden="true"
                                   />
                                 </button>
-                              </LoadingState>
-                              <LoadingState
-                                width="w-7"
-                                heigth="h-7"
-                                classNames=""
-                                isLoading={isLoading}
-                                isError={false}
-                                data={song?.voted}
-                              >
-                                <div
-                                  className={`relative inline-flex align-middle flex-shrink-0 mr-2`}
-                                >
-                                  <button
-                                    className={`group flex items-center focus:outline-none group disabled:cursor-not-allowed`}
-                                    onClick={() => {
-                                      CardVote.mutate({
-                                        id: song?.id,
-                                        voted: song?.voted,
-                                      });
-                                    }}
-                                    disabled={CardVote.isLoading}
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={song?.voted ? faHeart : faHeart2}
-                                      size="2x"
-                                      className={`transform motion-safe:group-focus:scale-110 p-1.5  z-10  ${
-                                        song?.voted
-                                          ? "text-[#f44336]"
-                                          : "text-black dark:text-white"
-                                      } `}
-                                      aria-hidden="true"
-                                    />
-                                  </button>
-                                  <span className="text-xs p-[0.125rem] min-h-[1.25rem] min-w-[1.25rem] w-auto h-auto flex place-content-center text-white absolute top-0 right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-full">
-                                    {song?.votes && votesFormatter(song.votes)}
-                                  </span>
-                                </div>
                               </LoadingState>
                             </div>
                           </div>
