@@ -131,7 +131,7 @@ const Playlist = () => {
                     <Disclosure.Button
                       className={`flex transition-all ${
                         open ? "rounded-t-lg" : "rounded-lg"
-                      } text-white items-center justify-between w-full px-4 py-2 text-sm font-medium text-left bg-gradient-to-r from-[#ef4444] to-[#EB6B81]  hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+                      } text-white items-center justify-between w-full px-4 py-2 text-sm font-medium text-left bg-gradient-to-r from-[#303f9f] to-[#45cafc] hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
                     >
                       <LoadingState
                         width="w-32"
@@ -174,7 +174,7 @@ const Playlist = () => {
                           />
                         </div>
                         <div className="w-full flex">
-                          <div className="flex text-center text-lg justify-center p-1 space-y-4 lg:space-y-7 items-center flex-col w-4/6 lg:w-1/4">
+                          <div className="flex pl-10 text-left text-base lg:text-lg justify-center p-1 space-y-4 lg:space-y-5 flex-col w-4/6 lg:w-3/4">
                             <p className="line-clamp-2 font-bold">
                               {song?.titre}
                             </p>
