@@ -13,4 +13,10 @@ export interface Song {
   best_position?: string;
   evolution_position?: number;
   weeks?: string;
+  annee?: string;
+}
+
+export interface Song_playlist extends Song {
+  min?: string;
+  position?: number;
 }
