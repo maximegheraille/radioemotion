@@ -10,7 +10,7 @@ export default async function handler(
   if (req.method === "POST") {
     const rows: any = await new Promise((resolve, reject) =>
       connection.query(
-        `call radioemotion_get_playlist('${req.body.year}','${req.body.month}', '${req.body.day}', '${req.body.hour}')`,
+        `call radioemotion_get_playlist(${req.body.year},${req.body.month},${req.body.day}, ${req.body.hour}, ${req.body.minute})`,
         async (err: any, rows: [Song[]], _fields: any) => {
           if (err) {
             return reject(err);

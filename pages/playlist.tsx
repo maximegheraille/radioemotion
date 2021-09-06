@@ -6,7 +6,7 @@ import Playlist from "../components/playlist/Playlist";
 const playlist = () => {
   return (
     <>
-      <div>
+      <div className="min-h-screen">
         <LazyLoad>
           <Banniere image={playlistban} />
         </LazyLoad>
