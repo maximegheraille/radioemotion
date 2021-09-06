@@ -124,7 +124,7 @@ const Playlist = () => {
         // </div>
         <>
           {song?.map((song: Song, index: number) => (
-            <div className="w-full p-2 mx-auto">
+            <div className="w-full p-2 mx-auto" key={index}>
               <Disclosure defaultOpen={true}>
                 {({ open }) => (
                   <>
