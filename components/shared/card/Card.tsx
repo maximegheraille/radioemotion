@@ -129,7 +129,6 @@ const Card = ({
         <LoadingState
           width="w-7"
           heigth="h-7"
-          classNames=""
           isLoading={isLoading}
           isError={false}
           data={song?.voted}
@@ -147,7 +146,7 @@ const Card = ({
               <FontAwesomeIcon
                 icon={song?.voted ? faHeart : faHeart2}
                 size="2x"
-                className={`transform motion-safe:group-focus:scale-110 p-1.5  z-10  ${
+                className={`transform motion-safe:group-focus:scale-110 p-1.5 z-10 ${
                   song?.voted ? "text-[#f44336]" : "text-black dark:text-white"
                 } `}
                 aria-hidden="true"
