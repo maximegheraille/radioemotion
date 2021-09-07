@@ -85,13 +85,13 @@ const Playlist = () => {
             setDate(new Date(dates[0]));
             queryClient.invalidateQueries(`playlist`);
           }}
-          className="rounded-md text-center mb-8"
+          className="rounded-lg text-center mb-8 border-2 border-[rgb(164, 167, 181)] dark:border-white"
         />
       </div>
       {isLoading || isError ? (
         <div className="w-full">
           {[...Array(21)].map((song: Song, index: number) => (
-            <div className={`w-full mx-auto p-2`} key={index}>
+            <div className={`w-full lg:w-8/12 p-2 mx-auto`} key={index}>
               <div
                 className={`flex transition-all rounded-lg
                        text-white items-center justify-between w-full px-4 py-2 text-sm font-medium text-left bg-gradient-to-r from-[#303f9f] to-[#45cafc] hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
@@ -121,14 +121,14 @@ const Playlist = () => {
       ) : (
         <>
           {song?.map((song: Song, index: number) => (
-            <div className="w-full p-2 mx-auto" key={index}>
+            <div className="w-full lg:w-8/12 p-2 mx-auto" key={index}>
               <Disclosure defaultOpen={true}>
                 {({ open }) => (
                   <>
                     <Disclosure.Button
                       className={`flex transition-all ${
                         open ? "rounded-t-lg" : "rounded-lg"
-                      } text-white items-center justify-between w-full px-4 py-2 text-sm font-medium text-left bg-gradient-to-r from-[#303f9f] to-[#45cafc] hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+                      } text-white items-center justify-between w-full py-1 px-4 lg:py-1 text-sm font-medium text-left bg-gradient-to-r from-[#303f9f] to-[#45cafc] hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
                     >
                       <LoadingState
                         width="w-32"
@@ -139,7 +139,7 @@ const Playlist = () => {
                         data={song?.min}
                       >
                         <>
-                          <div className="text-xl font-semibold">
+                          <div className="text-lg lg:text-xl font-semibold pl-5">
                             {song?.heure}:{song?.min}
                           </div>
                           <FontAwesomeIcon
@@ -160,7 +160,7 @@ const Playlist = () => {
                       leaveFrom="transform scale-100 opacity-100"
                       leaveTo="transform scale-95 opacity-0"
                     >
-                      <Disclosure.Panel className="transform transition-all flex text-sm rounded-b-lg text-gray-500 card rounded-t-none">
+                      <Disclosure.Panel className="transform transition-all flex rounded-b-lg text-gray-500 card rounded-t-none">
                         <div className="w-28 min-w-[7rem] lg:max-w-[10rem] lg:min-w-[10rem] flex place-content-center">
                           <Image
                             width={160}
@@ -170,55 +170,18 @@ const Playlist = () => {
                             alt="pochette de l'album"
                           />
                         </div>
-                        <div className="w-full flex">
-                          <div className="flex pl-4 lg:pl-10 text-left text-base lg:text-lg justify-center p-1 space-y-3 lg:space-y-5 flex-col w-4/6 lg:w-3/4">
-                            <p className="line-clamp-2 font-bold">
+                        <div className="w-full flex-col lg:flex-row flex">
+                          <div className="h-3/4 text-black dark:text-white flex pl-4 lg:pl-10 text-left text-base lg:text-lg justify-center p-1 space-y-1 lg:space-y-5 flex-col w-full lg:w-6/12">
+                            <p className="line-clamp-2 font-bold ">
                               {song?.titre}
                             </p>
                             <p className="line-clamp-2 text-base">
                               {song?.artiste}
                             </p>
-                            <p className="text-sm">({song?.annee})</p>
+                            {/* <p className="text-sm">({song?.annee})</p> */}
                           </div>
-                          <div className="w-2/6 lg:w-full">
+                          <div className="my-1 px-2 lg:w-6/12">
                             <div className="h-full flex flex-wrap w-full lg:w-full place-content-around">
-                              <LoadingState
-                                width="w-7"
-                                heigth="h-7"
-                                classNames=""
-                                isLoading={isLoading}
-                                isError={false}
-                                data={song?.voted}
-                              >
-                                <div
-                                  className={`relative inline-flex align-middle flex-shrink-0 mr-2`}
-                                >
-                                  <button
-                                    className={`group flex items-center focus:outline-none group disabled:cursor-not-allowed`}
-                                    onClick={() => {
-                                      CardVote.mutate({
-                                        id: song?.id,
-                                        voted: song?.voted,
-                                      });
-                                    }}
-                                    disabled={CardVote.isLoading}
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={song?.voted ? faHeart : faHeart2}
-                                      size="2x"
-                                      className={`transform motion-safe:group-focus:scale-110 p-1.5  z-10  ${
-                                        song?.voted
-                                          ? "text-[#f44336]"
-                                          : "text-black dark:text-white"
-                                      } `}
-                                      aria-hidden="true"
-                                    />
-                                  </button>
-                                  <span className="text-xs p-[0.125rem] min-h-[1.25rem] min-w-[1.25rem] w-auto h-auto flex place-content-center text-white absolute top-0 right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-full">
-                                    {song?.votes && votesFormatter(song.votes)}
-                                  </span>
-                                </div>
-                              </LoadingState>
                               <LoadingState
                                 width="w-7"
                                 heigth="h-7"
@@ -232,7 +195,7 @@ const Playlist = () => {
                                   href={`${song?.apple_music}`}
                                   target="_blank"
                                 >
-                                  <div className="w-6 mr-1 align-middle flex">
+                                  <div className="w-6 align-middle flex">
                                     <Image
                                       src={Apple_music}
                                       className={`p-1 transform motion-safe:group-focus:scale-110 w-5 lg:w-5 text-white`}
@@ -263,6 +226,46 @@ const Playlist = () => {
                                   />
                                 </button>
                               </LoadingState>
+                              <div className="flex place-content-evenly space-x-2 h-[2rem] max-h-[2rem]">
+                                <LoadingState
+                                  width="w-7"
+                                  heigth="h-7"
+                                  classNames=""
+                                  isLoading={isLoading}
+                                  isError={isError}
+                                  data={song?.voted}
+                                >
+                                  <div
+                                    className={`relative inline-flex align-middle flex-shrink-0`}
+                                  >
+                                    <button
+                                      className={`group flex items-center focus:outline-none group disabled:cursor-not-allowed`}
+                                      onClick={() => {
+                                        CardVote.mutate({
+                                          id: song?.id,
+                                          voted: song?.voted,
+                                        });
+                                      }}
+                                      disabled={CardVote.isLoading}
+                                    >
+                                      <FontAwesomeIcon
+                                        icon={song?.voted ? faHeart : faHeart2}
+                                        size="2x"
+                                        className={`transform motion-safe:group-focus:scale-110 p-1.5 pb-0 z-10 ${
+                                          song?.voted
+                                            ? "text-[#f44336]"
+                                            : "text-black dark:text-white"
+                                        } `}
+                                        aria-hidden="true"
+                                      />
+                                    </button>
+                                    <span className="text-xs p-[0.125rem] min-h-[1.25rem] min-w-[1.25rem] w-auto h-auto flex place-content-center text-white absolute top-1 right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-full">
+                                      {song?.votes &&
+                                        votesFormatter(song.votes)}
+                                    </span>
+                                  </div>
+                                </LoadingState>
+                              </div>
                             </div>
                           </div>
                         </div>
