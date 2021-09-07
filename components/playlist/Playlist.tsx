@@ -3,7 +3,6 @@ import "flatpickr/dist/themes/light.css";
 import Flatpickr from "react-flatpickr";
 import { French } from "flatpickr/dist/l10n/fr.js";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import Card, { outderdivCard } from "../shared/card/Card";
 import { Song } from "../../interfaces/song";
 import { Disclosure, Transition } from "@headlessui/react";
 import LoadingState from "../shared/LoadingState";
