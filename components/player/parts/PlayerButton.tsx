@@ -10,20 +10,9 @@ const PlayerButton = ({ volume }: playerProps) => {
     if (playerRef.current !== null) {
       if (playerRef.current?.paused) {
         playerRef.current.children[0].outerHTML =
-          '<source src="https://stream1.dgnet.be/1" type="audio/ogg"></source>';
+          '<source src="https://stream1.dgnet.be/1" type="audio/ogg"></source>   <source src="https://stream1.dgnet.be/1" type="audio/mp3"></source>';
         playerRef.current.play();
         setPlaying(true);
-        if ("mediaSession" in navigator) {
-          navigator.mediaSession.metadata = new MediaMetadata({
-            title: song?.titre,
-            artist: song?.artiste,
-            artwork: [
-              {
-                src: song?.photo!,
-              },
-            ],
-          });
-        }
       } else {
         playerRef.current?.pause();
         playerRef.current.children[0].outerHTML =
@@ -38,6 +27,41 @@ const PlayerButton = ({ volume }: playerProps) => {
       playerRef.current.volume = volume / 100;
     }
   }, [volume]);
+  useEffect(() => {
+    if ("mediaSession" in navigator && song !== undefined) {
+      navigator.mediaSession.setActionHandler("pause", function () {
+        if (playerRef.current) {
+          playerRef.current?.pause();
+          playerRef.current.children[0].outerHTML =
+            '<source src="" type="audio/ogg"></source>';
+          playerRef.current.load();
+          setPlaying(false);
+        }
+      });
+      navigator.mediaSession.setActionHandler("play", function () {
+        if (playerRef.current) {
+          playerRef.current.children[0].outerHTML =
+            '<source src="https://stream1.dgnet.be/1" type="audio/ogg"></source>';
+          playerRef.current.play();
+          setPlaying(true);
+        }
+      });
+    }
+  }, [playerRef.current?.paused]);
+
+  useEffect(() => {
+    if ("mediaSession" in navigator && song !== undefined) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: song?.titre,
+        artist: song?.artiste,
+        artwork: [
+          {
+            src: song?.photo!,
+          },
+        ],
+      });
+    }
+  }, [song?.titre]);
   return (
     <>
       <div
