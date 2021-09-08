@@ -13,6 +13,17 @@ const PlayerButton = ({ volume }: playerProps) => {
           '<source src="https://stream1.dgnet.be/1" type="audio/ogg"></source>';
         playerRef.current.play();
         setPlaying(true);
+        if ("mediaSession" in navigator) {
+          navigator.mediaSession.metadata = new MediaMetadata({
+            title: song?.titre,
+            artist: song?.artiste,
+            artwork: [
+              {
+                src: song?.photo!,
+              },
+            ],
+          });
+        }
       } else {
         playerRef.current?.pause();
         playerRef.current.children[0].outerHTML =
@@ -29,7 +40,9 @@ const PlayerButton = ({ volume }: playerProps) => {
   }, [volume]);
   return (
     <>
-      <div className={`${playerRef.current?.paused} lg:mr-2 flex align-middle`}>
+      <div
+        className={`${playerRef.current?.paused} lg:mr-2 flex align-middle lg:w-[2%]`}
+      >
         <button
           onClick={() => {
             setplayer();
@@ -37,7 +50,6 @@ const PlayerButton = ({ volume }: playerProps) => {
           title={`${playing ? "Arreter la musique" : "Lancer la musique"}`}
           aria-label={`${playing ? "Arreter la musique" : "Lancer la musique"}`}
           className="pr-2 lg:pr-0 my-2 group"
-          //   style={{ outline: "0px auto transparent" }}
         >
           <div
             className={`text-white transition-all duration-300 transform  ${

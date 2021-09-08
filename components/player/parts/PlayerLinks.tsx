@@ -46,7 +46,7 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
 
   return (
     <>
-      <div className="hidden lg:flex items-center">
+      <div className="hidden lg:flex items-center lg:w-[48%] justify-end">
         <Popover className="hidden lg:block relative h-full" as="div">
           {({ open }) => (
             <>

@@ -7,7 +7,7 @@ const PlayerInfos = () => {
   const { data: song, isLoading, isError } = usePlayer();
   return (
     <>
-      <div className="flex">
+      <div className="flex lg:w-[48%]">
         <div className="flex items-center flex-shrink-0">
           <div className="w-full flex align-middle">
             <LoadingState
