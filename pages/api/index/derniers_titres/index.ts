@@ -21,6 +21,9 @@ export default async function handler(
             } else {
               song.photo = `https://www.radioemotion.be/covers/${song.id}.jpg`;
             }
+            if (song.apple_music === "0") {
+              song.apple_music = "";
+            }
             // verify if there is a youtube link
             if (song.youtube === "0") {
               song.youtube = "";
