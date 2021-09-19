@@ -51,7 +51,7 @@ const Infos = () => {
                         isError={isError}
                       >
                         <p className="text-xl place-content-center items-center flex  font-semibold line-clamp-2">
-                          {info?.titre}
+                          {info?.title}
                         </p>
                       </LoadingState>
                       <LoadingState
@@ -97,7 +97,7 @@ const Infos = () => {
                         isError={isError}
                       >
                         <p className="text-lg font-semibold line-clamp-2 text-center w-full">
-                          {info?.titre}
+                          {info?.title}
                         </p>
                       </LoadingState>
                     </div>
@@ -133,7 +133,7 @@ const Infos = () => {
                       isError={isError}
                     >
                       <p className="text-lg font-semibold line-clamp-2 text-center w-full">
-                        {info?.titre}
+                        {info?.title}
                       </p>
                     </LoadingState>
                   </div>
@@ -159,7 +159,7 @@ const Infos = () => {
                   />
                   <div className="lg:w-4/6 h-full p-3 place-content-center align-middle justify-center items-center">
                     <p className="text-xl place-content-center items-center font-semibold line-clamp-2">
-                      {info?.titre}
+                      {info?.title}
                     </p>
                     <p className="hidden text-base pt-4 place-content-center items-center line-clamp-3">
                       {info?.preview}
@@ -176,11 +176,11 @@ const Infos = () => {
                     height="320"
                     src={info?.photo}
                     layout="responsive"
-                    className="rounded-lg"
+                    className="rounded-t-lg"
                   />
                   <div className="p-2">
                     <p className="text-lg font-semibold line-clamp-2 text-center w-full">
-                      {info?.titre}
+                      {info?.title}
                     </p>
                   </div>
                 </div>
