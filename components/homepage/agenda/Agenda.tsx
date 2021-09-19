@@ -43,12 +43,12 @@ const Agendas = () => {
                 <LoadingState
                   width="w-full"
                   heigth="h-4"
-                  data={agenda?.titre}
+                  data={agenda?.title}
                   isLoading={isLoading}
                   isError={isError}
                 >
                   <p className="text-lg font-medium line-clamp-2">
-                    {agenda?.titre}
+                    {agenda?.title}
                   </p>
                 </LoadingState>
                 <LoadingState
@@ -98,9 +98,9 @@ const Agendas = () => {
               src={agenda?.photo}
               className="rounded-l-lg"
             />
-            <div className="p-2 text-center lg:w-6/12 xl:w-7/12 lg:text-left lg:flex-shrink-0">
+            <div className="p-2 text-center lg:w-6/12 xl:w-6/12 lg:text-left lg:flex-shrink-0">
               <p className="text-base xl:text-lg font-medium line-clamp-1 xl:line-clamp-2">
-                {agenda.titre}
+                {agenda.title}
               </p>
               <p className="py-1">
                 <FontAwesomeIcon
