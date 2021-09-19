@@ -1,4 +1,4 @@
-import { Info } from "./../../../../interfaces/info";
+import { Info } from "../../../../interfaces/info";
 import { getConnection2 } from "../../connection/connection";
 import { NextApiRequest, NextApiResponse } from "next";
 
