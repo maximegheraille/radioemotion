@@ -138,7 +138,7 @@ const Top30 = (/*{ top30 }: top30Props*/) => {
                   width={160}
                   height={160}
                   className={`rounded-lg`}
-                  src={song?.photo!}
+                  src={song?.photo.toString()!}
                   alt="pochette de l'album"
                 />
               </div>

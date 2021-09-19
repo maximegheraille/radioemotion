@@ -165,7 +165,7 @@ const Playlist = () => {
                             width={160}
                             height={160}
                             className={`rounded-bl-lg`}
-                            src={song?.photo!}
+                            src={song?.photo.toString()!}
                             alt="pochette de l'album"
                           />
                         </div>

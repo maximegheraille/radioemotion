@@ -22,7 +22,7 @@ const PlayerInfos = () => {
                 width={40}
                 height={40}
                 className={`rounded-lg items-center`}
-                src={song?.photo!}
+                src={song?.photo.toString()!}
               />
             </LoadingState>
           </div>

@@ -56,7 +56,7 @@ const PlayerButton = ({ volume }: playerProps) => {
         artist: song?.artiste,
         artwork: [
           {
-            src: song?.photo!,
+            src: song?.photo!.toString(),
           },
         ],
       });

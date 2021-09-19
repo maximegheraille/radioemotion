@@ -97,7 +97,7 @@ const Card = ({
             className={`items-center ${
               !number && !showTime ? "rounded-t-lg" : null
             }`}
-            src={song?.photo!}
+            src={song?.photo.toString()!}
             alt="pochette de l'album"
           />
         </LoadingState>
