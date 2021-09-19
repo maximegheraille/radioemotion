@@ -51,7 +51,7 @@ const Navigation = () => {
       href: "/region",
       icon: faMap,
       childs: [
-        { name: "Info regionale", href: "/inforegionales", icon: faNewspaper },
+        { name: "Info regionale", href: "/actualites", icon: faNewspaper },
         { name: "Agenda", href: "/agenda", icon: faCalendarAlt },
       ],
     },
