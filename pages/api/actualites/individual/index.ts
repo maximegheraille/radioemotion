@@ -18,9 +18,12 @@ export default async function handler(
           console.log(err);
           return;
         }
-        console.log(rows);
-        rows[0][0].photo = `https://www.radioemotion.be/images/infos/${rows[0][0].id}.jpg`;
-        res.status(200).json(rows[0][0]);
+        if (rows[0][0] === undefined) {
+          res.status(200).json({});
+        } else {
+          rows[0][0].photo = `https://www.radioemotion.be/images/infos/${rows[0][0].id}.jpg`;
+          res.status(200).json(rows[0][0]);
+        }
         connection.destroy();
       }
     );

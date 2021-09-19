@@ -10,6 +10,13 @@ import Article from "../../components/shared/article/agenda/Article";
 // }
 
 const AgendaSlug = ({ agenda }: any) => {
+  if (Object.entries(agenda).length === 0 && agenda.constructor === Object) {
+    return (
+      <div className="flex h-[85vh] place-content-center text-center text-2xl items-center">
+        <p className="dark:text-white">Page introuvable</p>
+      </div>
+    );
+  }
   return (
     <div className="lg:flex text-black dark:text-white place-content-between space-x-3">
       <div className="w-full lg:w-9/12">
