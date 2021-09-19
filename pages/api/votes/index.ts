@@ -17,8 +17,8 @@ export default async function handler(
           }
           rows.forEach((song: Song, index: number) => {
             song.position = index + 1;
-            if (song.photo === "0") {
-              song.photo = "";
+            if (song.photo === 0) {
+              song.photo = `https://www.radioemotion.be/covers/emo5.jpg`;
             } else {
               song.photo = `https://www.radioemotion.be/covers/${song.id}.jpg`;
             }
