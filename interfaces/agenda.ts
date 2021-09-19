@@ -5,6 +5,6 @@ export interface Agenda {
   start: string;
   end: string;
   text: string;
-  titre: string;
+  title: string;
   commune: string;
 }

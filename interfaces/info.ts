@@ -1,9 +1,14 @@
 export interface Info {
   id: number;
-  titre: string;
+  title: string;
   preview: string;
-  text_complet: string;
-  date_debut: string;
+  full_text: string;
+  start_date: string;
   commune: string;
   photo: string;
+}
+
+export interface InfoPaginated extends Info {
+  hasMore: boolean | number;
+  max_page: number;
 }

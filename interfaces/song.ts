@@ -2,7 +2,7 @@ export interface Song {
   id: number;
   titre: string;
   artiste: string;
-  photo: string;
+  photo: string | number;
   youtube?: string;
   apple_music?: string;
   voted?: boolean;
