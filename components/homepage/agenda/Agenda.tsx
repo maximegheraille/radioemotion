@@ -9,6 +9,7 @@ import { useQuery } from "react-query";
 import { Agenda } from "../../../interfaces/agenda";
 import { DateIsoConverter } from "../../shared/datetime/DateIsoConverter";
 import LoadingState from "../../shared/LoadingState";
+import Link from "next/link";
 
 const Agendas = () => {
   const { data, isLoading, isError } = useQuery(
@@ -91,33 +92,37 @@ const Agendas = () => {
       )}
       {data &&
         data.map((agenda: Agenda, index: number) => (
-          <div key={index} className="shadow-lg mb-4 lg:flex card">
-            <Image
-              width="435"
-              height="235"
-              src={agenda?.photo}
-              className="rounded-l-lg"
-            />
-            <div className="p-2 text-center lg:w-6/12 xl:w-6/12 lg:text-left lg:flex-shrink-0">
-              <p className="text-base xl:text-lg font-medium line-clamp-1 xl:line-clamp-2">
-                {agenda.title}
-              </p>
-              <p className="py-1">
-                <FontAwesomeIcon
-                  icon={faMapMarkerAlt}
-                  className="mr-2 text-[#D53E3A]"
+          <Link key={index} href={`/agenda/${agenda.id}`}>
+            <a>
+              <div className="shadow-lg mb-4 lg:flex card">
+                <Image
+                  width="435"
+                  height="235"
+                  src={agenda?.photo}
+                  className="rounded-l-lg"
                 />
-                {agenda.commune}
-              </p>
-              <p>
-                <FontAwesomeIcon
-                  icon={faCalendarAlt}
-                  className="mr-2 text-[#D53E3A]"
-                />
-                {DateIsoConverter(agenda.event_date)}
-              </p>
-            </div>
-          </div>
+                <div className="p-2 text-center lg:w-6/12 xl:w-6/12 lg:text-left lg:flex-shrink-0">
+                  <p className="text-base xl:text-lg font-medium line-clamp-1 xl:line-clamp-2">
+                    {agenda.title}
+                  </p>
+                  <p className="py-1">
+                    <FontAwesomeIcon
+                      icon={faMapMarkerAlt}
+                      className="mr-2 text-[#D53E3A]"
+                    />
+                    {agenda.commune}
+                  </p>
+                  <p>
+                    <FontAwesomeIcon
+                      icon={faCalendarAlt}
+                      className="mr-2 text-[#D53E3A]"
+                    />
+                    {DateIsoConverter(agenda.event_date)}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </Link>
         ))}
     </div>
   );

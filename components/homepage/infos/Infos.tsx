@@ -3,6 +3,8 @@ import { useQuery } from "react-query";
 import { Info } from "../../../interfaces/info";
 import Image from "next/image";
 import LoadingState from "../../shared/LoadingState";
+import Link from "next/link";
+
 const Infos = () => {
   const {
     data: infos,
@@ -147,43 +149,45 @@ const Infos = () => {
           {infos.map((info: Info, index: number) => (
             <>
               {index === 0 ? (
-                <div
-                  key={index}
-                  className="shadow-lg mb-6 mr-14 w-full lg:flex text-center card"
-                >
-                  <Image
-                    width="576"
-                    height="320"
-                    src={info?.photo}
-                    className="rounded-lg"
-                  />
-                  <div className="lg:w-4/6 h-full p-3 place-content-center align-middle justify-center items-center">
-                    <p className="text-xl place-content-center items-center font-semibold line-clamp-2">
-                      {info?.title}
-                    </p>
-                    <p className="hidden text-base pt-4 place-content-center items-center line-clamp-3">
-                      {info?.preview}
-                    </p>
-                  </div>
-                </div>
+                <Link key={index} href={`/actualites/${info.id}`}>
+                  <a>
+                    <div className="shadow-lg mb-6 mr-14 w-full lg:flex text-center card">
+                      <Image
+                        width="576"
+                        height="320"
+                        src={info?.photo}
+                        className="rounded-lg"
+                      />
+                      <div className="lg:w-4/6 h-full p-3 place-content-center align-middle justify-center items-center">
+                        <p className="text-xl place-content-center items-center font-semibold line-clamp-2">
+                          {info?.title}
+                        </p>
+                        <p className="hidden text-base pt-4 place-content-center items-center line-clamp-3">
+                          {info?.preview}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </Link>
               ) : (
-                <div
-                  key={index}
-                  className="shadow-lg mb-6 lg:w-72 lg:mr-7 text-center card"
-                >
-                  <Image
-                    width="576"
-                    height="320"
-                    src={info?.photo}
-                    layout="responsive"
-                    className="rounded-t-lg"
-                  />
-                  <div className="p-2">
-                    <p className="text-lg font-semibold line-clamp-2 text-center w-full">
-                      {info?.title}
-                    </p>
-                  </div>
-                </div>
+                <Link key={index} href={`/actualites/${info.id}`}>
+                  <a>
+                    <div className="shadow-lg mb-6 lg:w-72 lg:mr-7 text-center card">
+                      <Image
+                        width="576"
+                        height="320"
+                        src={info?.photo}
+                        layout="responsive"
+                        className="rounded-t-lg"
+                      />
+                      <div className="p-2">
+                        <p className="text-lg font-semibold line-clamp-2 text-center w-full">
+                          {info?.title}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </Link>
               )}
             </>
           ))}
