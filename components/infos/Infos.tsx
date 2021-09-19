@@ -17,14 +17,14 @@ const InfosPage = () => {
     }
   );
   return (
-    <div className="lg:flex text-black dark:text-white place-content-between space-x-3">
+    <div className="lg:flex text-black dark:text-white place-content-between">
       <div className="w-full lg:w-9/12">
         <div>
           <Title title="L'INFO DE VOTRE REGION" className="text-center" />
           <Article article={data!} isError={isError} isLoading={isLoading} />
         </div>
       </div>
-      <div className="w-full lg:w-3/12">
+      <div className="w-full lg:w-3/12 lg:px-2">
         {data && <Paginated type="actualites" exclude_id={data?.id} />}
       </div>
     </div>

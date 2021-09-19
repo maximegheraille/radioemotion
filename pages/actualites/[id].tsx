@@ -14,12 +14,12 @@ const InfoPage = ({ info }: any) => {
     );
   }
   return (
-    <div className="lg:flex text-black dark:text-white place-content-between space-x-3">
+    <div className="lg:flex text-black dark:text-white place-content-between">
       <div className="w-full lg:w-9/12">
         <Title title="L'INFO DE VOTRE REGION" className="text-center" />
         <Article article={info} />
       </div>
-      <div className="w-full lg:w-3/12">
+      <div className="w-full lg:w-3/12  lg:px-2">
         <Paginated type="actualites" exclude_id={info.id} />
         {/*  <p>{JSON.stringify(info)}</p>*/}
       </div>

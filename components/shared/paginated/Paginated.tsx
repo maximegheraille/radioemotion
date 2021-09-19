@@ -122,7 +122,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
             </div>
             <div className="flex justify-center items-center space-x-1">
               <button
-                className="flex card bg-white items-center px-4 py-2 rounded-lg-md text-black hover:text-white hover:bg-[#181144]"
+                className="flex card bg-white items-center px-3 lg:px-4 py-1 lg:py-2 rounded-lg-md text-black hover:text-white hover:bg-[#181144]"
                 onClick={() => setPage((old) => Math.max(old - 1, 0))}
                 disabled={page === 1}
               >
@@ -133,7 +133,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
                   page - 1 > 1 && info && info?.options.max_page && page > 1
                     ? ""
                     : "hidden"
-                } card px-4 py-2 bg-white dark:text-white rounded-lg-md dark:hover:text-white hover:bg-[#181144]`}
+                } card px-3 lg:px-4 py-1 lg:py-2 bg-white dark:text-white rounded-lg-md dark:hover:text-white hover:bg-[#181144]`}
                 onClick={() => {
                   setPage(1);
                 }}
@@ -145,7 +145,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
                   page - 2
                 } ${
                   page - 2 > 1
-                } card bg-white px-4 py-2 dark:text-white  rounded-lg-md hover:text-white hover:bg-[#181144]`}
+                } card bg-white px-3 lg:px-4 py-1 lg:py-2 dark:text-white  rounded-lg-md hover:text-white hover:bg-[#181144]`}
               >
                 ...
               </div>
@@ -154,7 +154,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
                   info && info?.options.max_page >= page - 1 && page - 1 > 0
                     ? ""
                     : "hidden"
-                } px-4 py-2 card bg-white rounded-lg-md hover:text-white dark:text-white dark:hover:text-white hover:bg-[#181144] `}
+                } px-3 lg:px-4 py-1 lg:py-2 card bg-white rounded-lg-md hover:text-white dark:text-white dark:hover:text-white hover:bg-[#181144] `}
                 onClick={() => {
                   setPage(page - 1);
                 }}
@@ -163,14 +163,14 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
               </button>
 
               <button
-                className={`card text-white z-10 px-4 py-2 bg-[#2D2180] dark:bg-[#2D2180] rounded-lg-md hover:text-white hover:bg-[#181144] `}
+                className={`card text-white z-10 px-3 lg:px-4 py-1 lg:py-2 bg-[#2D2180] dark:bg-[#2D2180] rounded-lg-md hover:text-white hover:bg-[#181144] `}
               >
                 {page}
               </button>
               <button
                 className={`${
                   info && info?.options.max_page >= page + 1 ? null : "hidden"
-                } card bg-white px-4 py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144] `}
+                } card bg-white px-3 lg:px-4 py-1 lg:py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144] `}
                 onClick={() => {
                   setPage(page + 1);
                 }}
@@ -180,7 +180,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
               <button
                 className={`${
                   info && info?.options.max_page >= page + 2 ? null : "hidden"
-                } card bg-white px-4 py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144] `}
+                } card bg-white px-3 lg:px-4 py-1 lg:py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144] `}
                 onClick={() => {
                   setPage(page + 2);
                 }}
@@ -190,14 +190,14 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
               <div
                 className={`${
                   info && info?.options.max_page > page + 2 ? "" : "hidden"
-                } card bg-white px-4 py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144]`}
+                } card bg-white px-3 lg:px-4 py-1 lg:py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144]`}
               >
                 ...
               </div>
               <button
                 className={`${
                   info && info?.options.max_page > page + 2 ? null : "hidden"
-                } card bg-white px-4 py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144]`}
+                } card bg-white px-3 lg:px-4 py-1 lg:py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144]`}
                 onClick={() => {
                   if (info) {
                     setPage(info?.options.max_page);
@@ -207,7 +207,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
                 {info && info?.options.max_page}
               </button>
               <button
-                className="card bg-white px-4 py-2 text-black rounded-lg-md hover:text-white hover:bg-[#181144]"
+                className="card bg-white px-3 lg:px-4 py-1 lg:py-2 text-black rounded-lg-md hover:text-white hover:bg-[#181144]"
                 onClick={() => {
                   if (info && page + 1 <= info?.options.max_page) {
                     setPage(page + 1);
