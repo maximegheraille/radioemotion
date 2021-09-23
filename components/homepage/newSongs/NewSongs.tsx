@@ -96,8 +96,8 @@ const NewSongs = () => {
             {data?.map((song: Song, index: number) => (
               <div
                 className={`${outderdivCard} mr-[30px] mb-5 ${
-                  index > 5 && "lg:hidden xl:block"
-                } ${index > 7 && "xl:hidden 2xl:block"}`}
+                  index > 5 ? "lg:hidden xl:block" : ""
+                } ${index > 7 ? "xl:hidden 2xl:block" : ""}`}
                 key={index}
               >
                 <Card
