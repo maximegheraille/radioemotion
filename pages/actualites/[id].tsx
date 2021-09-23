@@ -50,7 +50,6 @@ export const getStaticProps = async ({ params }: any) => {
 export const getStaticPaths = async () => {
   const res = await fetch(`${server}/api/actualites/all`);
   const posts = await res.json();
-  //const posts: any = [{ id: "270" }];
   // Get the paths we want to pre-render based on posts
   const paths = posts.map((info: Info) => ({
     params: { id: info.id.toString() },
