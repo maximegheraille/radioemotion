@@ -63,7 +63,11 @@ const NavigationBar = ({
             <div className="flex-shrink-0 py-2 flex items-center">
               <div className="w-full px-2 items-center flex place-content-center">
                 <div className="w-20 flex">
-                  <Image src={logo} className="bg-white" />
+                  <Link href={"/"}>
+                    <a>
+                      <Image src={logo} className="bg-white" />
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
