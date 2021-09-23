@@ -99,7 +99,7 @@ const Agendas = () => {
                   width="435"
                   height="235"
                   src={agenda?.photo}
-                  className="rounded-l-lg"
+                  className="rounded-t-lg lg:rounded-l-lg lg:rounded-r-none"
                 />
                 <div className="p-2 text-center lg:w-6/12 xl:w-6/12 lg:text-left lg:flex-shrink-0">
                   <p className="text-base xl:text-lg font-medium line-clamp-1 xl:line-clamp-2">
