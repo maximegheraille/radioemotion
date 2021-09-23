@@ -1,9 +1,6 @@
 import LazyLoad from "react-lazyload";
 import Banniere from "../components/shared/banniere/Banniere";
 import banequipe from "../public/images/bannieres/equipe.jpg";
-import Part1 from "../components/presentation/parts/Part1";
-import Part2 from "../components/presentation/parts/Part2";
-import Part3 from "../components/presentation/parts/Part3";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import { server } from "../config/nextjs";
 import { ParsedUrlQuery } from "querystring";
@@ -12,7 +9,6 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
-  faFacebookF,
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
