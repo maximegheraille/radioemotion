@@ -150,15 +150,15 @@ const Infos = () => {
             <>
               {index === 0 ? (
                 <Link key={index} href={`/actualites/${info.id}`}>
-                  <a>
-                    <div className="shadow-lg mb-6 mr-14 w-full lg:flex text-center card">
+                  <a className="flex">
+                    <div className="shadow-lg flex-1 w-full mb-6 lg:mr-14 lg:w-11/12 xl:w-full lg:flex text-center card">
                       <Image
-                        width="576"
-                        height="320"
+                        width="470"
+                        height="240"
                         src={info?.photo}
                         className="rounded-lg"
                       />
-                      <div className="lg:w-4/6 h-full p-3 place-content-center align-middle justify-center items-center">
+                      <div className="lg:w-4/6 xl:w-4/6 h-full p-3 place-content-center align-middle justify-center items-center">
                         <p className="text-xl place-content-center items-center font-semibold line-clamp-2">
                           {info?.title}
                         </p>
@@ -172,7 +172,7 @@ const Infos = () => {
               ) : (
                 <Link key={index} href={`/actualites/${info.id}`}>
                   <a>
-                    <div className="shadow-lg mb-6 lg:w-72 lg:mr-7 text-center card">
+                    <div className="shadow-lg mb-6 lg:mr-7 lg:w-[16.5rem] xl:w-[13.8rem] xl:mr-[30px] 2xl:w-[17.5rem] 2xl:mr-[1.60rem] text-center card">
                       <Image
                         width="576"
                         height="320"
