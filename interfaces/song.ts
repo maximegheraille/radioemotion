@@ -10,6 +10,7 @@ export interface Song {
   heure?: number | string;
   min?: string;
   position?: number;
+  old_position?: number;
   best_position?: string;
   evolution_position?: number;
   weeks?: string;
