@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useQuery } from "react-query";
 import { Info, InfoPaginated } from "../../../interfaces/info";
 import Image from "next/image";
@@ -11,6 +11,7 @@ interface PaginatedProps {
 }
 const Paginated = ({ type, exclude_id }: PaginatedProps) => {
   const [page, setPage] = useState<number>(1);
+  const myRef = useRef<HTMLDivElement | null>(null);
   const {
     data: info,
     isError,
@@ -40,7 +41,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
     }
   );
   return (
-    <div>
+    <div ref={myRef}>
       <Title
         title={`${
           type === "actualites" ? "LES AUTRES TITRES" : "LES AUTRES EVENEMENTS"
@@ -109,6 +110,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
                         src={info.photo}
                         layout="responsive"
                         className="rounded-t-lg"
+                        alt="Image de l'article"
                       />
                       <div className="p-2 h-16 flex items-center justify-center">
                         <p className="text-lg font-semibold line-clamp-2 text-center w-full">
@@ -123,29 +125,37 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
             <div className="flex justify-center items-center space-x-1">
               <button
                 className="flex card bg-white items-center px-3 lg:px-4 py-1 lg:py-2 rounded-lg-md text-black hover:text-white hover:bg-[#181144]"
-                onClick={() => setPage((old) => Math.max(old - 1, 0))}
+                onClick={() => {
+                  setPage((old) => Math.max(old - 1, 0));
+                  myRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
                 disabled={page === 1}
               >
-                Précèdent
+                Précédent
               </button>
               <button
                 className={`${
                   page - 1 > 1 && info && info?.options.max_page && page > 1
                     ? ""
                     : "hidden"
-                } card px-3 lg:px-4 py-1 lg:py-2 bg-white dark:text-white rounded-lg-md dark:hover:text-white hover:bg-[#181144]`}
+                } card px-3 lg:px-4 py-1 lg:py-2  dark:text-white rounded-lg-md dark:hover:text-white hover:bg-[#181144]`}
                 onClick={() => {
                   setPage(1);
+                  myRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
                 }}
               >
                 1
               </button>
               <div
-                className={`${page - 2 > 1 ? "" : "hidden"} ${page} ${
-                  page - 2
-                } ${
-                  page - 2 > 1
-                } card bg-white px-3 lg:px-4 py-1 lg:py-2 dark:text-white  rounded-lg-md hover:text-white hover:bg-[#181144]`}
+                className={`${
+                  page - 2 > 1 ? "" : "hidden"
+                } px-3 lg:px-4 py-1 lg:py-2 text-gray-700`}
               >
                 ...
               </div>
@@ -157,6 +167,10 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
                 } px-3 lg:px-4 py-1 lg:py-2 card bg-white rounded-lg-md hover:text-white dark:text-white dark:hover:text-white hover:bg-[#181144] `}
                 onClick={() => {
                   setPage(page - 1);
+                  myRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
                 }}
               >
                 {page - 1}
@@ -173,6 +187,10 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
                 } card bg-white px-3 lg:px-4 py-1 lg:py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144] `}
                 onClick={() => {
                   setPage(page + 1);
+                  myRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
                 }}
               >
                 {page + 1}
@@ -180,9 +198,13 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
               <button
                 className={`${
                   info && info?.options.max_page >= page + 2 ? null : "hidden"
-                } card bg-white px-3 lg:px-4 py-1 lg:py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144] `}
+                } card bg-white px-3 lg:px-4 py-1 lg:py-2 text-gray-700 rounded-lg-md hover:text-white hover:bg-[#181144] `}
                 onClick={() => {
                   setPage(page + 2);
+                  myRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
                 }}
               >
                 {page + 2}
@@ -190,7 +212,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
               <div
                 className={`${
                   info && info?.options.max_page > page + 2 ? "" : "hidden"
-                } card bg-white px-3 lg:px-4 py-1 lg:py-2 text-gray-700  rounded-lg-md hover:text-white hover:bg-[#181144]`}
+                } px-3 lg:px-4 py-1 lg:py-2 text-gray-700`}
               >
                 ...
               </div>
@@ -201,6 +223,10 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
                 onClick={() => {
                   if (info) {
                     setPage(info?.options.max_page);
+                    myRef.current?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
                   }
                 }}
               >
@@ -211,11 +237,15 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
                 onClick={() => {
                   if (info && page + 1 <= info?.options.max_page) {
                     setPage(page + 1);
+                    myRef.current?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
                   }
                 }}
                 disabled={isPreviousData || !info?.options.hasMore}
               >
-                suivant
+                Suivant
               </button>
             </div>
           </>

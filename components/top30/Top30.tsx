@@ -9,12 +9,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import LoadingState from "../shared/LoadingState";
 import { useQuery } from "react-query";
-//{ top30 }: InferGetStaticPropsType<typeof getStaticProps>
-
+import { GetStaticProps, GetStaticPropsContext } from "next";
+import { ParsedUrlQuery } from "querystring";
+import { server } from "../../config/nextjs";
 // interface top30Props {
 //   top30: Song[];
 // }
-const Top30 = (/*{ top30 }: top30Props*/) => {
+const Top30 = ({ infos }: any) => {
   const {
     data: top30,
     isLoading,
@@ -26,9 +27,13 @@ const Top30 = (/*{ top30 }: top30Props*/) => {
       return info.json();
     },
     {
-      refetchInterval: 30000,
-      refetchIntervalInBackground: true,
+      //  refetchInterval: 30000,
+      //refetchIntervalInBackground: true,
       refetchOnWindowFocus: false,
+      // enabled: false,
+      initialData: infos,
+      retry: 500,
+      retryDelay: 10,
     }
   );
   return (
@@ -37,7 +42,7 @@ const Top30 = (/*{ top30 }: top30Props*/) => {
         <div className="flex flex-wrap justify-center">
           {[...Array(30)].map((song: Song, index: number) => (
             <div className={`card mb-5 flex w-full`} key={index}>
-              <div className="flex justify-center items-center p-8 lg:p-16">
+              <div className="flex justify-center items-center p-4  lg:p-16">
                 <p className="">N°{index}</p>
               </div>
               <div className="max-w-[8.5rem] min-w-[8.5rem] lg:max-w-[10rem] lg:min-w-[10rem] flex place-content-center">
@@ -130,7 +135,7 @@ const Top30 = (/*{ top30 }: top30Props*/) => {
         <div className="flex-wrap flex justify-center">
           {top30?.map((song: Song, index: number) => (
             <div className={`card mb-5 flex w-full`} key={index}>
-              <div className="flex justify-center items-center p-2 lg:p-16">
+              <div className="flex justify-center items-center p-4 lg:p-16">
                 <p className="">N°{song.position}</p>
               </div>
               <div className="w-28 min-w-[7rem] lg:max-w-[10rem] lg:min-w-[10rem] flex place-content-center">
@@ -163,35 +168,52 @@ const Top30 = (/*{ top30 }: top30Props*/) => {
                       {song.evolution_position !== undefined && (
                         <p
                           className={`${
-                            song.evolution_position < 0
+                            song.old_position === 0
+                              ? "text-black dark:text-white"
+                              : song.evolution_position < 0
                               ? "text-[#D43E3B]"
                               : song.evolution_position === 0
                               ? "text-black"
                               : "text-green-600 "
-                          }`}
+                          } font-bold`}
                         >
-                          {song.evolution_position < 0 ? (
-                            <FontAwesomeIcon
-                              icon={faArrowDown}
-                              className="text-[#D43E3B] mr-2"
-                            />
+                          {song.old_position === 0 ? (
+                            <></>
                           ) : (
                             <>
-                              {song.evolution_position === 0 ? (
+                              {song.evolution_position < 0 ? (
                                 <FontAwesomeIcon
-                                  icon={faEquals}
-                                  className="text-black"
+                                  icon={faArrowDown}
+                                  className="text-[#D43E3B] mr-2"
                                 />
                               ) : (
-                                <FontAwesomeIcon
-                                  icon={faArrowUp}
-                                  className="text-green-600 mr-2"
-                                />
+                                <>
+                                  {song.evolution_position === 0 ? (
+                                    <FontAwesomeIcon
+                                      icon={faEquals}
+                                      className="text-black dark:text-white"
+                                    />
+                                  ) : (
+                                    <>
+                                      <FontAwesomeIcon
+                                        icon={faArrowUp}
+                                        className="text-green-600 mr-2"
+                                      />
+                                    </>
+                                  )}
+                                </>
                               )}
                             </>
                           )}
-                          {Math.abs(song.evolution_position) !== 0 &&
-                            Math.abs(song.evolution_position)}
+
+                          {song.old_position === 0 ? (
+                            "ENTREE"
+                          ) : (
+                            <>
+                              {Math.abs(song.evolution_position) !== 0 &&
+                                Math.abs(song.evolution_position)}
+                            </>
+                          )}
                         </p>
                       )}
                     </div>
@@ -213,3 +235,18 @@ const Top30 = (/*{ top30 }: top30Props*/) => {
 };
 
 export default Top30;
+export const getStaticProps: GetStaticProps = async (
+  _context: GetStaticPropsContext<ParsedUrlQuery>
+) => {
+  const res = await fetch(`${server}/api/top30`);
+  const infos = await res.json();
+  return {
+    props: {
+      infos,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 60, // In seconds
+  };
+};

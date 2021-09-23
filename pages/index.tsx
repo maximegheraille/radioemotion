@@ -66,13 +66,3 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
-// export async function getServerSideProps(context: any, ctx: any) {
-//   const info = await fetch(
-//     "http://192.168.1.133:3012/api/index/derniers_titres"
-//   );
-//   const data = await info.json();
-//   console.log(data);
-//   return {
-//     props: { data }, // will be passed to the page component as props
-//   };
-// }
