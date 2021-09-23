@@ -12,8 +12,8 @@ const Part3 = () => {
         title="L’information locale, nationale et internationale"
         className="text-3xl lg:text-4xl"
       />
-      <div className="flex flex-col lg:flex-row  place-content-between pt-2">
-        <div className="order-last pt-8 pr-0 lg:pt-0 lg:pr-6 w-full lg:w-7/12">
+      <div className="flex flex-col lg:flex-row place-content-between pt-2">
+        <div className="order-last lg:order-none pt-8 pr-0 lg:pt-0 lg:pr-6 w-full lg:w-7/12">
           <ul>
             <li className="">
               <FontAwesomeIcon icon={faMicrophone} className="mr-4" />

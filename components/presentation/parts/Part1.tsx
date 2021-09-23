@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import part1 from "../../../public/images/presentation/part1.webp";
-import apple from "../../../public/images/presentation/test.svg";
+import apple from "../../../public/images/presentation/apple.svg";
 import google from "../../../public/images/presentation/google.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +9,7 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 const Part1 = () => {
   return (
     <div className="flex flex-col lg:flex-row pt-12">
-      <div className="text-black dark:text-white order-last w-full lg:w-8/12 pr-6 ">
+      <div className="text-black dark:text-white order-last lg:order-none w-full lg:w-8/12 pr-6">
         <ul>
           <li className="pt-8">
             <FontAwesomeIcon icon={faComment} className="mr-4 text-[#D53E3A]" />
