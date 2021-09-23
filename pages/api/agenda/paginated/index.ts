@@ -26,15 +26,15 @@ export default async function handler(
       ` radioemotion_get_paginated_agenda(${
         Number(req.headers.start) === 1
           ? Number(req.headers.start) - 1
-          : Number(req.headers.start) * 4 - 4
-      }, '4', ${req.headers.exclude_id})`
+          : Number(req.headers.start) * 5 - 5
+      }, '5', ${req.headers.exclude_id})`
     );
     connection.query(
       `call radioemotion_get_paginated_agenda(${
         Number(req.headers.start) === 1
           ? Number(req.headers.start) - 1
-          : Number(req.headers.start) * 4 - 4
-      }, '4', ${req.headers.exclude_id})`,
+          : Number(req.headers.start) * 5 - 5
+      }, '5', ${req.headers.exclude_id})`,
       async (err: any, rows: [InfoPaginated[]], _fields: any) => {
         if (err) {
           console.log(err);
@@ -49,8 +49,8 @@ export default async function handler(
         res.status(200).json({
           data: rows[0],
           options: {
-            max_page: Math.floor(Number(rows[0][0].hasMore) / 4),
-            hasMore: rows[0][0].hasMore > req.body.count ? true : false,
+            max_page: Math.floor(Number(rows[0][0].hasMore) / 5),
+            hasMore: rows[0][0].hasMore > 5 ? true : false,
           },
         });
         connection.destroy();
