@@ -171,13 +171,12 @@ const Playlist = () => {
                         </div>
                         <div className="w-full flex-col lg:flex-row flex">
                           <div className="h-3/4 text-black dark:text-white flex pl-4 lg:pl-10 text-left text-base lg:text-lg justify-center p-1 space-y-1 lg:space-y-5 flex-col w-full lg:w-6/12">
-                            <p className="line-clamp-2 font-bold ">
+                            <p className="line-clamp-1 lg:line-clamp-2 font-bold ">
                               {song?.titre}
                             </p>
-                            <p className="line-clamp-2 text-base">
+                            <p className="line-clamp-1 lg:line-clamp-2 text-base">
                               {song?.artiste}
                             </p>
-                            {/* <p className="text-sm">({song?.annee})</p> */}
                           </div>
                           <div className="my-1 px-2 lg:w-6/12">
                             <div className="h-full flex flex-wrap w-full lg:w-full place-content-around">
