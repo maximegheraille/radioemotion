@@ -4,9 +4,8 @@ import PlayerButton from "./parts/PlayerButton";
 import PlayerLinks from "./parts/PlayerLinks";
 const Player = () => {
   const [volume, setVolume] = useState<number>(100);
-
   return (
-    <div className="fixed bottom-0 bg-[#2d2180] w-full h-16 lg:h-12 z-50">
+    <div className={`${typeof window !== "undefined" && window.location.href.includes("app.radioemotion.be") && "hidden"} fixed bottom-0 bg-[#2d2180] w-full h-16 lg:h-12 z-50`}>
       <div className="w-full flex mx-auto h-full max-h-full place-content-between lg:place-self-auto px-1 lg:px-8 border-t-gray-600 border-t-2">
         <PlayerInfos />
         <PlayerButton setVolume={setVolume} volume={volume} />
