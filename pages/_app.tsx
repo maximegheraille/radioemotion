@@ -14,6 +14,7 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 import "../styles/style.scss";
+import { useRouter } from "next/dist/client/router";
 const Child: React.FC = ({ children }) => {
   // create a discpatch for allowing to change the theme value
   const dispatch = useDispatch();
@@ -21,7 +22,6 @@ const Child: React.FC = ({ children }) => {
     //on initial component mount, set the theme via a function the verifies it
     dispatch(changeTheme(getInitialTheme()));
   }, []);
-  //FFFEFE
   return (
     <>
       <div className={`bg-[#EEEFEE] dark:bg-[#0F0F10]`}>
@@ -42,6 +42,8 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
 };
 const queryClient = new QueryClient();
 const App = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter();
+  console.log(router);
   return (
     <>
       <QueryClientProvider client={queryClient}>
