@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { playerProps } from "../../../interfaces/playerProps";
 import usePlayer from "../PlayerHook";
 
-const PlayerButton = ({ volume }: playerProps) => {
+const PlayerButton = ({ volume, className }: playerProps) => {
   const { data: song, playerRef, playing, setPlaying } = usePlayer();
   const setplayer = () => {
     if (playerRef.current !== null) {
@@ -65,7 +65,7 @@ const PlayerButton = ({ volume }: playerProps) => {
   return (
     <>
       <div
-        className={`${playerRef.current?.paused} lg:mr-2 flex align-middle lg:w-[2%]`}
+        className={`${playerRef.current?.paused} lg:mr-2 flex align-middle lg:w-[2%] ${className}`}
       >
         <button
           onClick={() => {
