@@ -8,7 +8,7 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 
 const Part1 = () => {
   return (
-    <div className="flex flex-col lg:flex-row pt-12">
+    <div className="flex flex-col lg:flex-row lg:pt-12">
       <div className="text-black dark:text-white order-last lg:order-none w-full lg:w-8/12 pr-6">
         <ul>
           <li className="pt-8">
