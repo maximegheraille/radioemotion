@@ -67,7 +67,7 @@ const Playlist = () => {
       {showYou && <YoutubePlayer url={song?.youtube} />}
       <div className="w-full text-center rounded-lg">
         <p className="text-black dark:text-white mb-1">
-          Selectionez le jour et l'heure
+        Sélectionnez le jour et l'heure
         </p>
         <Flatpickr
           data-enable-time
