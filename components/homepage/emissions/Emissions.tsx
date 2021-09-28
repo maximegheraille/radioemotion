@@ -88,7 +88,7 @@ const Emissions = () => {
                   isError={isError}
                 >
                   <p className={`text-sm`}>
-                    Presenté par: {emission?.animateur_nom}
+                    Présenté par: {emission?.animateur_nom}
                   </p>
                 </LoadingState>
               </div>
@@ -135,7 +135,7 @@ const Emissions = () => {
                 </p>
 
                 <p className={`text-sm line-clamp-1`}>
-                  Presenté par: {emission.animateur_nom}
+                  Présenté par: {emission.animateur_nom}
                 </p>
               </div>
             </div>
