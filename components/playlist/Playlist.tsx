@@ -74,7 +74,6 @@ const Playlist = () => {
           value={date}
           options={{
             maxDate: new Date(),
-            maxTime: new Date().getTime(),
             time_24hr: true,
             locale: French,
             hourIncrement: 1,
