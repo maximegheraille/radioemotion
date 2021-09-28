@@ -9,18 +9,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import LoadingState from "../shared/LoadingState";
 import { useQuery } from "react-query";
-import { GetStaticProps, GetStaticPropsContext } from "next";
-import { ParsedUrlQuery } from "querystring";
-import { server } from "../../config/nextjs";
-// interface top30Props {
-//   top30: Song[];
-// }
-const Top30 = ({ infos }: any) => {
-  const {
-    data: top30,
-    isLoading,
-    isError,
-  } = useQuery(
+
+interface top30Props {
+  top30: Song[];
+}
+const Top30 = ({ top30 }: top30Props) => {
+  const { data, isLoading, isError } = useQuery(
     "top30",
     async () => {
       const info = await fetch("/api/top30");
@@ -31,7 +25,7 @@ const Top30 = ({ infos }: any) => {
       //refetchIntervalInBackground: true,
       refetchOnWindowFocus: false,
       // enabled: false,
-      initialData: infos,
+      initialData: top30,
       retry: 500,
       retryDelay: 10,
     }
@@ -49,7 +43,7 @@ const Top30 = ({ infos }: any) => {
                 <LoadingState
                   width="w-full"
                   heigth="h-full"
-                  data={top30}
+                  data={data}
                   isLoading={isLoading}
                   isError={isError}
                   classNames="mb-2"
@@ -60,7 +54,7 @@ const Top30 = ({ infos }: any) => {
               <div className="w-full flex">
                 <div className="flex justify-center flex-col space-y-7 items-center  p-2 w-4/6 lg:w-1/4">
                   <LoadingState
-                    width="w-32"
+                    width="w-20 lg:w-32"
                     heigth="h-4"
                     data={song?.titre}
                     isLoading={isLoading}
@@ -69,16 +63,16 @@ const Top30 = ({ infos }: any) => {
                     <p className="line-clamp-2">{song?.titre}</p>
                   </LoadingState>
                   <LoadingState
-                    width="w-32"
+                    width="w-20 lg:w-32"
                     heigth="h-4"
-                    data={top30}
+                    data={data}
                     isLoading={isLoading}
                     isError={isError}
                   >
                     <p className="line-clamp-2">{song?.artiste}</p>
                   </LoadingState>
                 </div>
-                <div className="w-full">
+                <div className="hidden lg:block w-full">
                   <div className="h-1/6">
                     <div className="hidden lg:flex pl-[35%] place-content-around rounded-r-lg text-white">
                       <div className="flex justify-center items-center bg-[#D43E3B] rounded-bl-lg w-full">
@@ -89,7 +83,7 @@ const Top30 = ({ infos }: any) => {
                       </div>
                     </div>
                   </div>
-                  <div className="h-5/6 flex flex-wrap w-full place-content-around">
+                  <div className="hidden lg:flex h-5/6 flex-wrap w-full place-content-around">
                     <div className="flex justify-center items-center">
                       <LoadingState
                         width="w-16"
@@ -133,7 +127,7 @@ const Top30 = ({ infos }: any) => {
         </div>
       ) : (
         <div className="flex-wrap flex justify-center">
-          {top30?.map((song: Song, index: number) => (
+          {data?.map((song: Song, index: number) => (
             <div className={`card mb-5 flex w-full`} key={index}>
               <div className="flex justify-center items-center p-4 lg:p-16">
                 <p className="">N°{song.position}</p>
@@ -148,11 +142,11 @@ const Top30 = ({ infos }: any) => {
                 />
               </div>
               <div className="w-full flex">
-                <div className="flex text-center justify-center p-1 space-y-4 lg:space-y-7 items-center flex-col w-4/6 lg:w-1/4">
-                  <p className="line-clamp-2">{song?.titre}</p>
+                <div className="flex text-center justify-center p-1 space-y-4 lg:space-y-7 items-center flex-col w-5/6 lg:w-1/4">
+                  <p className="line-clamp-2 font-bold">{song?.titre}</p>
                   <p className="line-clamp-2">{song?.artiste}</p>
                 </div>
-                <div className="w-2/6 lg:w-full">
+                <div className="w-1/6 lg:w-full">
                   <div className="h-1/6 hidden lg:flex">
                     <div className="flex lg:pl-[35%] lg:w-full place-content-around rounded-r-lg text-white">
                       <div className="flex justify-center items-center bg-[#D43E3B] rounded-bl-lg w-full">
@@ -164,19 +158,9 @@ const Top30 = ({ infos }: any) => {
                     </div>
                   </div>
                   <div className="h-full lg:h-5/6 flex flex-wrap w-full lg:w-full place-content-around">
-                    <div className="flex justify-center items-center">
+                    <div className="flex flex-col lg:flex-row text-center justify-center items-center">
                       {song.evolution_position !== undefined && (
-                        <p
-                          className={`${
-                            song.old_position === 0
-                              ? "text-black dark:text-white"
-                              : song.evolution_position < 0
-                              ? "text-[#D43E3B]"
-                              : song.evolution_position === 0
-                              ? "text-black"
-                              : "text-green-600 "
-                          } font-bold`}
-                        >
+                        <>
                           {song.old_position === 0 ? (
                             <></>
                           ) : (
@@ -184,7 +168,7 @@ const Top30 = ({ infos }: any) => {
                               {song.evolution_position < 0 ? (
                                 <FontAwesomeIcon
                                   icon={faArrowDown}
-                                  className="text-[#D43E3B] mr-2"
+                                  className="text-[#D43E3B] lg:mr-2"
                                 />
                               ) : (
                                 <>
@@ -197,7 +181,7 @@ const Top30 = ({ infos }: any) => {
                                     <>
                                       <FontAwesomeIcon
                                         icon={faArrowUp}
-                                        className="text-green-600 mr-2"
+                                        className="text-green-600 lg:mr-2"
                                       />
                                     </>
                                   )}
@@ -205,16 +189,27 @@ const Top30 = ({ infos }: any) => {
                               )}
                             </>
                           )}
-
-                          {song.old_position === 0 ? (
-                            "ENTREE"
-                          ) : (
-                            <>
-                              {Math.abs(song.evolution_position) !== 0 &&
-                                Math.abs(song.evolution_position)}
-                            </>
-                          )}
-                        </p>
+                          <p
+                            className={`${
+                              song.old_position === 0
+                                ? "text-black dark:text-white"
+                                : song.evolution_position < 0
+                                ? "text-[#D43E3B]"
+                                : song.evolution_position === 0
+                                ? "text-black"
+                                : "text-green-600 "
+                            } font-bold`}
+                          >
+                            {song.old_position === 0 ? (
+                              "ENTREE"
+                            ) : (
+                              <>
+                                {Math.abs(song.evolution_position) !== 0 &&
+                                  Math.abs(song.evolution_position)}
+                              </>
+                            )}
+                          </p>
+                        </>
                       )}
                     </div>
                     <div className="hidden lg:flex justify-center items-center">
@@ -235,18 +230,3 @@ const Top30 = ({ infos }: any) => {
 };
 
 export default Top30;
-export const getStaticProps: GetStaticProps = async (
-  _context: GetStaticPropsContext<ParsedUrlQuery>
-) => {
-  const res = await fetch(`${server}/api/top30`);
-  const infos = await res.json();
-  return {
-    props: {
-      infos,
-    },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 60, // In seconds
-  };
-};
