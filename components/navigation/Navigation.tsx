@@ -41,17 +41,17 @@ const Navigation = () => {
       href: "/radio",
       icon: faMusic,
       childs: [
-        { name: "Presentation", href: "/Presentation", icon: faSitemap },
+        { name: "Présentation", href: "/Presentation", icon: faSitemap },
         { name: "Emissions", href: "/Emissions", icon: faMicrophone },
         { name: "Equipe", href: "/Equipe", icon: faUsers },
       ],
     },
     {
-      name: "Ma Region",
+      name: "Ma Région",
       href: "/region",
       icon: faMap,
       childs: [
-        { name: "Info regionale", href: "/actualites", icon: faNewspaper },
+        { name: "Info régionale", href: "/actualites", icon: faNewspaper },
         { name: "Agenda", href: "/agenda", icon: faCalendarAlt },
       ],
     },
