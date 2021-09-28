@@ -32,12 +32,12 @@ const Carousel = () => {
         ></div>
       ) : (
         <Swiper
-          spaceBetween={10}
+          // spaceBetween={10}
           centeredSlides={true}
           centeredSlidesBounds={true}
           slidesPerView={1}
           updateOnWindowResize={true}
-          speed={900}
+          speed={1250}
           loop={true}
           autoplay={{
             delay: 3500,
@@ -47,7 +47,7 @@ const Carousel = () => {
           pagination={{
             clickable: true,
           }}
-          className="rounded-lg "
+          className="rounded-lg"
           lazy={true}
         >
           {caroussel &&
