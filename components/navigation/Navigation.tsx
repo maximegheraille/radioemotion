@@ -37,7 +37,7 @@ const Navigation = () => {
   const navItems: navigationItem[] = [
     { name: "Accueil", href: "/", icon: faHome },
     {
-      name: "Ma radio",
+      name: "Ma Radio",
       href: "/radio",
       icon: faMusic,
       childs: [
@@ -47,7 +47,7 @@ const Navigation = () => {
       ],
     },
     {
-      name: "Ma region",
+      name: "Ma Region",
       href: "/region",
       icon: faMap,
       childs: [
