@@ -24,7 +24,7 @@ const Child: React.FC = ({ children }) => {
   return (
     <>
       <div className={`bg-[#EEEFEE] dark:bg-[#0F0F10]`}>
-        <div className="max-w-[90%] sm:max-w-lg md:max-w-xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-[1400px] mx-auto py-24">
+        <div className="max-w-[90%] sm:max-w-lg md:max-w-xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-[1400px] mx-auto py-16 lg:py-24">
           {children}
         </div>
       </div>
@@ -41,7 +41,6 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
 };
 const queryClient = new QueryClient();
 const App = ({ Component, pageProps }: AppProps) => {
-  
   return (
     <>
       <QueryClientProvider client={queryClient}>
