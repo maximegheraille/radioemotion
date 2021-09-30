@@ -43,7 +43,11 @@ const equipe = ({ equipe }: propsEquipe) => {
             <div className="flex place-content-evenly w-full">
               {person.linkedin !== "" && (
                 <a href={person.linkedin} target="_blank">
-                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    size="2x"
+                    className="text-[#0B66C3]"
+                  />
                 </a>
               )}
               {person.instagram !== "" && (
@@ -53,7 +57,11 @@ const equipe = ({ equipe }: propsEquipe) => {
               )}
               {person.facekook !== "" && (
                 <a href={person.facekook} target="_blank">
-                  <FontAwesomeIcon icon={faFacebook} size="2x" />
+                  <FontAwesomeIcon
+                    icon={faFacebook}
+                    size="2x"
+                    className="text-[#0D89EF]"
+                  />
                 </a>
               )}
             </div>
