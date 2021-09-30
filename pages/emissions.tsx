@@ -14,7 +14,7 @@ const emissions = ({ emissions }: any) => {
     <div>
       <div className="w-full max-w-md*/ px-2 py-16 sm:px-0">
         <Tab.Group defaultIndex={new Date().getDay() - 1}>
-          <Tab.List className="flex flex-wrap lg:flex-nowrap p-1 bg-blue-900/20/*/ bg-[#2D2180] rounded-xl">
+          <Tab.List className="flex flex-wrap lg:flex-nowrap p-1 bg-[#2D2180] rounded-xl">
             {Object.keys(emissions).map((category) => (
               <Tab
                 key={category}
@@ -23,7 +23,7 @@ const emissions = ({ emissions }: any) => {
                     selected
                       ? "bg-white shadow"
                       : "text-white hover:bg-white/[0.12] hover:text-white"
-                  } w-3/12 lg:w-full py-2.5 justify-between lg:justify-self-auto text-sm leading-5 font-medium text-blue-700 rounded-lg focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60`
+                  } w-3/12 lg:w-full py-2.5 justify-between lg:justify-self-auto text-sm leading-5 font-medium rounded-lg focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60`
                 }
               >
                 {category}
@@ -43,7 +43,7 @@ const emissions = ({ emissions }: any) => {
                         } mb-8 flex lg:justify-between items-center w-full space-x-2 lg:space-x-0`}
                       >
                         <div className="order-1 lg:w-5/12"></div>
-                        <div className="hidden lg:flex z-20 items-center order-1 shadow-xl w-8 h-8 rounded-full bg-gray-800">
+                        <div className="hidden lg:flex z-20 items-center order-1 shadow-xl w-8 h-8 rounded-full bg-[#2D2180]">
                           <FontAwesomeIcon
                             icon={faClock}
                             className="mx-auto font-semibold text-lg text-white"
