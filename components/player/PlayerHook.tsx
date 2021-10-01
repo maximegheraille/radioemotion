@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Song } from "../../interfaces/song";
 import { useQuery } from "react-query";
 

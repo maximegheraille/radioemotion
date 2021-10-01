@@ -7,9 +7,6 @@ interface TitleProps {
 }
 
 const Title = ({ title, className = "", article }: TitleProps) => {
-  {
-    console.log(article);
-  }
   return (
     <div>
       <h1
