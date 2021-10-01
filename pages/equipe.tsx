@@ -15,9 +15,7 @@ import {
 interface propsEquipe {
   equipe: Equipe[];
 }
-//#202938
 const equipe = ({ equipe }: propsEquipe) => {
-  console.log(equipe.length);
   return (
     <div>
       <LazyLoad>

@@ -8,14 +8,12 @@ export default async function handler(
 ) {
   const connection = getConnection2();
   if (req.method === "GET") {
-    console.log(req.headers.id);
     connection.query(
       `call radioemotion_get_one_agenda(${req.headers.id})`,
       async (err: any, rows: [Agenda[]], _fields: any) => {
         if (err) {
           res.status(500).json({ response: false, error: true });
           connection.destroy();
-          console.log(err);
           return;
         }
         if (rows[0][0] === undefined) {

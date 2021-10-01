@@ -8,15 +8,6 @@ export default async function handler(
 ) {
   const connection = getConnection2();
   if (req.method === "GET") {
-    // connection.query(
-    //   `select * from radioemotion_actualites_main`,
-    //   async (err: any, frows: [InfoPaginated], _fields: any) => {
-    //     if (err) {
-    //       console.log(err);
-    //       res.status(500).json({ response: false, error: true });
-    //       connection.destroy();
-    //       return;
-    //     }
     connection.query(
       `call radioemotion_get_paginated_infos(${
         Number(req.headers.start) === 1
@@ -25,7 +16,6 @@ export default async function handler(
       }, '5', ${req.headers.exclude_id})`,
       async (err: any, rows: [InfoPaginated[]], _fields: any) => {
         if (err) {
-          console.log(err);
           res.status(500).json({ response: false, error: true });
           connection.destroy();
           return;

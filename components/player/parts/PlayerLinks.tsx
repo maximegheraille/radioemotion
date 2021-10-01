@@ -31,14 +31,6 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
   };
 
   const mutation = useMutation(vote, {
-    // onMutate: () => {
-    //   console.log(`rolling back optimistic update with id`);
-    //   queryClient.invalidateQueries("current_song");
-    // },
-    // onError: () => {
-    //   console.log(`qsd`);
-    //   queryClient.invalidateQueries("current_song");
-    // },
     onSettled: () => {
       queryClient.invalidateQueries("current_song");
     },

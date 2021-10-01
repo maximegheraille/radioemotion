@@ -9,10 +9,9 @@ import { server } from "../config/nextjs";
 import Image from "next/image";
 
 const emissions = ({ emissions }: any) => {
-  console.log(emissions);
   return (
     <div>
-      <div className="w-full max-w-md*/ px-2 py-16 sm:px-0">
+      <div className="w-full max-w-md*/ px-2 pb-16 sm:px-0">
         <Tab.Group defaultIndex={new Date().getDay() - 1}>
           <Tab.List className="flex flex-wrap lg:flex-nowrap p-1 bg-[#2D2180] rounded-xl">
             {Object.keys(emissions).map((category) => (
@@ -31,11 +30,14 @@ const emissions = ({ emissions }: any) => {
             ))}
           </Tab.List>
           <Tab.Panels className="mt-2">
-            {Object.values(emissions).map((emissions: any, idx) => (
-              <Tab.Panel key={idx} className="rounded-lg p-3">
+            {Object.values(emissions).map((emissions: any, index) => (
+              <Tab.Panel key={index} className="rounded-lg p-3">
                 <div className="container mx-auto w-full h-full">
                   {emissions.map((emission: AllEmission, index: number) => (
-                    <div className="relative wrap overflow-hidden py-5 lg:py-10 h-full">
+                    <div
+                      className="relative wrap overflow-hidden py-5 lg:py-10 h-full"
+                      key={index}
+                    >
                       <div className="border-2-2 hidden lg:flex absolute lg:left-2/4 border-opacity-20 border-black dark:border-white h-full border"></div>
                       <div
                         className={`${

@@ -14,7 +14,6 @@ export default async function handler(
         if (err) {
           res.status(500).json({ response: false, error: true });
           connection.destroy();
-          console.log(err);
           return;
         }
         rows.forEach((person: Equipe) => {
