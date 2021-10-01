@@ -20,7 +20,11 @@ const AgendaSlug = ({ agenda }: any) => {
   return (
     <div className="lg:flex text-black dark:text-white place-content-between">
       <div className="w-full lg:w-9/12">
-        <Title title="L'INFO DE VOTRE REGION" className="text-center" />
+        <Title
+          title="L'INFO DE VOTRE REGION"
+          className="text-center lg:pt-0"
+          article={true}
+        />
         <Article article={agenda} />
       </div>
       <div className="w-full lg:w-3/12 lg:px-2">

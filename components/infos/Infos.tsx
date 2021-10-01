@@ -20,7 +20,11 @@ const InfosPage = () => {
     <div className="lg:flex text-black dark:text-white place-content-between">
       <div className="w-full lg:w-9/12">
         <div>
-          <Title title="L'INFO DE VOTRE REGION" className="text-center" />
+          <Title
+            title="L'INFO DE VOTRE REGION"
+            className="text-center"
+            article
+          />
           <Article article={data!} isError={isError} isLoading={isLoading} />
         </div>
       </div>

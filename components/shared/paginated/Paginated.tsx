@@ -31,7 +31,6 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
           exclude_id: exclude_id.toString(),
           start: page.toString(),
         },
-        //  body: JSON.stringify({ start: page, count: page }),
       });
       return info.json();
     },
@@ -47,6 +46,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
           type === "actualites" ? "LES AUTRES TITRES" : "LES AUTRES EVENEMENTS"
         }`}
         className="text-center"
+        article
       />
       <div className="">
         {isError || isLoading ? (
