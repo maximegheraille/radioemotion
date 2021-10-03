@@ -12,7 +12,9 @@ const emissions = ({ emissions }: any) => {
   return (
     <div>
       <div className="w-full max-w-md*/ px-2 pb-16 sm:px-0">
-        <Tab.Group defaultIndex={new Date().getDay() - 1}>
+        <Tab.Group
+          defaultIndex={new Date().getDay() === 0 ? 6 : new Date().getDay() - 1}
+        >
           <Tab.List className="flex flex-wrap lg:flex-nowrap p-1 bg-[#2D2180] rounded-xl">
             {Object.keys(emissions).map((category) => (
               <Tab
