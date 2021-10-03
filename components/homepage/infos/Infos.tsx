@@ -19,7 +19,7 @@ const Infos = () => {
     { refetchOnWindowFocus: false }
   );
   return (
-    <div className="lg:flex lg:flex-wrap pb-16">
+    <div className="lg:flex lg:flex-wrap lg:pb-16">
       {isError || isLoading ? (
         <>
           {[...Array(7)].map((info: Info, index: number) => (
