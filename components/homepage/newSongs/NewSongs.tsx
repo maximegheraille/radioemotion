@@ -26,7 +26,7 @@ const NewSongs = () => {
             preloadImages={false}
             resizeObserver={true}
             lazy={true}
-            className="lg:hidden"
+            className="lg:hidden z-0"
           >
             {[...Array(10)].map((song: Song, index: number) => (
               <SwiperSlide
@@ -74,7 +74,7 @@ const NewSongs = () => {
             preloadImages={false}
             resizeObserver={true}
             lazy={true}
-            className="lg:hidden"
+            className="lg:hidden z-0"
           >
             {data?.map((song: Song, index: number) => (
               <SwiperSlide
