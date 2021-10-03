@@ -10,7 +10,8 @@ const YoutubePlayer = ({ url = "" }: YoutubeProps) => {
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
   const [darkTheme] = useState<boolean>(getInitialTheme());
-  const link = url.split("/");
+  const link = url?.split("/");
+
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>

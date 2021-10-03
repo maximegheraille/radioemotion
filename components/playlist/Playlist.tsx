@@ -27,7 +27,10 @@ const Playlist = () => {
       0
     )
   );
-  const [showYou, setShowYou] = useState<boolean>(false);
+  const [showYou, setShowYou] = useState<{
+    open: boolean;
+    url: string | undefined;
+  }>({ open: false, url: "" });
   const queryClient = useQueryClient();
   const {
     data: song,
@@ -64,10 +67,11 @@ const Playlist = () => {
   });
   return (
     <div className="">
-      {showYou && <YoutubePlayer url={song?.youtube} />}
+      {song && console.log(song.youtube)}
+      {showYou.open && <YoutubePlayer url={showYou.url} />}
       <div className="w-full text-center rounded-lg">
         <p className="text-black dark:text-white mb-1">
-        Sélectionnez le jour et l'heure
+          Sélectionnez le jour et l'heure
         </p>
         <Flatpickr
           data-enable-time
@@ -212,7 +216,12 @@ const Playlist = () => {
                                   className={`${
                                     song?.youtube === "" ? "hidden" : "block"
                                   } group flex items-center text-[#f44336]`}
-                                  onClick={() => setShowYou(!showYou)}
+                                  onClick={() =>
+                                    setShowYou({
+                                      open: !showYou.open,
+                                      url: song.youtube,
+                                    })
+                                  }
                                 >
                                   <FontAwesomeIcon
                                     icon={faYoutube}
