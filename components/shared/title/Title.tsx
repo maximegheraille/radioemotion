@@ -11,7 +11,7 @@ const Title = ({ title, className = "", article }: TitleProps) => {
     <div>
       <h1
         className={`text-2xl font-bold pb-6 ${
-          article === true ? className : "pt-4 lg:pt-10"
+          article === true ? className : "pt-6 lg:pt-10"
         } text-black dark:text-white ${className}`}
       >
         {title}
