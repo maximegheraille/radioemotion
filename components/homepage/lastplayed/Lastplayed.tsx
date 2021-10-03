@@ -29,6 +29,7 @@ const Lastplayed = () => {
         preloadImages={false}
         resizeObserver={true}
         lazy={true}
+        className="z-0"
       >
         {isLoading || isError ? (
           <>
