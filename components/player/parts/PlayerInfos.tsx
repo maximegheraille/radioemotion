@@ -18,12 +18,16 @@ const PlayerInfos = () => {
               isError={isError}
               data={song?.photo}
             >
-              <Image
-                width={40}
-                height={40}
-                className={`rounded-lg items-center`}
-                src={song?.photo.toString()!}
-              />
+              <div className="w-12 h-12 lg:w-10 lg:h-10">
+                <Image
+                  width={40}
+                  height={40}
+                  alt="pochette"
+                  className={`rounded-lg items-center`}
+                  src={song?.photo.toString()!}
+                  layout="responsive"
+                />
+              </div>
             </LoadingState>
           </div>
         </div>
