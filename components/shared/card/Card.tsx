@@ -176,7 +176,7 @@ const Card = ({
             }`}
             target="_blank"
           >
-            <button className="w-6 mr-1 align-middle flex">
+            <button className="w-6 mr-1 items-center flex">
               <Image
                 src={Apple_music}
                 className={`p-1 transform motion-safe:group-focus:scale-110 w-5 lg:w-5 text-white`}
@@ -194,8 +194,8 @@ const Card = ({
         >
           <button
             className={`hidden lg:flex ${
-              song?.youtube === "" ? "hidden" : "block"
-            } group flex items-center text-[#f44336]`}
+              song?.youtube === "" ? "hidden" : "flex"
+            } group items-center place-content-center text-[#f44336]`}
             onClick={() => setShowYou(!showYou)}
           >
             <FontAwesomeIcon
@@ -215,13 +215,12 @@ const Card = ({
           isError={isLoading}
           data={song?.youtube}
         >
-          <button
+          <a
             className={`lg:hidden ${
-              song?.youtube === "" ? "hidden" : "block"
+              song?.youtube === "" ? "hidden" : "flex"
             } group flex items-center text-[#f44336]`}
-            onClick={() => {
-              window.open(song?.youtube, "_blank");
-            }}
+            href={`${song?.youtube}`}
+            target="_blank"
           >
             <FontAwesomeIcon
               icon={faYoutube}
@@ -230,7 +229,7 @@ const Card = ({
               h-10 w-10 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
               aria-hidden="true"
             />
-          </button>
+          </a>
         </LoadingState>
       </div>
     </div>
