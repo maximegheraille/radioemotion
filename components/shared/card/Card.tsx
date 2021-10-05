@@ -167,30 +167,61 @@ const Card = ({
         >
           <a
             className={`lg:m-1 flex`}
-            href={`${song?.apple_music}`}
+            //href={`https://apple.co/3aaaBTr`}
+            //href={`https://itunes.apple.com/fr/album/en-rouge-et-noir/id710450466?i=710450474&uo=6&at=10luqD&ct=&mt=1&app=music`}
+            //href={`https://itunes.apple.com/be/album/can-they-hear-us-from-gully-with-original-daniel-heath-score/1570713944?i=1570713959&itsct=music_box_link&itscg=30200&at=10luqD&ct=songs_can_they_hear_us_%28from_%E2%80%98gully%E2%80%99_wit&app=music`}
+            href={`${
+              song?.apple_music &&
+              song?.apple_music.replace("geo.music", "itunes")
+            }`}
             target="_blank"
           >
-            <div className="w-6 mr-1 align-middle flex">
+            <button className="w-6 mr-1 align-middle flex">
               <Image
                 src={Apple_music}
                 className={`p-1 transform motion-safe:group-focus:scale-110 w-5 lg:w-5 text-white`}
               />
-            </div>
+            </button>
           </a>
         </LoadingState>
         <LoadingState
           width="w-7"
           heigth="h-7"
-          classNames=""
+          classNames="hidden lg:block"
           isLoading={isLoading}
           isError={isLoading}
           data={song?.youtube}
         >
           <button
-            className={`${
+            className={`hidden lg:flex ${
               song?.youtube === "" ? "hidden" : "block"
             } group flex items-center text-[#f44336]`}
             onClick={() => setShowYou(!showYou)}
+          >
+            <FontAwesomeIcon
+              icon={faYoutube}
+              size="2x"
+              className={`transform motion-safe:group-focus:scale-110 px-0.5 text-opacity-70
+              h-10 w-10 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
+              aria-hidden="true"
+            />
+          </button>
+        </LoadingState>
+        <LoadingState
+          width="w-7"
+          heigth="h-7"
+          classNames="lg:hidden"
+          isLoading={isLoading}
+          isError={isLoading}
+          data={song?.youtube}
+        >
+          <button
+            className={`lg:hidden ${
+              song?.youtube === "" ? "hidden" : "block"
+            } group flex items-center text-[#f44336]`}
+            onClick={() => {
+              window.open(song?.youtube, "_blank");
+            }}
           >
             <FontAwesomeIcon
               icon={faYoutube}
