@@ -31,7 +31,7 @@ const NewSongs = () => {
             {[...Array(10)].map((song: Song, index: number) => (
               <SwiperSlide
                 virtualIndex={index}
-                className={`${outderdivCard}`}
+                className={`${outderdivCard} mr-[30px]`}
                 key={index}
               >
                 <Card
