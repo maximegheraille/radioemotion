@@ -69,19 +69,12 @@ const Footer = () => {
         <div className="">
           <p className="text-lg">SUIVEZ-NOUS</p>
           <div className="flex flex-col pt-4 space-y-2">
-            <a
-              href={
-                "https://play.google.com/store/apps/details?id=com.Radio.Emotion&gl=BE"
-              }
-              target="_blank"
-            >
+            <a href={"https://www.facebook.com/1049fm/"} target="_blank">
               <FontAwesomeIcon icon={faFacebook} className="mr-1 " />
               Facebook
             </a>
             <a
-              href={
-                "https://play.google.com/store/apps/details?id=com.Radio.Emotion&gl=BE"
-              }
+              href={"https://www.instagram.com/radioemotionbelgique/"}
               target="_blank"
             >
               <FontAwesomeIcon icon={faInstagram} className="mr-1" /> Instagram
