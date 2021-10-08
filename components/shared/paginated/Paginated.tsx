@@ -40,7 +40,7 @@ const Paginated = ({ type, exclude_id }: PaginatedProps) => {
     }
   );
   return (
-    <div ref={myRef}>
+    <div ref={myRef} className="pt-10 lg:pt-0">
       <Title
         title={`${
           type === "actualites" ? "LES AUTRES TITRES" : "LES AUTRES EVENEMENTS"
