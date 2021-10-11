@@ -52,16 +52,18 @@ const Carousel = () => {
         >
           {caroussel &&
             !isLoading &&
-            caroussel.map((caroussel: { ID: number; URL: string }) => (
-              <SwiperSlide virtualIndex={caroussel.ID} key={caroussel.ID}>
-                <Image
-                  className="rounded-lg w-full shadow-lg"
-                  width="700"
-                  height="260"
-                  src={`https://www.radioemotion.be${caroussel.URL}.jpg`}
-                />
-              </SwiperSlide>
-            ))}
+            caroussel.map(
+              (caroussel: { ID: number; URL: string }, index: number) => (
+                <SwiperSlide virtualIndex={caroussel.ID} key={index}>
+                  <Image
+                    className="rounded-lg w-full shadow-lg"
+                    width="700"
+                    height="260"
+                    src={`https://www.radioemotion.be${caroussel.URL}.jpg`}
+                  />
+                </SwiperSlide>
+              )
+            )}
         </Swiper>
       )}
     </>
