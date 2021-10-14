@@ -96,16 +96,16 @@ const Agendas = () => {
             <a>
               <div className="shadow-lg mb-4 lg:flex card">
                 <Image
-                  width="435"
+                  width="500"
                   height="235"
                   src={agenda?.photo}
                   className="rounded-t-lg lg:rounded-l-lg lg:rounded-r-none"
                 />
-                <div className="p-2 text-center lg:w-6/12 xl:w-6/12 lg:text-left lg:flex-shrink-0">
-                  <p className="text-base xl:text-lg font-medium line-clamp-1 xl:line-clamp-2">
+                <div className="p-1 xl:p-2 text-center lg:w-6/12 xl:w-7/12 lg:text-left lg:flex-shrink-0">
+                  <p className="text-base xl:text-lg font-semibold line-clamp-1">
                     {agenda.title}
                   </p>
-                  <p className="py-1">
+                  <p className="xl:py-1">
                     <FontAwesomeIcon
                       icon={faMapMarkerAlt}
                       className="mr-2 text-[#D53E3A]"
