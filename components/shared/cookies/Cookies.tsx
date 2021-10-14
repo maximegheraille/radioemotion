@@ -10,7 +10,7 @@ const Cookies = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="p-2 lg:p-2">
+    <div className={`${cookie === null ? "" : "p-2 lg:p-2"} `}>
       {cookie === null && (
         <Transition
           as={Fragment}
