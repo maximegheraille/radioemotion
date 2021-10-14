@@ -11,7 +11,7 @@ import Image from "next/image";
 const emissions = ({ emissions }: any) => {
   return (
     <div>
-      <div className="w-full max-w-md*/ px-2 pb-16 sm:px-0">
+      <div className="w-full px-2 pb-16 sm:px-0 lg:pt-2">
         <Tab.Group
           defaultIndex={new Date().getDay() === 0 ? 6 : new Date().getDay() - 1}
         >
