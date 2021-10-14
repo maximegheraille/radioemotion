@@ -153,10 +153,10 @@ const Infos = () => {
                   <a className="flex">
                     <div className="shadow-lg flex-1 w-full mb-6 lg:mr-14 lg:w-11/12 xl:w-full lg:flex text-center card">
                       <Image
-                        width="470"
-                        height="240"
+                        width="576"
+                        height="320"
                         src={info?.photo}
-                        className="rounded-lg"
+                        className="rounded-b-none lg:rounded-lg"
                       />
                       <div className="lg:w-4/6 xl:w-4/6 h-full p-3 place-content-center align-middle justify-center items-center">
                         <p className="text-xl place-content-center items-center font-semibold line-clamp-2">
