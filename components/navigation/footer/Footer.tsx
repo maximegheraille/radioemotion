@@ -12,24 +12,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import { Dialog, Switch, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../config/context/hook";
-import useCookieConsent from "../../shared/cookies/CookieHook";
 import { changeCookies } from "../../../config/context/cookieSlice";
 
 const Footer = () => {
   const { darkTheme } = useAppSelector((state) => state.darkTheme);
   const { cookie } = useAppSelector((state) => state.cookieConsent);
-  const { setCookieConsent } = useCookieConsent();
-  const [test, setTest] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    setTest(Boolean(localStorage.cookieConsent));
-  }, []);
-  // const { cookieConsent } = useAppSelector((state) => state);
+
   return (
     <footer className={`bg-[#2D2081] pb-[3rem] text-white`}>
       <div className="text-center space-y-6 lg:space-y-0 lg:flex w-full justify-evenly p-6 ">
