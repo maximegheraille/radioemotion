@@ -12,7 +12,7 @@ const Lastplayed = () => {
       return info.json();
     },
     {
-      refetchInterval: 30000,
+      refetchInterval: 10000,
       refetchIntervalInBackground: true,
       refetchOnWindowFocus: false,
     }
@@ -22,7 +22,6 @@ const Lastplayed = () => {
     <>
       <Swiper
         slidesPerView={"auto"}
-        //spaceBetween={30}
         freeMode={true}
         freeModeSticky
         watchSlidesVisibility={true}
