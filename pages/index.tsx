@@ -1,6 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import LazyLoad from "react-lazyload";
+import NextSeo from "../components/shared/NextSeo/NextSeo";
 
 const Lastplayed = dynamic(
   () => import("../components/homepage/lastplayed/Lastplayed")
@@ -20,6 +21,11 @@ const Agenda = dynamic(() => import("../components/homepage/agenda/Agenda"));
 const IndexPage = () => {
   return (
     <div className="">
+      <NextSeo
+        canonical="https://www.radioemotion.be/"
+        title="Radio Emotion"
+        description="Radio Emotion est la radio indépendante de Braine-L'Alleud / Waterloo / Lasne émettant sur le 104.9 FM"
+      />
       <div className="">
         <div className="mx-auto rounded-lg z-0 md:w-10/12 lg:w-6/12 2xl:w-6/12 ">
           <Carousel />
