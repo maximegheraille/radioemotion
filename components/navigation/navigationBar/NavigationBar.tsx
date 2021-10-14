@@ -40,17 +40,18 @@ const NavigationBar = ({
   setOpenSideNav,
 }: NavigationProps) => {
   const dispatch = useAppDispatch();
-  const { darkTheme } = useAppSelector((state) => state);
+  const { darkTheme } = useAppSelector((state) => state.darkTheme);
   const { asPath } = useRouter();
   return (
     <>
-      <nav className="h-full px-2 w-full">
+      <nav className="h-full px-2*/ px-0 w-full">
         <div className="h-full flex-1 flex items-center justify-between sm:items-stretch sm:justify-between">
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => {
                 setOpenSideNav(!openSideNav);
               }}
+              aria-label="Ouvrir le menu"
             >
               <FontAwesomeIcon
                 className="text-white block h-6 w-6"
@@ -64,8 +65,8 @@ const NavigationBar = ({
               <div className="w-full px-2 items-center flex place-content-center">
                 <div className="w-20 flex">
                   <Link href={"/"}>
-                    <a>
-                      <Image src={logo} className="bg-white" />
+                    <a className="flex">
+                      <Image src={logo} className="bg-white" alt="Logo" />
                     </a>
                   </Link>
                 </div>
