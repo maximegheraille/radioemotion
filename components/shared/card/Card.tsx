@@ -43,6 +43,9 @@ const Card = ({
   const CardVote = useMutation(vote, {
     onSettled: (_data: any, _error: any, _variables: any, _context?: any) => {
       if (component !== "nothing") {
+        if (component === "lastPlayed") {
+          queryClient.invalidateQueries("current_song");
+        }
         queryClient.invalidateQueries(`${component}`);
       }
     },
@@ -142,6 +145,7 @@ const Card = ({
                 CardVote.mutate({ id: song?.id, voted: song?.voted });
               }}
               disabled={CardVote.isLoading}
+              aria-label="Like"
             >
               <FontAwesomeIcon
                 icon={song?.voted ? faHeart : faHeart2}
@@ -167,19 +171,20 @@ const Card = ({
         >
           <a
             className={`lg:m-1 flex`}
-            //href={`https://apple.co/3aaaBTr`}
-            //href={`https://itunes.apple.com/fr/album/en-rouge-et-noir/id710450466?i=710450474&uo=6&at=10luqD&ct=&mt=1&app=music`}
-            //href={`https://itunes.apple.com/be/album/can-they-hear-us-from-gully-with-original-daniel-heath-score/1570713944?i=1570713959&itsct=music_box_link&itscg=30200&at=10luqD&ct=songs_can_they_hear_us_%28from_%E2%80%98gully%E2%80%99_wit&app=music`}
             href={`${
               song?.apple_music &&
               song?.apple_music.replace("geo.music", "itunes")
             }`}
             target="_blank"
           >
-            <button className="w-6 mr-1 items-center flex">
+            <button
+              className="w-6 mr-1 items-center flex"
+              aria-label="Ouvrir le clip video"
+            >
               <Image
                 src={Apple_music}
                 className={`p-1 transform motion-safe:group-focus:scale-110 w-5 lg:w-5 text-white`}
+                alt="Logo de Apple music"
               />
             </button>
           </a>
