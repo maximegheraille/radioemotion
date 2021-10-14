@@ -26,6 +26,6 @@ export const darkTheme_slice = createSlice({
 export const { changeTheme } = darkTheme_slice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.darkTheme;
+export const Theme = (state: RootState) => state.darkTheme;
 
 export default darkTheme_slice.reducer;

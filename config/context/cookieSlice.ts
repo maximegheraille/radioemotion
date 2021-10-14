@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getInitialCookie } from "./initialTheme";
+import { getInitialCookie } from "./initialStates";
 import type { RootState } from "./store";
 
 // Define a type for the slice state
