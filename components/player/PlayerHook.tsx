@@ -15,7 +15,7 @@ const usePlayer = () => {
     "current_song",
     fetch_current_song,
     {
-      refetchInterval: 30000,
+      refetchInterval: 10000,
       refetchIntervalInBackground: true,
       refetchOnWindowFocus: false,
     }
