@@ -2,7 +2,7 @@ import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faHeart, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, Transition } from "@headlessui/react";
-import React, { Fragment } from "react";
+import React from "react";
 import usePlayer from "../PlayerHook";
 import { faHeart as faHeart2 } from "@fortawesome/free-regular-svg-icons";
 import Apple_music from "../../../public/images/links/Apple_music2.svg";
