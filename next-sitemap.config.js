@@ -1,4 +1,4 @@
-const siteUrl = "http://192.168.1.133:3012";
+const siteUrl = "https://www.radioemotion.be";
 
 module.exports = {
   siteUrl: siteUrl,
