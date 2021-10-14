@@ -8,7 +8,7 @@ interface BannierProps {
 
 const Banniere = ({ image, className }: BannierProps) => {
   return (
-    <div className=" w-full flex items-center pb-8">
+    <div className=" w-full flex items-center pb-8 lg:pt-2">
       <Image src={image} className={`${className} rounded-lg`} />
     </div>
   );
