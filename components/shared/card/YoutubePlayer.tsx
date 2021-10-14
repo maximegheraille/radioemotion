@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useRef, useState } from "react";
-import { getInitialTheme } from "../../../config/context/initialTheme";
+import { getInitialTheme } from "../../../config/context/initialStates";
 
 interface YoutubeProps {
   url: string | undefined;
