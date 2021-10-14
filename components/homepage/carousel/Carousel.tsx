@@ -32,7 +32,6 @@ const Carousel = () => {
         ></div>
       ) : (
         <Swiper
-          // spaceBetween={10}
           centeredSlides={true}
           centeredSlidesBounds={true}
           slidesPerView={1}
@@ -60,6 +59,7 @@ const Carousel = () => {
                     width="700"
                     height="260"
                     src={`https://www.radioemotion.be${caroussel.URL}.jpg`}
+                    alt="Information sur une emission"
                   />
                 </SwiperSlide>
               )
