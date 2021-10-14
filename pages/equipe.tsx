@@ -12,12 +12,18 @@ import {
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+import NextSeo from "../components/shared/NextSeo/NextSeo";
 interface propsEquipe {
   equipe: Equipe[];
 }
 const equipe = ({ equipe }: propsEquipe) => {
   return (
     <div>
+      <NextSeo
+        canonical="https://www.radioemotion.be/Equipe"
+        title="L'équipe"
+        description="L'équipe sur Radio Emotion"
+      />
       <LazyLoad>
         <Banniere image={banequipe} />
       </LazyLoad>
