@@ -23,7 +23,7 @@ const Cookies = () => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-0"
         >
-          <div className=" flex flex-col lg:flex-row p-2 bg-[#2D2180] items-center text-indigo-100 leading-none rounded-lg lg:inline-flex transition  bottom-20 right-0 lg:right-20 fixed">
+          <div className=" flex flex-col lg:flex-row p-2 bg-[#2D2180] items-center text-indigo-100 leading-none rounded-lg lg:inline-flex transition bottom-20 lg:bottom-8 right-0 lg:right-20 fixed">
             <span className="font-semibold mr-2 text-left flex-auto">
               Nous utilisons des cookies pour vous offrir une meilleure
               expérience de navigation ainsi qu'analyser le trafic sur notre
