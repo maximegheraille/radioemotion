@@ -67,7 +67,7 @@ const Navigation = () => {
 
   return (
     <nav className="bg-[#2d2180] h-12 px-2 w-full fixed z-50">
-      <div className="h-full">
+      <div className="h-full lg:max-w-4xl xl:max-w-6xl 2xl:max-w-[1400px] mx-auto  max-h-full place-content-between lg:place-self-auto px-1 lg:px-0">
         <NavigationBar
           nav={navItems}
           openSideNav={openSideNav}
