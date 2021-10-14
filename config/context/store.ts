@@ -1,8 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { darkTheme_slice } from "./darkThemeSlice";
+import cookieSlice from "./cookieSlice";
+import darkTheme_slice from "./darkThemeSlice";
+const reducer = {
+  darkTheme: darkTheme_slice,
+  cookieConsent: cookieSlice,
+};
 
 export const rootStore = configureStore({
-  reducer: darkTheme_slice.reducer,
+  reducer,
 });
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof rootStore.getState>;

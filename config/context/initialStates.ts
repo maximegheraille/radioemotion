@@ -17,3 +17,17 @@ export const getInitialTheme = () => {
     return false;
   }
 };
+
+export const getInitialCookie = (): boolean | null => {
+  try {
+    if (localStorage.cookieConsent === "true") {
+      return true;
+    } else if (localStorage.cookieConsent === "false") {
+      return false;
+    } else {
+      return null;
+    }
+  } catch {
+    return null;
+  }
+};
