@@ -40,7 +40,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
           );
         } else {
           // verify if image for song is available
-          if (results[0][0].photo === "0") {
+          if (results[0][0].photo === 0) {
             results[0][0].photo = "";
           } else {
             results[0][0].photo = `https://www.radioemotion.be/covers/${results[0][0].id}.jpg`;
