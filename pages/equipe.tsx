@@ -12,7 +12,7 @@ import {
   faInstagram,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
-import NextSeo from "../components/shared/NextSeo/NextSeo";
+import { NextSeo } from "next-seo";
 interface propsEquipe {
   equipe: Equipe[];
 }
@@ -20,9 +20,28 @@ const equipe = ({ equipe }: propsEquipe) => {
   return (
     <div>
       <NextSeo
-        canonical="https://www.radioemotion.be/Equipe"
+        canonical="https://www.radioemotion.be/equipe"
         title="L'équipe"
         description="L'équipe sur Radio Emotion"
+        openGraph={{
+          url: "https://www.radioemotion.be/equipe",
+          title: "L'équipe",
+          description: "L'équipe sur Radio Emotion",
+          images: [
+            {
+              url: "https://www.radioemotion.be/images/radioemotion-logo.png",
+              width: 150,
+              height: 150,
+              alt: "Logo de Radio Emotion",
+              type: "image/png",
+            },
+            { url: "https://www.radioemotion.be/images/radioemotion-logo.png" },
+          ],
+          site_name: "Radio Emotion",
+        }}
+        twitter={{
+          cardType: "summary_large_image",
+        }}
       />
       <LazyLoad>
         <Banniere image={banequipe} />

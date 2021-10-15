@@ -7,12 +7,37 @@ import { GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { server } from "../config/nextjs";
 import { Song } from "../interfaces/song";
+import { NextSeo } from "next-seo";
 interface top30Props {
   top30: Song[];
 }
 const top30 = ({ top30 }: top30Props) => {
   return (
     <div>
+      <NextSeo
+        canonical="https://www.radioemotion.be/top30"
+        title="Le top30"
+        description="Le top30 de Radio Emotion"
+        openGraph={{
+          url: "https://www.radioemotion.be/top30",
+          title: "Le top30",
+          description: "Le top30 de Radio Emotion",
+          images: [
+            {
+              url: "https://www.radioemotion.be/images/radioemotion-logo.png",
+              width: 150,
+              height: 150,
+              alt: "Logo de Radio Emotion",
+              type: "image/png",
+            },
+            { url: "https://www.radioemotion.be/images/radioemotion-logo.png" },
+          ],
+          site_name: "Radio Emotion",
+        }}
+        twitter={{
+          cardType: "summary_large_image",
+        }}
+      />
       <LazyLoad>
         <Banniere image={bantop30} />
       </LazyLoad>

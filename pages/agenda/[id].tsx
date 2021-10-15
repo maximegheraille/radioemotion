@@ -4,10 +4,7 @@ import Paginated from "../../components/shared/paginated/Paginated";
 import Title from "../../components/shared/title/Title";
 import { Agenda } from "../../interfaces/agenda";
 import Article from "../../components/shared/article/agenda/Article";
-
-// interface InfoProps {
-//   agenda: Agenda;
-// }
+import { NextSeo } from "next-seo";
 
 const AgendaSlug = ({ agenda }: any) => {
   if (Object.entries(agenda).length === 0 && agenda.constructor === Object) {
@@ -19,6 +16,27 @@ const AgendaSlug = ({ agenda }: any) => {
   }
   return (
     <div className="lg:flex text-black dark:text-white place-content-between">
+      <NextSeo
+        canonical="https://www.radioemotion.be/actualites"
+        title={`${agenda.title}`}
+        description={`${agenda.text}`}
+        openGraph={{
+          url: `https://www.radioemotion.be/actualites/${agenda.id}`,
+          title: `${agenda.title}`,
+          description: `${agenda.text}`,
+          images: [
+            {
+              url: `https://www.radioemotion.be/images/agenda/${agenda.id}.jpg`,
+              alt: "Image de l'actualités",
+              type: "image/jpg",
+            },
+          ],
+          site_name: "Radio Emotion",
+        }}
+        twitter={{
+          cardType: "summary_large_image",
+        }}
+      />
       <div className="w-full lg:w-9/12">
         <Title
           title="L'INFO DE VOTRE REGION"

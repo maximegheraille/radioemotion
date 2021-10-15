@@ -4,6 +4,7 @@ import { Info } from "../../interfaces/info";
 import Paginated from "../../components/shared/paginated/Paginated";
 import Article from "../../components/shared/article/actualites/Article";
 import Title from "../../components/shared/title/Title";
+import { NextSeo } from "next-seo";
 
 const InfoPage = ({ info }: any) => {
   if (Object.entries(info).length === 0 && info.constructor === Object) {
@@ -15,6 +16,27 @@ const InfoPage = ({ info }: any) => {
   }
   return (
     <div className="lg:flex text-black dark:text-white place-content-between">
+      <NextSeo
+        canonical={`https://www.radioemotion.be/actualites/${info.id}`}
+        title={`${info.title}`}
+        description={`${info.preview}`}
+        openGraph={{
+          url: `https://www.radioemotion.be/actualites/${info.id}`,
+          title: `${info.title}`,
+          description: `${info.preview}`,
+          images: [
+            {
+              url: `https://www.radioemotion.be/images/infos/${info.id}.jpg`,
+              alt: "Image de l'actualités",
+              type: "image/jpg",
+            },
+          ],
+          site_name: "Radio Emotion",
+        }}
+        twitter={{
+          cardType: "summary_large_image",
+        }}
+      />
       <div className="w-full lg:w-9/12">
         <Title title="L'INFO DE VOTRE REGION" className="text-center" article />
         <Article article={info} />

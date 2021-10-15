@@ -7,10 +7,35 @@ import { ParsedUrlQuery } from "querystring";
 import { AllEmission } from "../interfaces/emission";
 import { server } from "../config/nextjs";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 
 const emissions = ({ emissions }: any) => {
   return (
     <div>
+      <NextSeo
+        canonical="https://www.radioemotion.be/emissions"
+        title="Les Emission"
+        description="Les Emissions sur Radio Emotion"
+        openGraph={{
+          url: "https://www.radioemotion.be/emissions",
+          title: "Les Emissions",
+          description: "Les Emissions sur Radio Emotion",
+          images: [
+            {
+              url: "https://www.radioemotion.be/images/radioemotion-logo.png",
+              width: 150,
+              height: 150,
+              alt: "Logo de Radio Emotion",
+              type: "image/png",
+            },
+            { url: "https://www.radioemotion.be/images/radioemotion-logo.png" },
+          ],
+          site_name: "Radio Emotion",
+        }}
+        twitter={{
+          cardType: "summary_large_image",
+        }}
+      />
       <div className="w-full px-2 pb-16 sm:px-0 lg:pt-2">
         <Tab.Group
           defaultIndex={new Date().getDay() === 0 ? 6 : new Date().getDay() - 1}
