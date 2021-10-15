@@ -14,7 +14,7 @@ const emissions = ({ emissions }: any) => {
     <div>
       <NextSeo
         canonical="https://www.radioemotion.be/emissions"
-        title="Les Emission"
+        title="Les Emissions"
         description="Les Emissions sur Radio Emotion"
         openGraph={{
           url: "https://www.radioemotion.be/emissions",

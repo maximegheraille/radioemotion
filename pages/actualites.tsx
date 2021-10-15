@@ -6,11 +6,11 @@ const actualites = () => {
     <div className="min-h-screen">
       <NextSeo
         canonical="https://www.radioemotion.be/actualites"
-        title="Les infos"
+        title="L'info de votre région"
         description="Les infos de votre region"
         openGraph={{
           url: "https://www.radioemotion.be/actualites",
-          title: "Les infos",
+          title: "L'info de votre région",
           description: "Les infos de votre region",
           images: [
             {
