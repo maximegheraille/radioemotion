@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import LazyLoad from "react-lazyload";
-import NextSeo from "../components/shared/NextSeo/NextSeo";
+import { NextSeo } from "next-seo";
 
 const Lastplayed = dynamic(
   () => import("../components/homepage/lastplayed/Lastplayed")
@@ -25,6 +25,26 @@ const IndexPage = () => {
         canonical="https://www.radioemotion.be/"
         title="Radio Emotion"
         description="Radio Emotion est la radio indépendante de Braine-L'Alleud / Waterloo / Lasne émettant sur le 104.9 FM"
+        openGraph={{
+          url: "https://www.radioemotion.be/",
+          title: "Radio Emotion",
+          description:
+            "Radio Emotion est la radio indépendante de Braine-L'Alleud / Waterloo / Lasne émettant sur le 104.9 FM",
+          images: [
+            {
+              url: "https://www.radioemotion.be/images/radioemotion-logo.png",
+              width: 150,
+              height: 150,
+              alt: "Logo de Radio Emotion",
+              type: "image/png",
+            },
+            { url: "https://www.radioemotion.be/images/radioemotion-logo.png" },
+          ],
+          site_name: "Radio Emotion",
+        }}
+        twitter={{
+          cardType: "summary_large_image",
+        }}
       />
       <div className="">
         <div className="mx-auto rounded-lg z-0 md:w-10/12 lg:w-6/12 2xl:w-6/12 ">
