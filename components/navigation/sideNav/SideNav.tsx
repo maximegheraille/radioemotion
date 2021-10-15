@@ -159,6 +159,9 @@ const Sidenav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
                 onClick={() => {
                   dispatch(changeTheme(!darkTheme));
                 }}
+                aria-label={`${
+                  darkTheme ? "Activer le mode jour" : "Activer le mode nuit"
+                }`}
               >
                 <div
                   className={`w-12 h-6 transition rounded-full outline-none bg-[#0e0e10] bg-primary-100 dark:bg-[#a4a7b5]`}

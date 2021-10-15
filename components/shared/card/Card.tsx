@@ -145,7 +145,7 @@ const Card = ({
                 CardVote.mutate({ id: song?.id, voted: song?.voted });
               }}
               disabled={CardVote.isLoading}
-              aria-label="Like"
+              aria-label={`${song?.voted ? "Désaimer" : "Aimer"}`}
             >
               <FontAwesomeIcon
                 icon={song?.voted ? faHeart : faHeart2}
@@ -202,6 +202,7 @@ const Card = ({
               song?.youtube === "" ? "hidden" : "flex"
             } group items-center place-content-center text-[#f44336]`}
             onClick={() => setShowYou(!showYou)}
+            aria-label="Ouvrir le clip video"
           >
             <FontAwesomeIcon
               icon={faYoutube}
@@ -226,6 +227,7 @@ const Card = ({
             } group flex items-center text-[#f44336]`}
             href={`${song?.youtube}`}
             target="_blank"
+            aria-label="Ouvrir le clip video"
           >
             <FontAwesomeIcon
               icon={faYoutube}
