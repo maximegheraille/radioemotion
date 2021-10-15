@@ -58,25 +58,6 @@ const Footer = () => {
               <FontAwesomeIcon icon={faAndroid} className="mr-1" /> Application
               Android
             </a>
-          </div>
-        </div>
-        <div className="">
-          <p className="text-lg">CONTACT</p>
-          <div className="flex flex-col pt-4 space-y-2">
-            <a href="mailto:info@radioemotion.be">
-              <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-              info@radioemotion.be
-            </a>
-            <a href="tel: 02 318 66 39">
-              <FontAwesomeIcon icon={faPhone} className="mr-2" />
-              02 318 66 39
-            </a>
-            <Link href="/mentionslegales">
-              <a>
-                <FontAwesomeIcon icon={faFile} className="mr-2" />
-                Mentions Legales
-              </a>
-            </Link>
             <div className="flex items-center justify-center">
               <button
                 type="button"
@@ -200,6 +181,25 @@ const Footer = () => {
                 </div>
               </Dialog>
             </Transition>
+          </div>
+        </div>
+        <div className="">
+          <p className="text-lg">CONTACT</p>
+          <div className="flex flex-col pt-4 space-y-2">
+            <a href="mailto:info@radioemotion.be">
+              <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+              info@radioemotion.be
+            </a>
+            <a href="tel: 02 318 66 39">
+              <FontAwesomeIcon icon={faPhone} className="mr-2" />
+              02 318 66 39
+            </a>
+            <Link href="/mentionslegales">
+              <a>
+                <FontAwesomeIcon icon={faFile} className="mr-2" />
+                Mentions Legales
+              </a>
+            </Link>
           </div>
         </div>
 
