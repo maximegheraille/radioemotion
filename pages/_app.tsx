@@ -66,7 +66,7 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
         ReactGA.pageview(window.location.pathname);
       } else {
         dispatch(initialize(true));
-        ReactGA.initialize(`${process.env.REACT_GA}`, { debug: true });
+        ReactGA.initialize(`${process.env.REACT_GA}`);
         ReactGA.pageview(window.location.pathname);
       }
     }
@@ -78,7 +78,7 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
           ReactGA.pageview(url);
         } else {
           dispatch(initialize(true));
-          ReactGA.initialize(`${process.env.REACT_GA}`, { debug: true });
+          ReactGA.initialize(`${process.env.REACT_GA}`);
           ReactGA.pageview(url);
         }
       }
