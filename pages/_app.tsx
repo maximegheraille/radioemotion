@@ -62,11 +62,10 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
   useEffect(() => {
     if (getInitialCookie() === true) {
       if (initialized === true) {
-        console.log("effect, just gA");
         ReactGA.pageview(window.location.pathname);
       } else {
         dispatch(initialize(true));
-        ReactGA.initialize(`${process.env.REACT_GA}`);
+        ReactGA.initialize(`${process.env.NEXT_PUBLIC_REACT_GA}`);
         ReactGA.pageview(window.location.pathname);
       }
     }
@@ -78,7 +77,7 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
           ReactGA.pageview(url);
         } else {
           dispatch(initialize(true));
-          ReactGA.initialize(`${process.env.REACT_GA}`);
+          ReactGA.initialize(`${process.env.NEXT_PUBLIC_REACT_GA}`);
           ReactGA.pageview(url);
         }
       }
@@ -86,7 +85,7 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
     if (getInitialCookie() !== null) {
       if (getInitialCookie() === true && prevCookie !== undefined) {
         if (initialized) {
-          ReactGA.initialize(`${process.env.REACT_GA}`);
+          ReactGA.initialize(`${process.env.NEXT_PUBLIC_REACT_GA}`);
         }
         dispatch(initialize(true));
         ReactGA.pageview(window.location.pathname);
