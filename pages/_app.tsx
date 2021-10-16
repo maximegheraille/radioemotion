@@ -60,14 +60,11 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
   const prevCookie = usePrevious(cookie);
 
   useEffect(() => {
-    console.log("cookie changed " + cookie);
-    console.log("here old " + prevCookie + " new: " + cookie);
     if (getInitialCookie() === true) {
       if (initialized === true) {
         console.log("effect, just gA");
         ReactGA.pageview(window.location.pathname);
       } else {
-        console.log("effect, initiallazing");
         dispatch(initialize(true));
         ReactGA.initialize(`${process.env.REACT_GA}`, { debug: true });
         ReactGA.pageview(window.location.pathname);
@@ -78,10 +75,8 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
     router.events.on("routeChangeStart", (url: string) => {
       if (getInitialCookie() === true) {
         if (initialized === true) {
-          console.log("route change initial load cookie found, initializing");
           ReactGA.pageview(url);
         } else {
-          console.log("not initialising");
           dispatch(initialize(true));
           ReactGA.initialize(`${process.env.REACT_GA}`, { debug: true });
           ReactGA.pageview(url);
@@ -91,10 +86,8 @@ const TailwindCssDarkMode: React.FC = ({ children }) => {
     if (getInitialCookie() !== null) {
       if (getInitialCookie() === true && prevCookie !== undefined) {
         if (initialized) {
-          console.log("initial load cookie found, initializing");
-          ReactGA.initialize(`${process.env.REACT_GA}`, { debug: true });
+          ReactGA.initialize(`${process.env.REACT_GA}`);
         }
-        console.log("already initialized");
         dispatch(initialize(true));
         ReactGA.pageview(window.location.pathname);
       }
