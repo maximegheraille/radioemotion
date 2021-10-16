@@ -26,7 +26,7 @@ const InfoPage = ({ info }: any) => {
           description: `${info.preview}`,
           images: [
             {
-              url: `https://www.radioemotion.be/images/infos/${info.id}.jpg`,
+              url: `https://covers.radioemotion.be/images/infos/${info.id}.jpg`,
               alt: "Image de l'actualités",
               type: "image/jpg",
             },

@@ -21,7 +21,7 @@ export default async function handler(
           return;
         }
         rows[0].forEach((row: InfoPaginated) => {
-          row.photo = `https://www.radioemotion.be/Images/agenda/${row.id}.jpg`;
+          row.photo = `https://covers.radioemotion.be/images/agenda/${row.id}.jpg`;
         });
         res.status(200).json({
           data: rows[0],

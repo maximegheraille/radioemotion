@@ -17,7 +17,7 @@ export default async function handler(
           return;
         }
         rows.forEach((person: AllEmission) => {
-          person.photo = `https://www.radioemotion.be${person.photo}.jpg`;
+          person.photo = `https://covers.radioemotion.be${person.photo}.jpg`;
         });
         res.status(200).json({
           lundi: rows.filter((person) => person.jour_id === 1),

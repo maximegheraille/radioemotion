@@ -19,7 +19,7 @@ export default async function handler(
         if (rows[0][0] === undefined) {
           res.status(200).json({});
         } else {
-          rows[0][0].photo = `https://www.radioemotion.be/images/agenda/${rows[0][0].id}.jpg`;
+          rows[0][0].photo = `https://covers.radioemotion.be/images/agenda/${rows[0][0].id}.jpg`;
           res.status(200).json(rows[0][0]);
         }
         connection.destroy();

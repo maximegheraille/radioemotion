@@ -17,7 +17,7 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
             return;
           }
           rows[0].forEach((row: emission) => {
-            row.photo = `https://www.radioemotion.be${row.photo}.jpg`;
+            row.photo = `https://covers.radioemotion.be${row.photo}.jpg`;
             row.start = row.start.slice(0, -3);
             row.end = row.end.slice(0, -3);
             if (

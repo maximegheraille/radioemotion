@@ -17,7 +17,7 @@ export default async function handler(
           return;
         }
         rows.forEach((info: Info) => {
-          info.photo = `https://www.radioemotion.be/images/infos/${rows[0].id}.jpg`;
+          info.photo = `https://covers.radioemotion.be/images/infos/${rows[0].id}.jpg`;
         });
         res.status(200).json(rows);
         connection.destroy();

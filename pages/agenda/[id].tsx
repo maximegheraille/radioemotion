@@ -26,7 +26,7 @@ const AgendaSlug = ({ agenda }: any) => {
           description: `${agenda.text}`,
           images: [
             {
-              url: `https://www.radioemotion.be/images/agenda/${agenda.id}.jpg`,
+              url: `https://covers.radioemotion.be/images/agenda/${agenda.id}.jpg`,
               alt: "Image de l'actualités",
               type: "image/jpg",
             },

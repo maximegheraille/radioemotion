@@ -15,7 +15,7 @@ const Infos = (req: NextApiRequest, res: NextApiResponse) => {
             return;
           }
           rows.forEach((row: Info) => {
-            row.photo = `https://www.radioemotion.be/Images/Infos/${row.id}.jpg`;
+            row.photo = `https://covers.radioemotion.be/Images/Infos/${row.id}.jpg`;
           });
           res.status(200).json(rows);
           connection.destroy();

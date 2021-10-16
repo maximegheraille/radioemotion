@@ -16,7 +16,7 @@ export default async function handler(
           connection.destroy();
           return;
         }
-        rows[0].photo = `https://www.radioemotion.be/images/infos/${rows[0].id}.jpg`;
+        rows[0].photo = `https://covers.radioemotion.be/images/infos/${rows[0].id}.jpg`;
         res.status(200).json(rows[0]);
         connection.destroy();
       }
