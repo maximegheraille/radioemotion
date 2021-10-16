@@ -52,13 +52,13 @@ const Carousel = () => {
           {caroussel &&
             !isLoading &&
             caroussel.map(
-              (caroussel: { ID: number; URL: string }, index: number) => (
-                <SwiperSlide virtualIndex={caroussel.ID} key={index}>
+              (caroussel: { id: number; url: string }, index: number) => (
+                <SwiperSlide virtualIndex={index} key={index}>
                   <Image
                     className="rounded-lg w-full shadow-lg"
                     width="700"
                     height="260"
-                    src={`https://www.radioemotion.be${caroussel.URL}.jpg`}
+                    src={caroussel.url}
                     alt="Information sur une emission"
                   />
                 </SwiperSlide>
