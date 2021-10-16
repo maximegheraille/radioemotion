@@ -17,9 +17,9 @@ export default async function handler(
           }
           rows.forEach((song: Song) => {
             if (song.photo === 0) {
-              song.photo = `https://www.radioemotion.be/covers/emo5.jpg`;
+              song.photo = `https://covers.radioemotion.be/emo5.jpg`;
             } else {
-              song.photo = `https://www.radioemotion.be/covers/${song.id}.jpg`;
+              song.photo = `https://covers.radioemotion.be/${song.id}.jpg`;
             }
             if (song.apple_music === "0") {
               song.apple_music = "";

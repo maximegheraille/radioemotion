@@ -18,9 +18,9 @@ export default async function handler(
           rows.forEach((song: Song, index: number) => {
             song.position = index + 1;
             if (song.photo === 0) {
-              song.photo = `https://www.radioemotion.be/covers/emo5.jpg`;
+              song.photo = `https://covers.radioemotion.be/emo5.jpg`;
             } else {
-              song.photo = `https://www.radioemotion.be/covers/${song.id}.jpg`;
+              song.photo = `https://covers.radioemotion.be/${song.id}.jpg`;
             }
             // verify if there is a youtube link
             if (song.youtube === "0") {

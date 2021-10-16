@@ -19,7 +19,7 @@ export default async function handler(
             if (song.photo === "0") {
               song.photo = "";
             } else {
-              song.photo = `https://www.radioemotion.be/covers/${song.id}.jpg`;
+              song.photo = `https://covers.radioemotion.be/${song.id}.jpg`;
             }
             // verify if there is a youtube link
             if (song.youtube === "0") {

@@ -43,7 +43,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
           if (results[0][0].photo === 0) {
             results[0][0].photo = "";
           } else {
-            results[0][0].photo = `https://www.radioemotion.be/covers/${results[0][0].id}.jpg`;
+            results[0][0].photo = `https://covers.radioemotion.be/${results[0][0].id}.jpg`;
           }
           // verify if there is a youtube link
           if (results[0][0].youtube === "0") {
