@@ -67,7 +67,6 @@ const Playlist = () => {
   });
   return (
     <div className="">
-      {song && console.log(song.youtube)}
       {showYou.open && <YoutubePlayer url={showYou.url} />}
       <div className="w-full text-center rounded-lg">
         <p className="text-black dark:text-white mb-1">
