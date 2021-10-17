@@ -25,7 +25,7 @@ const Footer = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <footer className={`bg-[#2D2081] pb-[3rem] text-white`}>
+    <footer className={`bg-[#2D2081] pb-16 lg:pb-[3rem] text-white`}>
       <div className="text-center space-y-6 lg:space-y-0 lg:flex w-full justify-evenly p-6 ">
         <div className="lg:w-3/12 space-y-4">
           <p className="text-lg">RADIO EMOTION</p>
