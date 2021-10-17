@@ -5,7 +5,7 @@ import React from "react";
 const ToTopButton = () => {
   return (
     <button
-      className="fixed left-[87vw] lg:left-[90vw] top-[82vh] lg:top-[90vh]"
+      className="hidden lg:fixed left-[87vw] lg:left-[90vw] top-[82vh] lg:top-[90vh]"
       onClick={() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
