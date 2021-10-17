@@ -157,10 +157,12 @@ const Sidenav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
               <button
                 className="pr-1 relative focus:outline-none"
                 onClick={() => {
-                  dispatch(changeTheme(!darkTheme));
+                  dispatch(changeTheme(!darkTheme.darkTheme));
                 }}
                 aria-label={`${
-                  darkTheme ? "Activer le mode jour" : "Activer le mode nuit"
+                  darkTheme.darkTheme
+                    ? "Activer le mode jour"
+                    : "Activer le mode nuit"
                 }`}
               >
                 <div
@@ -169,7 +171,7 @@ const Sidenav = ({ nav, openSideNav, setOpenSideNav }: side_nav_props) => {
                 <div
                   className={`absolute top-0 p-1 left-0 inline-flex items-center justify-center w-6 h-6 transition-all duration-300 transform scale-110 rounded-full shadow-sm translate-x-6 text-primary-100 bg-white text-black dark:translate-x-0 dark:-translate-y-px dark:bg-white dark:text-dark'`}
                 >
-                  {!darkTheme ? (
+                  {!darkTheme.darkTheme ? (
                     <FontAwesomeIcon icon={faMoon} />
                   ) : (
                     <FontAwesomeIcon icon={faSun} />
