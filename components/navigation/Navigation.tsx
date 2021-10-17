@@ -56,7 +56,7 @@ const Navigation = () => {
       ],
     },
     { name: "Playlist", href: "/Playlist", icon: faClock },
-    { name: "Nouveautes", href: "/Nouveautes", icon: faNewspaper },
+    { name: "Nouveautes", href: "/Nouveautés", icon: faNewspaper },
     { name: "Top 30", href: "/Top30", icon: faList },
     {
       name: `Votes ${new Date().getFullYear()}`,
