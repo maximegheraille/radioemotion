@@ -43,3 +43,11 @@ ecosystem.config.js
 #robots & sitemap for next-sitemap
 /public/robots.txt
 /public/sitemap.xml
+
+#PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
