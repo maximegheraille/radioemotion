@@ -176,6 +176,7 @@ const Card = ({
               song?.apple_music.replace("geo.music", "itunes")
             }`}
             target="_blank"
+            rel="noopener"
           >
             <button
               className="w-6 mr-1 items-center flex"

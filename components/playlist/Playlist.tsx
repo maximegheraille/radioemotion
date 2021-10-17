@@ -194,6 +194,7 @@ const Playlist = () => {
                                   className={`lg:m-1 flex`}
                                   href={`${song?.apple_music}`}
                                   target="_blank"
+                                  rel="noopener"
                                 >
                                   <div className="w-6 align-middle flex">
                                     <Image
@@ -221,6 +222,7 @@ const Playlist = () => {
                                       url: song.youtube,
                                     })
                                   }
+                                  aria-label="Ouvrir le clip video"
                                 >
                                   <FontAwesomeIcon
                                     icon={faYoutube}
@@ -252,6 +254,9 @@ const Playlist = () => {
                                         });
                                       }}
                                       disabled={CardVote.isLoading}
+                                      aria-label={`${
+                                        song?.voted ? "Désaimer" : "Aimer"
+                                      }`}
                                     >
                                       <FontAwesomeIcon
                                         icon={song?.voted ? faHeart : faHeart2}

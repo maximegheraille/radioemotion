@@ -45,6 +45,7 @@ const Footer = () => {
                 "https://apps.apple.com/be/app/radio-emotion-belgique/id1406151362?mt=8"
               }
               target="_blank"
+              rel="noopener"
             >
               <FontAwesomeIcon icon={faApple} className="mr-2" /> Application
               IOS
@@ -54,6 +55,7 @@ const Footer = () => {
                 "https://play.google.com/store/apps/details?id=com.Radio.Emotion&gl=BE"
               }
               target="_blank"
+              rel="noopener"
             >
               <FontAwesomeIcon icon={faAndroid} className="mr-1" /> Application
               Android
@@ -206,13 +208,18 @@ const Footer = () => {
         <div className="">
           <p className="text-lg">SUIVEZ-NOUS</p>
           <div className="flex flex-col pt-4 space-y-2">
-            <a href={"https://www.facebook.com/1049fm/"} target="_blank">
+            <a
+              href={"https://www.facebook.com/1049fm/"}
+              target="_blank"
+              rel="noopener"
+            >
               <FontAwesomeIcon icon={faFacebook} className="mr-1 " />
               Facebook
             </a>
             <a
               href={"https://www.instagram.com/radioemotionbelgique/"}
               target="_blank"
+              rel="noopener"
             >
               <FontAwesomeIcon icon={faInstagram} className="mr-1 " />
               Instagram
