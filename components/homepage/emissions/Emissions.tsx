@@ -17,7 +17,11 @@ const Emissions = () => {
       const info = await fetch("/api/index/emissions");
       return info.json();
     },
-    { refetchOnWindowFocus: false }
+    {
+      refetchOnWindowFocus: false,
+      refetchIntervalInBackground: true,
+      refetchInterval: 3600,
+    }
   );
 
   return (
