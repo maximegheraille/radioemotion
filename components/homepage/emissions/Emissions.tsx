@@ -42,6 +42,7 @@ const Emissions = () => {
                   height="100"
                   src={emission?.photo}
                   className="rounded-l-lg"
+                  alt="Image du présentateur"
                 />
               </LoadingState>
               <div className="pl-2 my-2 space-y-4">
@@ -64,6 +65,7 @@ const Emissions = () => {
                           "width=650,height=380"
                         )
                       }
+                      aria-label="Ouvrir le player live"
                     >
                       <FontAwesomeIcon
                         icon={faVideo}
@@ -108,6 +110,7 @@ const Emissions = () => {
                 height="100"
                 src={emission.photo}
                 className="rounded-l-lg"
+                alt="Image du présentateur"
               />
 
               <div className="pl-2 my-2 space-y-2">
