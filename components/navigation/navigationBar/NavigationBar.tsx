@@ -183,6 +183,9 @@ const NavigationBar = ({
                 onClick={() => {
                   dispatch(changeTheme(!darkTheme));
                 }}
+                aria-label={`${
+                  darkTheme ? "Activer le mode jour" : "Activer le mode nuit"
+                }`}
               >
                 <div
                   className={`w-10 h-4 xl:w-12 xl:h-5 transition rounded-full outline-none bg-[#0e0e10] bg-primary-100 dark:bg-[rgba(164,167,181,1)]`}

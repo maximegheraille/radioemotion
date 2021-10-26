@@ -120,7 +120,12 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
           isError={isError}
           data={song?.apple_music}
         >
-          <a className={`lg:m-3`} href={`${song?.apple_music}`} target="_blank">
+          <a
+            className={`lg:m-3`}
+            href={`${song?.apple_music}`}
+            target="_blank"
+            rel="noopener"
+          >
             <div className="w-6 align-middle flex">
               <Image
                 src={Apple_music}
