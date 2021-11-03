@@ -2,10 +2,10 @@ import React from "react";
 import { server } from "../../config/nextjs";
 import Paginated from "../../components/shared/paginated/Paginated";
 import Title from "../../components/shared/title/Title";
-import { Agenda } from "../../interfaces/agenda";
 import Article from "../../components/shared/article/agenda/Article";
 import { NextSeo } from "next-seo";
-
+import { Agenda } from "../../interfaces/agenda";
+import { getConnection2 } from "../api/connection/connection";
 const AgendaSlug = ({ agenda }: any) => {
   if (Object.entries(agenda).length === 0 && agenda.constructor === Object) {
     return (
@@ -73,17 +73,33 @@ export const getStaticProps = async ({ params }: any) => {
     revalidate: 10, // In seconds
   };
 };
+interface paths {
+  params: { id: string };
+}
 export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/api/agenda/all`);
-  const posts = await res.json();
+  let paths: paths[] = [];
+  const connection = getConnection2();
 
-  // Get the paths we want to pre-render based on posts
-  const paths = posts.map((agenda: Agenda) => ({
-    params: { id: agenda.id.toString() },
-  }));
-
-  // We'll pre-render only these paths at build time.
-  // { fallback: blocking } will server-render pages
-  // on-demand if the path doesn't exist.
+  connection.query(
+    `select * from radioemotion_get_all_agenda`,
+    async (_err: any, rows: Agenda[], _fields: any) => {
+      paths = rows.map((agenda: Agenda) => {
+        console.log(agenda);
+        return {
+          params: { id: agenda.id.toString() },
+        };
+      });
+      console.log(paths);
+      connection.destroy();
+    }
+  );
   return { paths, fallback: "blocking" };
 };
+// const res = await fetch("https://jsonplaceholder.typicode.com/users");
+//const data = await res.json();
+
+// map data to an array of path objects with params (id)
+
+// We'll pre-render only these paths at build time.
+// { fallback: blocking } will server-render pages
+// on-demand if the path doesn't exist.

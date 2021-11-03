@@ -10,10 +10,7 @@ import {
 import LoadingState from "../shared/LoadingState";
 import { useQuery } from "react-query";
 
-interface top30Props {
-  top30: Song[];
-}
-const Top30 = ({ top30 }: top30Props) => {
+const Top30 = () => {
   const { data, isLoading, isError } = useQuery(
     "top30",
     async () => {
@@ -21,11 +18,7 @@ const Top30 = ({ top30 }: top30Props) => {
       return info.json();
     },
     {
-      //  refetchInterval: 30000,
-      //refetchIntervalInBackground: true,
       refetchOnWindowFocus: false,
-      // enabled: false,
-      initialData: top30,
       retry: 500,
       retryDelay: 10,
     }

@@ -9,7 +9,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const fields: ISitemapField[] = capsules.map((agenda) => ({
     loc: `${siteUrl}/agenda/${agenda.id}`,
-    id: new Date().toISOString(),
+    lastmod: new Date().toISOString(),
   }));
 
   return await getServerSideSitemap(ctx, fields);

@@ -5,6 +5,7 @@ import Paginated from "../../components/shared/paginated/Paginated";
 import Article from "../../components/shared/article/actualites/Article";
 import Title from "../../components/shared/title/Title";
 import { NextSeo } from "next-seo";
+import { getConnection2 } from "../api/connection/connection";
 
 const InfoPage = ({ info }: any) => {
   if (Object.entries(info).length === 0 && info.constructor === Object) {
@@ -68,17 +69,26 @@ export const getStaticProps = async ({ params }: any) => {
     revalidate: 10, // In seconds
   };
 };
+interface paths {
+  params: { id: string };
+}
 export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/api/actualites/all`);
-  const posts = await res.json();
-  // Get the paths we want to pre-render based on posts
-  const paths = posts.map((info: Info) => ({
-    params: { id: info.id.toString() },
-  }));
+  let paths: paths[] = [];
+  const connection = getConnection2();
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: blocking } will server-render pages
-  // on-demand if the path doesn't exist.
+  connection.query(
+    `select * from radioemotion_get_all_infos`,
+    async (_err: any, rows: Info[], _fields: any) => {
+      paths = rows.map((actu: Info) => {
+        console.log(actu);
+        return {
+          params: { id: actu.id.toString() },
+        };
+      });
+      console.log(paths);
+      connection.destroy();
+    }
+  );
   return { paths, fallback: "blocking" };
 };
 

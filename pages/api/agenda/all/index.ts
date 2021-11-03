@@ -12,6 +12,7 @@ export default async function handler(
       `select * from radioemotion_get_all_agenda`,
       async (err: any, rows: Agenda[], _fields: any) => {
         if (err) {
+          console.log(err);
           res.status(500).json({ response: false, error: true });
           connection.destroy();
           return;

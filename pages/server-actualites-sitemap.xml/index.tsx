@@ -8,7 +8,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const capsules: any[] = await response.json();
   const fields: ISitemapField[] = capsules.map((info) => ({
     loc: `${siteUrl}/actualites/${info.id}`,
-    id: new Date().toISOString(),
+    lastmod: new Date().toISOString(),
   }));
 
   return await getServerSideSitemap(ctx, fields);
