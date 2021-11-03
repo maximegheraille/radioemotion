@@ -8,7 +8,7 @@ import { NextSeo } from "next-seo";
 import { useQuery } from "react-query";
 
 const emissions = () => {
-  const { data: emissions, isLoading } = useQuery(
+  const { data: emissions } = useQuery(
     "emissions",
     async () => {
       const emissions = await fetch("/api/emissions");
