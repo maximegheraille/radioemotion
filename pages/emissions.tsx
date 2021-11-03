@@ -7,7 +7,7 @@ import Image from "next/image";
 import { NextSeo } from "next-seo";
 import { useQuery } from "react-query";
 
-const Emissions = () => {
+const emissions = () => {
   const { data: emissions, isLoading } = useQuery(
     "emissions",
     async () => {
@@ -46,7 +46,7 @@ const Emissions = () => {
           cardType: "summary_large_image",
         }}
       />
-      {!isLoading && (
+      {emissions && (
         <div className="w-full px-2 pb-16 sm:px-0 lg:pt-2">
           <Tab.Group
             defaultIndex={
@@ -131,4 +131,4 @@ const Emissions = () => {
   );
 };
 
-export default Emissions;
+export default emissions;
