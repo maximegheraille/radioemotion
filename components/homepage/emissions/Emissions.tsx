@@ -20,7 +20,7 @@ const Emissions = () => {
     {
       refetchOnWindowFocus: false,
       refetchIntervalInBackground: true,
-      refetchInterval: 3600,
+      refetchInterval: 36000,
     }
   );
 
