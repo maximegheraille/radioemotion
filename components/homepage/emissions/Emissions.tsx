@@ -18,9 +18,9 @@ const Emissions = () => {
       return info.json();
     },
     {
-      refetchOnWindowFocus: false,
+      refetchOnWindowFocus: true,
       refetchIntervalInBackground: true,
-      refetchInterval: 36000,
+      refetchInterval: 360000,
     }
   );
 
