@@ -180,7 +180,7 @@ const Infos = () => {
                         layout="responsive"
                         className="rounded-t-lg"
                       />
-                      <div className="p-2">
+                      <div className="p-2 h-16 flex items-center">
                         <p className="text-lg font-semibold line-clamp-2 text-center w-full">
                           {info?.title}
                         </p>
