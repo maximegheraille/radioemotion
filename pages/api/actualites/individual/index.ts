@@ -13,7 +13,7 @@ export default async function handler(
       async (err: any, rows: [Info[]], _fields: any) => {
         if (err) {
           res.status(500).json({ response: false, error: true });
-          connection.destroy();
+          connection.end();
           return;
         }
         if (rows[0][0] === undefined) {
@@ -22,12 +22,12 @@ export default async function handler(
           rows[0][0].photo = `https://covers.radioemotion.be/images/infos/${rows[0][0].id}.jpg`;
           res.status(200).json(rows[0][0]);
         }
-        connection.destroy();
+        connection.end();
       }
     );
   } else {
     // Handle any other HTTP method
     res.status(500).json({ response: false, error: true });
-    connection.destroy();
+    connection.end();
   }
 }

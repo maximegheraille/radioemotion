@@ -13,19 +13,19 @@ export default async function handler(
       async (err: any, rows: Equipe[], _fields: any) => {
         if (err) {
           res.status(500).json({ response: false, error: true });
-          connection.destroy();
+          connection.end();
           return;
         }
         rows.forEach((person: Equipe) => {
           person.photo = `https://covers.radioemotion.be${person.photo}.jpg`;
         });
         res.status(200).json(rows);
-        connection.destroy();
+        connection.end();
       }
     );
   } else {
     // Handle any other HTTP method
     res.status(500).json({ response: false, error: true });
-    connection.destroy();
+    connection.end();
   }
 }

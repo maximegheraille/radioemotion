@@ -54,10 +54,10 @@ export default async function handler(
       })
     );
     res.status(200).json(response);
-    connection.destroy();
+    connection.end();
   } else {
     // Handle any other HTTP method
     res.status(500).json({ response: false, error: true });
-    connection.destroy();
+    connection.end();
   }
 }

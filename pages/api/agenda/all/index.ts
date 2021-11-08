@@ -14,16 +14,16 @@ export default async function handler(
         if (err) {
           console.log(err);
           res.status(500).json({ response: false, error: true });
-          connection.destroy();
+          connection.end();
           return;
         }
         res.status(200).json(rows);
-        connection.destroy();
+        connection.end();
       }
     );
   } else {
     // Handle any other HTTP method
     res.status(500).json({ response: false, error: true });
-    connection.destroy();
+    connection.end();
   }
 }

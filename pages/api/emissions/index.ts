@@ -13,7 +13,7 @@ export default async function handler(
       async (err: any, rows: AllEmission[], _fields: any) => {
         if (err) {
           res.status(500).json({ response: false, error: true });
-          connection.destroy();
+          connection.end();
           return;
         }
         rows.forEach((person: AllEmission) => {
@@ -28,12 +28,12 @@ export default async function handler(
           samedi: rows.filter((person) => person.jour_id === 6),
           dimanche: rows.filter((person) => person.jour_id === 7),
         });
-        connection.destroy();
+        connection.end();
       }
     );
   } else {
     // Handle any other HTTP method
     res.status(500).json({ response: false, error: true });
-    connection.destroy();
+    connection.end();
   }
 }

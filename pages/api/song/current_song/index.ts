@@ -15,15 +15,14 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
       function (error: any, results: any, _fields: any) {
         if (error) {
           res.status(500).json({ response: false, error: true });
-          return;
-        }
-        if (results[0].length === 0) {
+          connection.end();
+        } else if (results[0].length === 0) {
           connection2.query(
             `call radioemotion_get_live_emission('${getFullTime()}', '${getWeekDayNumber()}')`,
             function (error: any, emission: any, _fields: any) {
               if (error) {
                 res.status(500).json(error);
-                connection2.destroy();
+                connection2.end();
                 return;
               }
               res.status(200).json({
@@ -35,7 +34,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
                 voted: "",
                 apple_music: "",
               });
-              connection2.destroy();
+              connection2.end();
             }
           );
         } else {
@@ -55,16 +54,16 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
               if (error) {
                 results[0][0].voted = false;
                 res.status(200).json(results[0][0]);
-                connection.destroy();
+                connection.end();
               } else if (results2[0].length > 0) {
                 results[0][0].voted = true;
                 res.status(200).json(results[0][0]);
-                connection.destroy();
+                connection.end();
                 return;
               } else {
                 results[0][0].voted = false;
                 res.status(200).json(results[0][0]);
-                connection.destroy();
+                connection.end();
               }
             }
           );
@@ -74,7 +73,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
   } else {
     // Handle any other HTTP method
     res.status(500).json({ response: false, error: true });
-    connection.destroy();
+    connection.end();
   }
 };
 export default handler;

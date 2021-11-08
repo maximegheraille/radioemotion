@@ -13,7 +13,7 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
         async (err: any, rows: [emission[]], _fields: any) => {
           if (err) {
             res.status(500).json({ response: false, error: true });
-            connection.destroy();
+            connection.end();
             return;
           }
           rows[0].forEach((row: emission) => {
@@ -31,7 +31,7 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
             }
           });
           res.status(200).json(rows[0]);
-          connection.destroy();
+          connection.end();
         }
       );
     } catch (err) {

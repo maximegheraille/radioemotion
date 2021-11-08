@@ -86,7 +86,7 @@ export const getStaticPaths = async () => {
         };
       });
       console.log(paths);
-      connection.destroy();
+      connection.end();
     }
   );
   return { paths, fallback: "blocking" };

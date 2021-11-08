@@ -18,7 +18,7 @@ export default async function handler(
       function (error: any, results: [Caroussel[]], _fields: any) {
         if (error) {
           res.status(500).json({ response: false, error: true });
-          connection2.destroy();
+          connection2.end();
           return;
         }
         results[0].forEach((caroussel: Caroussel) => {
@@ -26,13 +26,13 @@ export default async function handler(
         });
         res.status(200).json(results[0]);
 
-        connection2.destroy();
+        connection2.end();
         //connection2.end();
       }
     );
   } else {
     // Handle any other HTTP method
     res.status(500).json({ response: false, error: true });
-    connection2.destroy();
+    connection2.end();
   }
 }

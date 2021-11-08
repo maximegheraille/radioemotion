@@ -17,7 +17,7 @@ export default async function handler(
       async (err: any, rows: [InfoPaginated[]], _fields: any) => {
         if (err) {
           res.status(500).json({ response: false, error: true });
-          connection.destroy();
+          connection.end();
           return;
         }
         rows[0].forEach((row: InfoPaginated) => {
@@ -30,7 +30,7 @@ export default async function handler(
             hasMore: rows[0][0].hasMore > 5 ? true : false,
           },
         });
-        connection.destroy();
+        connection.end();
       }
     );
     //   }
@@ -38,6 +38,6 @@ export default async function handler(
   } else {
     // Handle any other HTTP method
     res.status(500).json({ response: false, error: true });
-    connection.destroy();
+    connection.end();
   }
 }

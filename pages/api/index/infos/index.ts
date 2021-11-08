@@ -11,14 +11,14 @@ const Infos = (req: NextApiRequest, res: NextApiResponse) => {
         async (err: any, rows: Info[], _fields: any) => {
           if (err) {
             res.status(500).json({ response: false, error: true });
-            connection.destroy();
+            connection.end();
             return;
           }
           rows.forEach((row: Info) => {
             row.photo = `https://covers.radioemotion.be/Images/Infos/${row.id}.jpg`;
           });
           res.status(200).json(rows);
-          connection.destroy();
+          connection.end();
         }
       );
     } catch (err) {
