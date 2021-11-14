@@ -12,35 +12,34 @@ import LoadingState from "../../shared/LoadingState";
 import Link from "next/link";
 
 const Agendas = () => {
-  const { data, isLoading, isError } = useQuery(
-    "agenda",
-    async () => {
-      const info = await fetch("/api/index/agenda");
-      return info.json();
-    },
-    { refetchOnWindowFocus: false }
-  );
+  const { data, isLoading, isError } = useQuery("agenda", async () => {
+    const info = await fetch("/api/index/agenda");
+    return info.json();
+  });
   return (
     <div className="w-full">
       {isLoading || isError ? (
         <>
-          {[...Array(5)].map((agenda: Agenda, index: number) => (
-            <div key={index} className="shadow-lg mb-4 lg:flex card">
+          {[...Array(3)].map((agenda: Agenda, index: number) => (
+            <div
+              key={index}
+              className="shadow-lg mb-4 card lg:w-full xl:w-9/12"
+            >
               <LoadingState
-                width="w-6/12"
-                heigth="h-28"
+                width="w-full"
+                heigth="h-56 lg:h-36"
                 data={agenda?.photo}
                 isLoading={isLoading}
                 isError={isError}
               >
                 <Image
-                  width="435"
+                  width="500"
                   height="235"
                   src={agenda?.photo}
                   className="rounded-l-lg"
                 />
               </LoadingState>
-              <div className="p-2 text-center lg:text-left lg:w-6/12 lg:flex-shrink-0">
+              <div className="p-2 text-center lg:text-left">
                 <LoadingState
                   width="w-full"
                   heigth="h-4"
@@ -52,37 +51,36 @@ const Agendas = () => {
                     {agenda?.title}
                   </p>
                 </LoadingState>
-                <LoadingState
-                  width="w-full"
-                  heigth="h-4"
-                  data={agenda?.commune}
-                  isLoading={isLoading}
-                  isError={isError}
-                  classNames="my-4"
-                >
-                  <p className="py-1">
-                    <FontAwesomeIcon
-                      icon={faMapMarkerAlt}
-                      className="mr-2 text-[#D53E3A]"
-                    />
-                    {agenda?.commune}
-                  </p>
-                </LoadingState>
-                <LoadingState
-                  width="w-full"
-                  heigth="h-4"
-                  data={DateIsoConverter(agenda?.event_date)}
-                  isLoading={isLoading}
-                  isError={isError}
-                >
-                  <p>
-                    <FontAwesomeIcon
-                      icon={faCalendarAlt}
-                      className="mr-2 text-[#D53E3A]"
-                    />
-                    {DateIsoConverter(agenda?.event_date)}
-                  </p>
-                </LoadingState>
+                <div className="flex place-content-center space-x-4">
+                  <LoadingState
+                    width="w-full"
+                    heigth="h-4"
+                    data={agenda?.commune}
+                    isLoading={isLoading}
+                    isError={isError}
+                    classNames="mt-4"
+                  >
+                    <p className="py-1">
+                      <FontAwesomeIcon
+                        icon={faMapMarkerAlt}
+                        className="mr-2 text-[#D53E3A]"
+                      />
+                      {agenda?.commune}
+                    </p>
+                  </LoadingState>
+                  <LoadingState
+                    width="w-full mt-4"
+                    heigth="h-4"
+                    data={DateIsoConverter(agenda?.event_date)}
+                    isLoading={isLoading}
+                    isError={isError}
+                  >
+                    <p>
+                      <FontAwesomeIcon icon={faCalendarAlt} className="" />
+                      {DateIsoConverter(agenda?.event_date)}
+                    </p>
+                  </LoadingState>
+                </div>
               </div>
             </div>
           ))}
@@ -94,31 +92,33 @@ const Agendas = () => {
         data.map((agenda: Agenda, index: number) => (
           <Link key={index} href={`/agenda/${agenda.id}`}>
             <a>
-              <div className="shadow-lg mb-4 lg:flex card">
+              <div className="shadow-lg mb-4 card lg:w-full xl:w-9/12">
                 <Image
                   width="500"
                   height="235"
                   src={agenda?.photo}
                   className="rounded-t-lg lg:rounded-l-lg lg:rounded-r-none"
                 />
-                <div className="p-1 xl:p-2 text-center lg:w-6/12 xl:w-7/12 lg:text-left lg:flex-shrink-0">
+                <div className="p-1 xl:p-2 text-center lg:flex-shrink-0">
                   <p className="text-base xl:text-lg font-semibold line-clamp-1">
                     {agenda.title}
                   </p>
-                  <p className="xl:py-1">
-                    <FontAwesomeIcon
-                      icon={faMapMarkerAlt}
-                      className="mr-2 text-[#D53E3A]"
-                    />
-                    {agenda.commune}
-                  </p>
-                  <p>
-                    <FontAwesomeIcon
-                      icon={faCalendarAlt}
-                      className="mr-2 text-[#D53E3A]"
-                    />
-                    {DateIsoConverter(agenda.event_date)}
-                  </p>
+                  <div className="flex place-content-center space-x-4 pt-1">
+                    <p className="">
+                      <FontAwesomeIcon
+                        icon={faMapMarkerAlt}
+                        className="mr-2 text-[#D53E3A]"
+                      />
+                      {agenda.commune}
+                    </p>
+                    <p>
+                      <FontAwesomeIcon
+                        icon={faCalendarAlt}
+                        className="mr-2 text-[#D53E3A]"
+                      />
+                      {DateIsoConverter(agenda.event_date)}
+                    </p>
+                  </div>
                 </div>
               </div>
             </a>
