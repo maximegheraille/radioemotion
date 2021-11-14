@@ -39,7 +39,7 @@ const AgendaSlug = ({ agenda }: any) => {
       />
       <div className="w-full lg:w-9/12">
         <Title
-          title="L'INFO DE VOTRE REGION"
+          title="L’Agenda de votre région"
           className="text-center lg:pt-0"
           article={true}
         />

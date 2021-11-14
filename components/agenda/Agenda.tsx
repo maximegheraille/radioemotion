@@ -21,7 +21,7 @@ const AgendaPage = () => {
       <div className="w-full lg:w-9/12">
         <div className="">
           <Title
-            title="L'INFO DE VOTRE REGION"
+            title="L’Agenda de votre région"
             className="text-center lg:pt-0"
             article
           />
