@@ -151,14 +151,14 @@ const Infos = () => {
               {index === 0 ? (
                 <Link key={index} href={`/actualites/${info.id}`}>
                   <a className="flex">
-                    <div className="shadow-lg flex-1 w-full mb-6 lg:mr-14 lg:w-11/12 xl:w-full lg:flex text-center card">
+                    <div className="shadow-lg w-full mb-6 lg:w-[90%] xl:w-11/12 lg:flex text-center card">
                       <Image
                         width="576"
                         height="320"
                         src={info?.photo}
                         className="rounded-b-none lg:rounded-lg"
                       />
-                      <div className="lg:w-4/6 xl:w-4/6 h-full p-3 place-content-center align-middle justify-center items-center">
+                      <div className="lg:w-full xl:w-5/6 h-full p-3 place-content-center align-middle justify-center items-center">
                         <p className="text-xl place-content-center items-center font-semibold line-clamp-2">
                           {info?.title}
                         </p>
@@ -172,12 +172,13 @@ const Infos = () => {
               ) : (
                 <Link key={index} href={`/actualites/${info.id}`}>
                   <a>
+                    {/*  <div className="shadow-lg mb-6 lg:mr-7 lg:w-11/12 text-center card">*/}
                     <div className="shadow-lg mb-6 lg:mr-7 lg:w-[16.5rem] xl:w-[13.8rem] xl:mr-[30px] 2xl:w-[17.5rem] 2xl:mr-[1.60rem] text-center card">
                       <Image
                         width="576"
                         height="320"
                         src={info?.photo}
-                        layout="responsive"
+                        //   layout="responsive"
                         className="rounded-t-lg"
                       />
                       <div className="p-2 h-16 flex items-center">
