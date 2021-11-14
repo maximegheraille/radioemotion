@@ -16,12 +16,14 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
         if (error) {
           res.status(500).json({ response: false, error: true });
           connection.end();
+          connection2.end();
         } else if (results[0].length === 0) {
           connection2.query(
             `call radioemotion_get_live_emission('${getFullTime()}', '${getWeekDayNumber()}')`,
             function (error: any, emission: any, _fields: any) {
               if (error) {
                 res.status(500).json(error);
+                connection.end();
                 connection2.end();
                 return;
               }
@@ -29,11 +31,12 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
                 id: emission[0][0].id,
                 artiste: emission[0][0].EMISSION,
                 titre: emission[0][0].Nom,
-                photo: "/images/RadioEmotion-logo.png",
+                photo: "/images/radioemotion-logo.png",
                 youtube: "",
                 voted: "",
                 apple_music: "",
               });
+              connection.end();
               connection2.end();
             }
           );
@@ -55,15 +58,17 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
                 results[0][0].voted = false;
                 res.status(200).json(results[0][0]);
                 connection.end();
+                connection2.end();
               } else if (results2[0].length > 0) {
                 results[0][0].voted = true;
                 res.status(200).json(results[0][0]);
                 connection.end();
-                return;
+                connection2.end();
               } else {
                 results[0][0].voted = false;
                 res.status(200).json(results[0][0]);
                 connection.end();
+                connection2.end();
               }
             }
           );
