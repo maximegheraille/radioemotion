@@ -174,13 +174,15 @@ const Infos = () => {
                   <a>
                     {/*  <div className="shadow-lg mb-6 lg:mr-7 lg:w-11/12 text-center card">*/}
                     <div className="shadow-lg mb-6 lg:mr-7 lg:w-[16.5rem] xl:w-[13.8rem] xl:mr-[30px] 2xl:w-[17.5rem] 2xl:mr-[1.60rem] text-center card">
-                      <Image
-                        width="576"
-                        height="320"
-                        src={info?.photo}
-                        //   layout="responsive"
-                        className="rounded-t-lg"
-                      />
+                      <div className="w-full">
+                        <Image
+                          width="315"
+                          height="148"
+                          src={info?.photo}
+                          layout="responsive"
+                          className="rounded-t-lg"
+                        />
+                      </div>
                       <div className="p-2 h-16 flex items-center">
                         <p className="text-lg font-semibold line-clamp-2 text-center w-full">
                           {info?.title}
