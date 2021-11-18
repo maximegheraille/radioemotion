@@ -34,6 +34,10 @@ const PlayerButton = ({ volume, className }: playerProps) => {
           playerRef.current?.pause();
           playerRef.current.children[0].outerHTML =
             '<source src="" type="audio/ogg"></source>';
+
+          playerRef.current.children[1].outerHTML =
+            ' <source src="" type="audio/mp3"></source>';
+
           playerRef.current.load();
           setPlaying(false);
         }
@@ -42,6 +46,8 @@ const PlayerButton = ({ volume, className }: playerProps) => {
         if (playerRef.current) {
           playerRef.current.children[0].outerHTML =
             '<source src="https://stream1.dgnet.be/1" type="audio/ogg"></source>';
+          playerRef.current.children[1].outerHTML =
+            ' <source src="https://stream1.dgnet.be/1" type="audio/mp3"></source>';
           playerRef.current.play();
           setPlaying(true);
         }
