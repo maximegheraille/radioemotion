@@ -17,7 +17,7 @@ const usePlayer = () => {
     {
       refetchInterval: 10000,
       refetchIntervalInBackground: true,
-      refetchOnWindowFocus: false,
+      refetchOnReconnect: "always",
     }
   );
   return {
