@@ -5,7 +5,11 @@ module.exports = withPWA({
     dest: "public",
     scope: "/",
     register: true,
-    buildExcludes: [/middleware-manifest\.json$/],
+    buildExcludes: [
+      /middleware-manifest\.json$/,
+      /PlayerButton\.tsx$/,
+      /PlayerHook\.tsx$/,
+    ],
     runtimeCaching: [
       {
         urlPattern: /^https:\/\/fonts\.(?:gstatic)\.com\/.*/i,
