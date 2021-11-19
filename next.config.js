@@ -5,6 +5,7 @@ module.exports = withPWA({
     scope: "/",
     register: true,
     buildExcludes: [/middleware-manifest\.json$/],
+    runtimeCaching: "/cache.js",
   },
   images: {
     domains: ["covers.radioemotion.be"],
