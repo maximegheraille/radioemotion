@@ -31,7 +31,8 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
                 id: emission[0][0].id,
                 artiste: emission[0][0].EMISSION,
                 titre: emission[0][0].Nom,
-                photo: "/images/radioemotion-logo.png",
+                photo:
+                  "https://covers.radioemotion.be/images/radioemotion-logo.png",
                 youtube: "",
                 voted: "",
                 apple_music: "",
