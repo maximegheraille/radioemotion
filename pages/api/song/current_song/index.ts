@@ -9,7 +9,6 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
   const connection2 = getConnection2();
 
   if (req.method === "GET") {
-    // Process a POST request
     connection.query(
       `call radioemotion_get_current_song('${getFullDate()} ${getFullTime()}')`,
       function (error: any, results: any, _fields: any) {
