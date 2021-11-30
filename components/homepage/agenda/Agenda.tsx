@@ -93,12 +93,15 @@ const Agendas = () => {
           <Link key={index} href={`/agenda/${agenda.id}`}>
             <a>
               <div className="shadow-lg mb-4 card lg:w-full xl:w-9/12">
-                <Image
-                  width="500"
-                  height="235"
-                  src={agenda?.photo}
-                  className="rounded-t-lg lg:rounded-l-lg lg:rounded-r-none"
-                />
+                <div className="w-full">
+                  <Image
+                    width="315"
+                    height="148"
+                    src={agenda?.photo}
+                    layout="responsive"
+                    className="rounded-t-lg"
+                  />
+                </div>
                 <div className="p-1 xl:p-2 text-center lg:flex-shrink-0">
                   <p className="text-base xl:text-lg font-semibold line-clamp-1">
                     {agenda.title}
