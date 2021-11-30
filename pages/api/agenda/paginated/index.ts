@@ -19,22 +19,30 @@ export default async function handler(
           res.status(500).json({ response: false, error: true });
           connection.end();
           return;
+        } else if (rows[0].length === 0) {
+          res.status(200).json({
+            data: [],
+            options: {
+              max_page: 0,
+              hasMore: 0,
+            },
+          });
+          connection.end();
+        } else {
+          rows[0].forEach((row: InfoPaginated) => {
+            row.photo = `https://covers.radioemotion.be/images/agenda/${row.id}.jpg`;
+          });
+          res.status(200).json({
+            data: rows[0],
+            options: {
+              max_page: Math.floor(Number(rows[0][0]?.hasMore) / 5),
+              hasMore: rows[0][0].hasMore > 5 ? true : false,
+            },
+          });
+          connection.end();
         }
-        rows[0].forEach((row: InfoPaginated) => {
-          row.photo = `https://covers.radioemotion.be/images/agenda/${row.id}.jpg`;
-        });
-        res.status(200).json({
-          data: rows[0],
-          options: {
-            max_page: Math.floor(Number(rows[0][0].hasMore) / 5),
-            hasMore: rows[0][0].hasMore > 5 ? true : false,
-          },
-        });
-        connection.end();
       }
     );
-    //   }
-    // );
   } else {
     // Handle any other HTTP method
     res.status(500).json({ response: false, error: true });
