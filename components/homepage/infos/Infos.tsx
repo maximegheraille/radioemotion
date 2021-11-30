@@ -150,19 +150,23 @@ const Infos = () => {
             <>
               {index === 0 ? (
                 <Link key={index} href={`/actualites/${info.id}`}>
-                  <a className="flex">
-                    <div className="shadow-lg w-full mb-6 lg:w-[90%] xl:w-11/12 lg:flex text-center card">
-                      <Image
-                        width="576"
-                        height="320"
-                        src={info?.photo}
-                        className="rounded-b-none lg:rounded-lg"
-                      />
-                      <div className="lg:w-full xl:w-5/6 h-full p-3 place-content-center align-middle justify-center items-center">
+                  <a className="flex w-full lg:w-[90%] xl:w-[90%] 2xl:w-[92%]">
+                    <div className="shadow-lg w-full mb-6 lg:flex text-center card">
+                      <div className="w-full">
+                        <Image
+                          width="1100"
+                          height="500"
+                          layout="responsive"
+                          src={info?.photo}
+                          alt="Image de l'article"
+                          className="rounded-b-none lg:rounded-lg"
+                        />
+                      </div>
+                      <div className="w-full p-3 lg:p-2 xl:p-3 place-content-center align-middle justify-center items-center">
                         <p className="text-xl place-content-center items-center font-semibold line-clamp-2">
                           {info?.title}
                         </p>
-                        <p className="hidden text-base pt-4 place-content-center items-center line-clamp-3">
+                        <p className="hidden text-base pt-4 lg:pt-1 xl:pt-4 place-content-center items-center lg:line-clamp-2 xl:line-clamp-3">
                           {info?.preview}
                         </p>
                       </div>
@@ -172,7 +176,6 @@ const Infos = () => {
               ) : (
                 <Link key={index} href={`/actualites/${info.id}`}>
                   <a>
-                    {/*  <div className="shadow-lg mb-6 lg:mr-7 lg:w-11/12 text-center card">*/}
                     <div className="shadow-lg mb-6 lg:mr-7 lg:w-[16.5rem] xl:w-[13.8rem] xl:mr-[30px] 2xl:w-[17.5rem] 2xl:mr-[1.60rem] text-center card">
                       <div className="w-full">
                         <Image
@@ -180,6 +183,7 @@ const Infos = () => {
                           height="148"
                           src={info?.photo}
                           layout="responsive"
+                          alt="Image de l'article"
                           className="rounded-t-lg"
                         />
                       </div>
