@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import requestIp from "request-ip";
 
 var mysql = require("mysql");
 const post = (req: NextApiRequest, res: NextApiResponse) => {
@@ -24,12 +25,13 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
       );
     } else {
       connection.query(
-        `call radioemotion_add_vote(${req.body.id},'${
-          req.connection.remoteAddress
-        }',${new Date().getDate()})`,
+        `call radioemotion_add_vote(${req.body.id},'${requestIp.getClientIp(
+          req
+        )}',${new Date().getDate()})`,
         function (error: any, _results: any, _fields: any) {
           console.log(req.connection.remoteAddress);
           console.log(req.headers["x-real-ip"]);
+          console.log(requestIp.getClientIp(req));
           if (error) {
             res.status(500).json({ response: false, error: true });
             return;
