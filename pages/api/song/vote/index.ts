@@ -14,7 +14,9 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
 
     if (req.body.voted) {
       connection.query(
-        `call radioemotion_delete_vote(${req.body.id},'${req.socket.remoteAddress}')`,
+        `call radioemotion_delete_vote(${req.body.id},'${requestIp.getClientIp(
+          req
+        )}')`,
         function (error: any, _results: any, _fields: any) {
           if (error) {
             res.status(500).json({ response: false, error: true });

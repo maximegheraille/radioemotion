@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getFullDate } from "../../../../components/shared/datetime/GetFullDate";
 import { getFullTime } from "../../../../components/shared/datetime/GetFullTime";
 import { getConnection, getConnection2 } from "../../connection/connection";
+import requestIp from "request-ip";
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   const connection = getConnection();
@@ -52,7 +53,9 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
             results[0][0].youtube = "";
           }
           connection.query(
-            `call radioemotion_get_voted(${results[0][0].id}, '${req.socket.remoteAddress}')`,
+            `call radioemotion_get_voted(${
+              results[0][0].id
+            }, '${requestIp.getClientIp(req)}')`,
             function (error: any, results2: any, _fields: any) {
               if (error) {
                 results[0][0].voted = false;
