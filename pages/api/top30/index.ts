@@ -33,7 +33,7 @@ export default async function handler(
     const getIp = async (id: number): Promise<boolean> => {
       return new Promise((resolve, reject) => {
         connection.query(
-          `call radioemotion_get_voted(${id}, '${req.socket.remoteAddress}')`,
+          `call radioemotion_get_voted(${id}, '${req.connection.remoteAddress}')`,
           (err: any, rows: any, _fields: any) => {
             if (err) {
               return reject(err);

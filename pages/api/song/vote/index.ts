@@ -25,9 +25,11 @@ const post = (req: NextApiRequest, res: NextApiResponse) => {
     } else {
       connection.query(
         `call radioemotion_add_vote(${req.body.id},'${
-          req.socket.remoteAddress
+          req.connection.remoteAddress
         }',${new Date().getDate()})`,
         function (error: any, _results: any, _fields: any) {
+          console.log(req.connection.remoteAddress);
+          console.log(req.headers["x-real-ip"]);
           if (error) {
             res.status(500).json({ response: false, error: true });
             return;
