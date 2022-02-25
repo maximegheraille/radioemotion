@@ -77,7 +77,7 @@ const PlayerButton = ({ volume, className }: playerProps) => {
           }}
           title={`${playing ? "Arreter la musique" : "Lancer la musique"}`}
           aria-label={`${playing ? "Arreter la musique" : "Lancer la musique"}`}
-          className="pr-2 lg:pr-0 my-2 group"
+          className="pr-2 lg:pr-0 group"
         >
           <div
             className={`text-white transition-all duration-300 transform  ${
