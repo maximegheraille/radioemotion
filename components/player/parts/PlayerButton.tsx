@@ -70,9 +70,7 @@ const PlayerButton = ({ volume, className }: playerProps) => {
   }, [song?.titre]);
   return (
     <>
-      <div
-        className={`${playerRef.current?.paused} lg:mr-2 flex align-middle lg:w-[2%] ${className}`}
-      >
+      <div className={`lg:mr-2 flex align-middle lg:w-[2%] ${className}`}>
         <button
           onClick={() => {
             setplayer();
@@ -83,12 +81,12 @@ const PlayerButton = ({ volume, className }: playerProps) => {
         >
           <div
             className={`text-white transition-all duration-300 transform  ${
-              playing ? " scale-100" : "scale-0"
+              playing ? " scale-100 block" : "scale-0 hidden"
             }`}
           >
             <FontAwesomeIcon
               className={`text-white p-1 flex place-content-center  ${
-                playing ? "block" : "hidden"
+                playing ? "" : ""
               }`}
               size="2x"
               icon={faPause}
@@ -97,12 +95,12 @@ const PlayerButton = ({ volume, className }: playerProps) => {
           </div>
           <div
             className={`text-white transition-all duration-300 transform ${
-              !playing ? "scale-100 " : "scale-0"
+              !playing ? "scale-100 block" : "scale-0 hidden"
             }`}
           >
             <FontAwesomeIcon
               className={`text-white p-1 flex place-content-center  group-focus:rounded-sm  ${
-                playing ? "hidden" : "block"
+                playing ? "" : ""
               }`}
               size="2x"
               icon={faPlay}

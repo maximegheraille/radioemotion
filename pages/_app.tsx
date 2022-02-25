@@ -22,6 +22,10 @@ import { useRouter } from "next/router";
 import ReactGA from "react-ga";
 import { initialize } from "../config/context/cookieSlice";
 import ToTopButton from "../components/shared/ToTopButton/ToTopButton";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
+
 const usePrevious = <T extends unknown>(value: T): T | undefined => {
   const ref = useRef<T>();
   useEffect(() => {

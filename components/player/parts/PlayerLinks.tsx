@@ -45,12 +45,12 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
             <>
               <Popover.Button
                 className={`${open ? "" : "text-opacity-90"}
-                group text-white h-full group bg-orange-700 px-3 py-2 rounded-lg inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                group text-white h-full group px-3 py-2 rounded-lg inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
               >
                 <FontAwesomeIcon
                   icon={faVolumeUp}
                   className={`${open ? "" : "text-opacity-70"}
-                  transform motion-safe:group-focus:scale-110 ml-2 h-5 w-5 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
+                  transform motion-safe:group-focus:scale-110 ml-2 h-5 w-5 group-hover:text-opacity-80 transition ease-in-out duration-150`}
                   aria-hidden="true"
                 />
               </Popover.Button>
@@ -100,8 +100,8 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
             >
               <FontAwesomeIcon
                 icon={song?.voted ? faHeart : faHeart2}
-                size="2x"
-                className={`transform motion-safe:group-focus:scale-110 p-1.5 text-white z-10  ${
+                //size="2x"
+                className={`text-lg transform motion-safe:group-focus:scale-110 p-1.5 text-white z-10  ${
                   song?.voted ? "text-[#f44336]" : "text-white"
                 } `}
                 aria-hidden="true"
@@ -147,14 +147,14 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
             target="_blanc"
             className={`${
               song?.youtube === "0" ? "hidden" : "block"
-            } group flex items-center m-3 text-[#f44336]`}
+            } group flex items-center m-3`}
             style={{ outline: "0px auto transparent" }}
           >
             <FontAwesomeIcon
               icon={faYoutube}
               size="2x"
-              className={`transform motion-safe:group-focus:scale-110 p-1 text-opacity-70
-              h-10 w-10 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
+              className={`transform motion-safe:group-focus:scale-110 p-1
+              h-10 w-10 text-[#f44336] group-hover:text-opacity-80 transition ease-in-out duration-150`}
               aria-hidden="true"
             />
           </a>

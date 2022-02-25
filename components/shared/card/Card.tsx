@@ -140,7 +140,7 @@ const Card = ({
             className={`relative inline-flex align-middle flex-shrink-0 mr-2`}
           >
             <button
-              className={`group flex items-center focus:outline-none group disabled:cursor-not-allowed`}
+              className={`group flex items-center focus:outline-none disabled:cursor-not-allowed`}
               onClick={() => {
                 CardVote.mutate({ id: song?.id, voted: song?.voted });
               }}
@@ -149,8 +149,7 @@ const Card = ({
             >
               <FontAwesomeIcon
                 icon={song?.voted ? faHeart : faHeart2}
-                size="2x"
-                className={`transform motion-safe:group-focus:scale-110 p-1.5 z-10 ${
+                className={`text-2xl transform motion-safe:group-focus:scale-110 p-1.5 z-10 ${
                   song?.voted ? "text-[#f44336]" : "text-black dark:text-white"
                 } `}
                 aria-hidden="true"
@@ -207,9 +206,9 @@ const Card = ({
           >
             <FontAwesomeIcon
               icon={faYoutube}
-              size="2x"
-              className={`transform motion-safe:group-focus:scale-110 px-0.5 text-opacity-70
-              h-10 w-10 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
+              //size="2x"
+              className={`text-3xl transform motion-safe:group-focus:scale-110 px-0.5
+              h-10 w-10 text-[#f44336] transition ease-in-out duration-150`}
               aria-hidden="true"
             />
           </button>
@@ -225,7 +224,7 @@ const Card = ({
           <a
             className={`lg:hidden ${
               song?.youtube === "" ? "hidden" : "flex"
-            } group flex items-center text-[#f44336]`}
+            } group flex items-center`}
             href={`${song?.youtube}`}
             target="_blank"
             aria-label="Ouvrir le clip video"
@@ -234,7 +233,7 @@ const Card = ({
               icon={faYoutube}
               size="2x"
               className={`transform motion-safe:group-focus:scale-110 px-0.5 text-opacity-70
-              h-10 w-10 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
+              h-10 w-10 text-[#f44336] group-hover:text-opacity-80 transition ease-in-out duration-150`}
               aria-hidden="true"
             />
           </a>
