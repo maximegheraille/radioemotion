@@ -215,7 +215,7 @@ const Playlist = () => {
                                 <button
                                   className={`${
                                     song?.youtube === "" ? "hidden" : "block"
-                                  } group flex items-center text-[#f44336]`}
+                                  } group flex items-center `}
                                   onClick={() =>
                                     setShowYou({
                                       open: !showYou.open,
@@ -228,7 +228,7 @@ const Playlist = () => {
                                     icon={faYoutube}
                                     size="2x"
                                     className={`transform motion-safe:group-focus:scale-110 px-0.5 text-opacity-70
-              h-10 w-10 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
+              h-10 w-10 text-[#f44336] group-hover:text-opacity-80 transition ease-in-out duration-150`}
                                     aria-hidden="true"
                                   />
                                 </button>
