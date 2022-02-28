@@ -232,7 +232,7 @@ const Card = ({
             <FontAwesomeIcon
               icon={faYoutube}
               size="2x"
-              className={`transform motion-safe:group-focus:scale-110 px-0.5 text-opacity-70
+              className={`transform motion-safe:group-focus:scale-110 px-0.5
               h-10 w-10 text-[#f44336] group-hover:text-opacity-80 transition ease-in-out duration-150`}
               aria-hidden="true"
             />
