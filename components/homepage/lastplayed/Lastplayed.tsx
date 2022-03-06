@@ -1,6 +1,9 @@
 import React from "react";
 import { useQuery } from "react-query";
+
+// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Navigation, Lazy } from "swiper";
 import { Song } from "../../../interfaces/song";
 import Card, { outderdivCard } from "../../shared/card/Card";
 
@@ -21,10 +24,15 @@ const Lastplayed = () => {
   return (
     <>
       <Swiper
+        modules={[Navigation, FreeMode, Lazy]}
         slidesPerView={"auto"}
-        freeMode={true}
-        freeModeSticky
-        watchSlidesVisibility={true}
+        freeMode={{
+          enabled: true,
+          sticky: true,
+        }}
+        watchSlidesProgress
+        // freeModeSticky
+        // watchSlidesVisibility={true}
         preloadImages={false}
         resizeObserver={true}
         lazy={true}

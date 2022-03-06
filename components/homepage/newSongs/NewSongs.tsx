@@ -1,8 +1,9 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Song } from "../../../interfaces/song";
 import Card, { outderdivCard } from "../../shared/card/Card";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Navigation, Lazy } from "swiper";
 
 const NewSongs = () => {
   const { data, isLoading, isError } = useQuery(
@@ -18,11 +19,14 @@ const NewSongs = () => {
       {isError || isLoading ? (
         <div>
           <Swiper
+            modules={[Navigation, FreeMode, Lazy]}
             slidesPerView={"auto"}
             spaceBetween={30}
-            freeMode={true}
-            freeModeSticky
-            watchSlidesVisibility={true}
+            freeMode={{
+              enabled: true,
+              sticky: true,
+            }}
+            watchSlidesProgress
             preloadImages={false}
             resizeObserver={true}
             lazy={true}
@@ -66,11 +70,14 @@ const NewSongs = () => {
       ) : (
         <>
           <Swiper
+            modules={[Navigation, FreeMode, Lazy]}
             slidesPerView={"auto"}
             spaceBetween={30}
-            freeMode={true}
-            freeModeSticky
-            watchSlidesVisibility={true}
+            freeMode={{
+              enabled: true,
+              sticky: true,
+            }}
+            watchSlidesProgress
             preloadImages={false}
             resizeObserver={true}
             lazy={true}

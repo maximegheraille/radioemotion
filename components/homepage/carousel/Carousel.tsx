@@ -1,15 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import Swiper core and required modules
-import SwiperCore, {
-  Autoplay,
-  Pagination,
-  Navigation,
-  Lazy,
-} from "swiper/core";
+import { Autoplay, Pagination, Navigation, Lazy } from "swiper";
 import Image from "next/image";
-SwiperCore.use([Autoplay, Pagination, Navigation, Lazy]);
 
 const Carousel = () => {
   const {
@@ -32,6 +25,7 @@ const Carousel = () => {
         ></div>
       ) : (
         <Swiper
+          modules={[Navigation, Lazy, Autoplay, Pagination]}
           centeredSlides={true}
           centeredSlidesBounds={true}
           slidesPerView={1}
