@@ -12,10 +12,10 @@ import {
 import { rootStore } from "../config/context/store";
 import Footer from "../components/navigation/footer/Footer";
 import { QueryClient, QueryClientProvider } from "react-query";
-import "swiper/swiper-bundle.css";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-import "swiper/components/scrollbar/scrollbar.scss";
+import "swiper/scss";
+import "swiper/scss/navigation";
+import "swiper/scss/pagination";
+import "swiper/scss/scrollbar";
 import "../styles/style.scss";
 import Cookies from "../components/shared/cookies/Cookies";
 import { useRouter } from "next/router";
