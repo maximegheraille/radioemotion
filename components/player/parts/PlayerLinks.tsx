@@ -18,7 +18,7 @@ interface VoteProps {
 }
 
 const PlayerLinks = ({ volume, setVolume }: playerProps) => {
-  const { data: song, isLoading, isError } = usePlayer();
+  const { data: song, isLoading, isError, playing } = usePlayer();
   const queryClient = useQueryClient();
   const vote = async (values: VoteProps): Promise<Response> => {
     return await fetch("/api/song/vote", {
@@ -46,6 +46,9 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
               <Popover.Button
                 className={`${open ? "" : "text-opacity-90"}
                 group text-white h-full group px-3 py-2 rounded-lg inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                aria-label={`${
+                  playing ? "arrêter la music" : "Lancer la music"
+                }`}
               >
                 <FontAwesomeIcon
                   icon={faVolumeUp}
@@ -97,6 +100,7 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
                 mutation.mutate({ id: song?.id, voted: song?.voted });
               }}
               disabled={mutation.isLoading}
+              aria-label={`${song?.voted ? "Désaimer" : "Aimer"}`}
             >
               <FontAwesomeIcon
                 icon={song?.voted ? faHeart : faHeart2}
