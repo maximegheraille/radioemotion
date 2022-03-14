@@ -130,6 +130,7 @@ const PlayerLinks = ({ volume, setVolume }: playerProps) => {
               <Image
                 src={Apple_music}
                 className={`p-1 transform motion-safe:group-focus:scale-110 w-5 lg:w-5 text-white`}
+                alt="Apple Music logo"
               />
             </div>
           </a>
