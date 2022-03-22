@@ -13,6 +13,19 @@ html {
   font-family: "Fira Sans Extra Condensed", sans-serif;
 }
 
+/* reset default css instead of tailwindcss @base */
+
+ul {
+  list-style-type: revert;
+  padding: revert;
+}
+a {
+  background-color: transparent;
+  color: #006dcc;
+  text-decoration: none;
+  transition: color 0.1s linear;
+}
+
 /* playlist time picker font size changes*/
 .flatpickr-hour,
 .flatpickr-minute {

@@ -46,11 +46,8 @@ const Article = ({
             isError={isError}
             data={article?.commune}
           >
-            <p>
-              <FontAwesomeIcon
-                icon={faMapMarkerAlt}
-                className="mr-3 text-[#D53E3A]"
-              />
+            <p className="text-[#ff5722] font-semibold mt-2">
+              <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-3 " />
               {article?.commune}
             </p>
           </LoadingState>
@@ -64,11 +61,8 @@ const Article = ({
             data={article?.start_date}
           >
             <>
-              <p>
-                <FontAwesomeIcon
-                  icon={faClock}
-                  className="mr-3 text-[#D53E3A]"
-                />
+              <p className="text-gray-700 font-semibold mt-2">
+                <FontAwesomeIcon icon={faClock} className="mr-3" />
                 {article?.start_date &&
                   new Date(article?.start_date).toLocaleDateString("fr-be")}
                 <span>&nbsp;</span>
