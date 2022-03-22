@@ -13,6 +13,6 @@ const options: HTMLReactParserOptions = {
   },
 };
 const TextParser = ({ text }: TextParserProps) => {
-  return <>{parse(text, options)}</>;
+  return <article>{parse(text, options)}</article>;
 };
 export default TextParser;
