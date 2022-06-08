@@ -228,7 +228,7 @@ const Playlist = () => {
                                   <FontAwesomeIcon
                                     icon={faYoutube}
                                     size="2x"
-                                    className={`transform motion-safe:group-focus:scale-110 px-0.5 text-opacity-70
+                                    className={`transform motion-safe:group-focus:scale-110 px-0.5
               h-10 w-10 text-[#f44336] group-hover:text-opacity-80 transition ease-in-out duration-150`}
                                     aria-hidden="true"
                                   />
@@ -262,7 +262,7 @@ const Playlist = () => {
                                       <FontAwesomeIcon
                                         icon={song?.voted ? faHeart : faHeart2}
                                         size="2x"
-                                        className={`transform motion-safe:group-focus:scale-110 p-1.5 pb-0 z-10 ${
+                                        className={`transform motion-safe:group-focus:scale-110 p-1.5 pb-0 z-10 group-hover:text-opacity-80 ${
                                           song?.voted
                                             ? "text-[#f44336]"
                                             : "text-black dark:text-white"
