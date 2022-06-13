@@ -10,7 +10,7 @@ const Part1 = () => {
   return (
     <div className="flex flex-col lg:flex-row lg:pt-12">
       <div className="text-black dark:text-white order-last lg:order-none w-full lg:w-8/12 pr-6">
-        <ul>
+        <ul className="list-none">
           <li className="pt-8">
             <FontAwesomeIcon icon={faComment} className="mr-4 text-[#D53E3A]" />
             Radio Emotion est la radio indépendante de proximité qui émet au

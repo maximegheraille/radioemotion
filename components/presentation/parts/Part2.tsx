@@ -16,7 +16,7 @@ const Part2 = () => {
           <Image src={part2} className="rounded-lg" layout="responsive" />
         </div>
         <div className="pt-8 lg:pt-0 lg:pl-6 w-full lg:w-7/12">
-          <ul>
+          <ul className="list-none">
             <li className="">
               <FontAwesomeIcon icon={faCheck} className="mr-4 text-[#2D2180]" />
               Radio Emotion propose une programmation généraliste, privilégiant

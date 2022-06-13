@@ -14,7 +14,7 @@ const Part3 = () => {
       />
       <div className="flex flex-col lg:flex-row place-content-between pt-2">
         <div className="order-last lg:order-none pt-8 pr-0 lg:pt-0 lg:pr-6 w-full lg:w-7/12">
-          <ul>
+          <ul className="list-none">
             <li className="">
               <FontAwesomeIcon icon={faMicrophone} className="mr-4" />
               Radio Emotion, c’est avant tout de la musique mais également de
