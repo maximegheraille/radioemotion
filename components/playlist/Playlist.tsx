@@ -216,7 +216,7 @@ const Playlist = () => {
                                 <button
                                   className={`${
                                     song?.youtube === "" ? "hidden" : "block"
-                                  } group flex items-center `}
+                                  } group flex items-center mx-2`}
                                   onClick={() =>
                                     setShowYou({
                                       open: !showYou.open,
@@ -229,7 +229,7 @@ const Playlist = () => {
                                     icon={faYoutube}
                                     size="2x"
                                     className={`transform motion-safe:group-focus:scale-110 px-0.5
-              h-10 w-10 text-[#f44336] group-hover:text-opacity-80 transition ease-in-out duration-150`}
+              h-9 w-9 text-[#f44336] group-hover:text-opacity-80 transition ease-in-out duration-150`}
                                     aria-hidden="true"
                                   />
                                 </button>
@@ -261,8 +261,7 @@ const Playlist = () => {
                                     >
                                       <FontAwesomeIcon
                                         icon={song?.voted ? faHeart : faHeart2}
-                                        size="2x"
-                                        className={`transform motion-safe:group-focus:scale-110 p-1.5 pb-0 z-10 group-hover:text-opacity-80 ${
+                                        className={`text-2xl transform motion-safe:group-focus:scale-110 p-2 z-10 ${
                                           song?.voted
                                             ? "text-[#f44336]"
                                             : "text-black dark:text-white"
@@ -270,7 +269,7 @@ const Playlist = () => {
                                         aria-hidden="true"
                                       />
                                     </button>
-                                    <span className="text-xs p-[0.125rem] min-h-[1.25rem] min-w-[1.25rem] w-auto h-auto flex place-content-center text-white absolute top-1 right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-full">
+                                    <span className="text-xs content-center items-center min-h-[1.25rem] min-w-[1.25rem] w-auto h-auto flex place-content-center text-white absolute top-1 right-0 transform -translate-y-1/2 translate-x-2/4 bg-red-500 rounded-full">
                                       {song?.votes &&
                                         votesFormatter(song.votes)}
                                     </span>
